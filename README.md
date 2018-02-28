@@ -5,7 +5,7 @@ It's just a node.js util which analyze your templates all over the project and w
 
 # WIP
 
-The product is under construction.
+The project is under construction.
 
 ## LICENSE
 
