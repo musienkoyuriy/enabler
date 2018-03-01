@@ -1,28 +1,28 @@
 {
-  "name": "ngx-a11y",
+  "name": "enable",
   "version": "1.0.0",
-  "description": "Accessebility analyzer for Angular applications",
+  "description": "Accessebility analyzer for your frontend",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/musienkoyuriy/ngx-a11y.git"
+    "url": "git+https://github.com/musienkoyuriy/enable.git"
   },
   "keywords": [
-    "angular",
-    "ng",
-    "ngx",
-    "a11y",
+    "enable",
+    "ngx-a11y",
+    "vue-a11y",
+    "react-a11y",
     "accessebility"
   ],
   "author": "Yuriy Musienko",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/musienkoyuriy/ngx-a11y/issues"
+    "url": "https://github.com/musienkoyuriy/enable/issues"
   },
-  "homepage": "https://github.com/musienkoyuriy/ngx-a11y#readme",
+  "homepage": "https://github.com/musienkoyuriy/enable#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "colors": "^1.1.2",
