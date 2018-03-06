@@ -1,5 +1,5 @@
 {
-  "name": "enable",
+  "name": "enabler",
   "version": "1.0.0",
   "description": "Accessibility analyzer for your frontend",
   "main": "index.js",
@@ -8,10 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/musienkoyuriy/enable.git"
+    "url": "git+https://github.com/musienkoyuriy/enabler.git"
   },
   "keywords": [
-    "enable",
+    "enabler",
     "ngx-a11y",
     "vue-a11y",
     "react-a11y",
@@ -20,9 +20,9 @@
   "author": "Yuriy Musienko",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/musienkoyuriy/enable/issues"
+    "url": "https://github.com/musienkoyuriy/enabler/issues"
   },
-  "homepage": "https://github.com/musienkoyuriy/enable#readme",
+  "homepage": "https://github.com/musienkoyuriy/enabler#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "colors": "^1.1.2",
