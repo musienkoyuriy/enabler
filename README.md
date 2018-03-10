@@ -16,7 +16,7 @@ package.json
 
 ...
 scripts: {
-  "a11y": 'enabler ./templates-root-foolder'
+  "a11y": 'enabler ./templates-root-folder'
 }
 ...
 
