@@ -26,6 +26,14 @@ scripts: {
 
 ```
 
+# Options:
+```
+    -V, --version   output the version number
+    -P, --path <s>  Path for your root components folder
+    --ng            Detect angular abstractions
+    -h, --help      output usage information
+ ```
+
 
 ## LICENSE
 
