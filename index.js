@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
-'use strict';
+const program = require('commander');
 
-const path = process.argv[process.argv.length - 1];
+program
+  .version('1.0.8')
+  .option('-P, --path <s>', 'Path for your root components folder')
+  .option('--ng', 'Detect angular abstractions')
+  .parse(process.argv);
 
-exports = module.exports = require('./lib');
-
-require('./lib')(path);
+module.exports = require('./lib')(program);
