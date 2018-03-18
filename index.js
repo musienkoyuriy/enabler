@@ -3,7 +3,7 @@
 const program = require('commander');
 
 program
-  .version('1.1.2')
+  .version('1.1.3')
   .option('-P, --path <s>', 'Path for your root components folder')
   .option('--ng', 'Detect angular abstractions')
   .parse(process.argv);
