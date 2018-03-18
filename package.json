@@ -31,8 +31,8 @@
   },
   "homepage": "https://github.com/musienkoyuriy/enabler#readme",
   "dependencies": {
+    "chalk": "2.3.2",
     "cheerio": "^1.0.0-rc.2",
-    "colors": "^1.1.2",
     "commander": "2.15.0",
     "glob": "^7.1.2",
     "progress": "^2.0.0"
