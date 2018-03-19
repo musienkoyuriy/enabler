@@ -8,4 +8,6 @@ program
   .option('--ng', 'Detect angular abstractions')
   .parse(process.argv);
 
+global.isNg = program.ng;
+
 module.exports = require('./lib')(program);
