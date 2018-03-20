@@ -8,6 +8,6 @@ program
   .option('--ng', 'Detect angular abstractions')
   .parse(process.argv);
 
-global.isNg = program.ng;
+global.framework = program.ng ? 'angular' : undefined;
 
 module.exports = require('./lib')(program);
