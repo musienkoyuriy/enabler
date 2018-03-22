@@ -9,7 +9,7 @@ It's just a node.js util which analyzes your templates all over the project and 
 
 Enabler’s aim is to give developer ability to increase accessibility in development stage, but not after publishing site/application to production.
 
-## Usage
+## Up & Running:
 
 ```
 > npm i --save-dev enabler
