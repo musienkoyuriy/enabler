@@ -9,8 +9,6 @@ program
   .option('--vue', 'Support vue.js files')
   .parse(process.argv);
 
-global.framework = program.ng ? 'angular' : undefined;
-
 if (program.ng) {
   global.framework = 'angular';
 } else if (program.vue) {
