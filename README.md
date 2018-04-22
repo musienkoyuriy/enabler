@@ -9,6 +9,8 @@
 
 Enabler’s aim is to give developer ability to increase accessibility in development stage, but not after publishing site/application to production.
 
+Frameworks support: Angular, Vue.
+
 ## Up & Running:
 
 ```
