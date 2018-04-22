@@ -34,13 +34,12 @@
     "cheerio": "^1.0.0-rc.2",
     "commander": "2.15.1",
     "esprima": "4.0.0",
-    "glob": "^7.1.2",
-    "typescript": "2.8.1"
+    "glob": "^7.1.2"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.11.0" ,
+    "eslint-plugin-import": "^2.11.0",
     "prettier-eslint-cli": "^4.7.0"
   }
 }
