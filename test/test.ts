@@ -1,0 +1,8 @@
+@Component({
+  template: `
+    <div>
+
+    </div>
+
+  `
+})
