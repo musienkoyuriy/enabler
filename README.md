@@ -26,7 +26,7 @@ scripts: {
 ...
 
 
-> npm run a11y
+> npx a11y
 
 ```
 
