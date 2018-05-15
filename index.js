@@ -3,7 +3,7 @@
 const program = require('commander');
 
 program
-  .version('1.4.3')
+  .version('1.4.4')
   .option('-p, --path <s>', 'Path for your root components folder')
   .option('--ng', 'Detect angular abstractions')
   .option('--vue', 'Support .vue files')
