@@ -4,6 +4,7 @@
 [<img src="https://badge.fury.io/js/enabler.svg" alt="npm version" >](https://badge.fury.io/js/enabler)
 [<img src="https://img.shields.io/npm/dm/enabler.svg" alt="npm downloads" >]("https://npmjs.org/enabler)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg)](https://opensource.org/licenses/mit-license.php)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 > It's just a node.js util which analyzes your templates all over the project and warns you about potential accessibility problems.
 
