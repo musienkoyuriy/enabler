@@ -1,5 +1,5 @@
 # enabler
- ✋ Accessibility analyzer for your frontend.
+ ✋ *Accessibility analyzer for your frontend.*
 
 [<img src="https://badge.fury.io/js/enabler.svg" alt="npm version" >](https://badge.fury.io/js/enabler)
 [<img src="https://img.shields.io/npm/dm/enabler.svg" alt="npm downloads" >]("https://npmjs.org/enabler)
