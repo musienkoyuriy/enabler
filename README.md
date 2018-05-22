@@ -33,7 +33,7 @@ scripts: {
 
 ## Options:
 ```
-    -V, --version   output the version number
+    -v, --version   output the version number
     -p, --path <s>  Path for your root components folder
     --ng            Detect angular abstractions
     --vue           Support .vue files
