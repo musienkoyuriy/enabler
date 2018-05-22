@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint **/*.js"
+    "lint": "eslint **/*.js",
+    "demo:html": "node index.js -p examples --vue",
+    "demo:ng": "node index.js -p examples --ng",
+    "demo:vue": "node index.js -p examples --vue"
   },
   "bin": {
     "enabler": "index.js"
@@ -39,8 +42,12 @@
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-import": "2.12.0",
     "eslint-plugin-prettier": "2.6.0",
     "prettier": "1.12.1",
     "prettier-eslint-cli": "^4.7.0"
-  }
+  },
+  "eslintIgnore": [
+    "examples/**"
+  ]
 }
