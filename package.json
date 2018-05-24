@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint **/*.js",
-    "demo:html": "node index.js -p examples",
-    "demo:ng": "node index.js -p examples --ng",
-    "demo:vue": "node index.js -p examples --vue"
+    "demo:html": "node index.js -p fixtures",
+    "demo:ng": "node index.js -p fixtures --ng",
+    "demo:vue": "node index.js -p fixtures --vue"
   },
   "bin": {
     "enabler": "index.js"
