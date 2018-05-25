@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint **/*.js",
+    "lint": "eslint **/*.js --fix",
     "demo:html": "node index.js -p fixtures",
     "demo:ng": "node index.js -p fixtures --ng",
     "demo:vue": "node index.js -p fixtures --vue"
