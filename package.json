@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint **/*.js --fix",
+    "cleaninstall": "rimraf ./node_modules && npm i",
     "demo:html": "node index.js -p fixtures",
     "demo:ng": "node index.js -p fixtures --ng",
     "demo:vue": "node index.js -p fixtures --vue"
@@ -45,7 +46,8 @@
     "eslint-plugin-import": "2.12.0",
     "eslint-plugin-prettier": "2.6.0",
     "prettier": "1.13.3",
-    "prettier-eslint-cli": "^4.7.0"
+    "prettier-eslint-cli": "^4.7.0",
+    "rimraf": "2.6.2"
   },
   "eslintIgnore": [
     "examples/**"
