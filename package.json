@@ -2,7 +2,7 @@
   "name": "enabler",
   "version": "1.4.5",
   "description": "Accessibility analyzer for your frontend",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint **/*.js --fix",
@@ -12,7 +12,7 @@
     "demo:vue": "node index.js -p fixtures --vue"
   },
   "bin": {
-    "enabler": "index.js"
+    "enabler": "index.ts"
   },
   "repository": {
     "type": "git",
@@ -37,7 +37,8 @@
     "chalk": "2.4.1",
     "cheerio": "^1.0.0-rc.2",
     "commander": "2.15.1",
-    "glob": "^7.1.2"
+    "glob": "^7.1.2",
+    "ts-node": "6.1.0"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
