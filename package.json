@@ -51,6 +51,6 @@
     "rimraf": "2.6.2"
   },
   "eslintIgnore": [
-    "examples/**"
+    "fixtures/**"
   ]
 }
