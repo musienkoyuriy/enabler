@@ -4,12 +4,14 @@
   "description": "Accessibility analyzer for your frontend",
   "main": "index.ts",
   "scripts": {
+    "start": "npm run-s build",
+    "build": "ts-node index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint **/*.js --fix",
     "cleaninstall": "rimraf ./node_modules && npm i",
-    "demo:html": "node index.js -p fixtures",
-    "demo:ng": "node index.js -p fixtures --ng",
-    "demo:vue": "node index.js -p fixtures --vue"
+    "demo:html": "ts-node index.ts -p fixtures",
+    "demo:ng": "ts-node index.ts -p fixtures --ng",
+    "demo:vue": "ts-node index.ts -p fixtures --vue"
   },
   "bin": {
     "enabler": "index.ts"
