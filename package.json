@@ -1,6 +1,6 @@
 {
   "name": "enabler",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "description": "Accessibility analyzer for your frontend",
   "main": "index.ts",
   "scripts": {
