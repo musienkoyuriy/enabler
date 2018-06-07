@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
-require('ts-node').register();
-
-const program = require('commander');
+import program = require('commander');
+import { run } from './src';
 
 program
   .version('1.4.5', '-v, --version')
@@ -17,4 +16,4 @@ if (program.ng) {
   (global as any).framework = 'vue';
 }
 
-module.exports = require('./lib')(program);
+export default run(program);

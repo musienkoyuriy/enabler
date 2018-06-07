@@ -1,15 +1,15 @@
-const Validator = require('../validator');
+import Validator from '../validator';
 
-function tabElementsHasRightRoles($, content) {
+export default function tabElementsHasRightRoles($: any, content: string) {
   return new Validator({
     $template: $,
     content,
     selectors: [
       '[role="tabpanel"]',
       '[role="tablist"]',
-      '[role="tab"]',
+      '[role="tab"]'
     ],
-    isInvalid: ($elem) => {
+    isInvalid: ($elem: any) => {
       const role = $elem.attr('role');
       const isChildrenTabElement = role === 'tab' || role === 'tabpanel';
       const hasParentTablist = $elem.closest('[role=tablist]').length;
@@ -18,14 +18,12 @@ function tabElementsHasRightRoles($, content) {
       return (isChildrenTabElement && !hasParentTablist) ||
               (!isChildrenTabElement && !hasChildrenTabElements);
     },
-    warningMessage: (el) => {
+    warningMessage: (el: any) => {
       const role = el.attr('role');
 
       return role === 'tablist' ?
         'Elements with role="tablist" should should have elements with role="tabpanel" and role="tab".' :
         'Elements with role="tabpanel" or role="tab" should be wrapped in role="tablist".';
-    },
+    }
   });
 }
-
-module.exports = tabElementsHasRightRoles;

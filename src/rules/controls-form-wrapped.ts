@@ -1,21 +1,19 @@
-const Validator = require('../validator');
+import Validator from '../validator';
 
-function controlsFormWrapped($, content) {
+export default function controlsFormWrapped($: any,content: string) {
   return new Validator({
     $template: $,
     content,
     selectors: ['input', 'select', 'textarea'],
-    isInvalid: ($elem) => {
+    isInvalid: ($elem: any) => {
       const parentForm = $elem.closest('form, div[role=form]');
 
       return !parentForm.length;
     },
-    warningMessage: (el) => {
+    warningMessage: (el: any) => {
       const tagName = el[0].name;
 
       return `<${tagName}> element should be wrapped in <form> or <div role="form">.`;
-    },
+    }
   });
 }
-
-module.exports = controlsFormWrapped;

@@ -1,8 +1,9 @@
 const cheerio = require('cheerio');
-const rules = require('./rules');
+import rules from './rules';
+import { isFunction } from 'util';
 
-function _flattenWarnings(warnings) {
-  const messages = [];
+function _flattenWarnings(warnings: {message: string}[][]) {
+  const messages: any = [];
 
   warnings.forEach(ruleWarnings => {
     ruleWarnings.forEach(warn => {
@@ -15,7 +16,7 @@ function _flattenWarnings(warnings) {
   return messages;
 }
 
-function getContentFromVueFile(templateContent) {
+export function getContentFromVueFile(templateContent: string) {
   const templateLines = templateContent.split('\n');
 
   const templateOpenTag = templateLines.indexOf('<template>');
@@ -27,10 +28,10 @@ function getContentFromVueFile(templateContent) {
   return vueTemplate;
 }
 
-function getTemplateFromComponentDecorator(fileContent) {
+export function getTemplateFromComponentDecorator(fileContent: string) {
   const fileAsArray = fileContent.split('\n');
 
-  const decoratorLine = fileAsArray.find(line => line.includes('@Component'));
+  const decoratorLine = fileAsArray.find((line: string) => line.includes('@Component'));
 
   if (!decoratorLine) {
     return '';
@@ -56,7 +57,8 @@ function getTemplateFromComponentDecorator(fileContent) {
     .slice(templateStartLineNumber)
     .join('\n');
 
-  const matchedString = templatePropPattern.exec(joinedTemplateString)[0];
+  const templateMatches = templatePropPattern.exec(joinedTemplateString);
+  const matchedString = templateMatches ? templateMatches[0] : '';
   const stringExceptTemplateLiteral = joinedTemplateString.replace(
     matchedString,
     ''
@@ -70,18 +72,18 @@ function getTemplateFromComponentDecorator(fileContent) {
   return angularTemplate;
 }
 
-function getA11yWarnings(template, options) {
+export function getA11yWarnings(template: string, options: any) {
   const parsed = cheerio.load(template, {
     xmlMode: true,
     withStartIndices: true,
     withEndIndices: true
   });
 
-  const warnings = [];
-  let rule;
+  const warnings: any = [];
 
-  Object.values(rules).forEach(r => {
-    rule = r(parsed, template, options);
+  Object.values(rules).forEach((r: any) => {
+    const rule = r(parsed, template, options);
+    const warns = rule.getWarnings();
 
     if (rule.warnings.length) {
       warnings.push(rule.warnings);
@@ -90,9 +92,3 @@ function getA11yWarnings(template, options) {
 
   return _flattenWarnings(warnings);
 }
-
-module.exports = {
-  getA11yWarnings,
-  getContentFromVueFile,
-  getTemplateFromComponentDecorator
-};

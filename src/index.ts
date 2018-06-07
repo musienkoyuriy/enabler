@@ -1,19 +1,21 @@
-const fs = require('fs');
+import { readFileSync } from 'fs';
+import chalk from 'chalk';
+
 const glob = require('glob');
-const chalk = require('chalk');
-const {
+
+import {
   getA11yWarnings,
   getContentFromVueFile,
   getTemplateFromComponentDecorator
-} = require('./parser');
-const { printWarnings } = require('./logger');
-const { getFrameworkName } = require('./utils');
+} from './parser';
+import { printWarnings } from './logger';
+import { getFrameworkName } from './utils';
 
 const error = chalk.bold.red;
 
 const templatesWithWarnings = Object.create(null);
 
-function linkWarningsWithTemplate(messages, templateUrl) {
+function linkWarningsWithTemplate(messages: any, templateUrl: string) {
   if (templateUrl in templatesWithWarnings) {
     templatesWithWarnings[templateUrl] = templatesWithWarnings[
       templateUrl
@@ -23,7 +25,7 @@ function linkWarningsWithTemplate(messages, templateUrl) {
   }
 }
 
-function getTemplate({ fileContent, isTSFile }) {
+function getTemplate({ fileContent, isTSFile }: {fileContent: string; isTSFile: boolean;}) {
   switch (getFrameworkName()) {
     case 'angular':
       return isTSFile
@@ -36,13 +38,13 @@ function getTemplate({ fileContent, isTSFile }) {
   }
 }
 
-function parseTemplate(templateUrl, options) {
+function parseTemplate(templateUrl: string, options: any) {
   const isTSFile = templateUrl.endsWith('.ts');
 
   let fileContent;
 
   try {
-    fileContent = fs.readFileSync(templateUrl, { encoding: 'utf8' });
+    fileContent = readFileSync(templateUrl, { encoding: 'utf8' });
   } catch (err) {
     throw new Error(err);
   }
@@ -57,7 +59,7 @@ function parseTemplate(templateUrl, options) {
   linkWarningsWithTemplate(warnings, templateUrl);
 }
 
-function handleTemplates(fileNames, options) {
+function handleTemplates(fileNames: string[], options: any) {
   fileNames.forEach(fileName => {
     parseTemplate(fileName, options);
   });
@@ -77,7 +79,7 @@ function getExtensionPattern() {
   return 'html';
 }
 
-function run(program) {
+export function run(program: any) {
   const { path, ng, vue } = program;
   const options = { ng, vue };
 
@@ -92,7 +94,7 @@ function run(program) {
 
   const extension = getExtensionPattern();
 
-  glob(`${path}/**/*.${extension}`, (err, fileNames) => {
+  glob(`${path}/**/*.${extension}`, (err: Error, fileNames: string[]) => {
     if (err) {
       throw new Error(`Files search error ${err}`);
     }
@@ -100,5 +102,3 @@ function run(program) {
     handleTemplates(fileNames, options);
   });
 }
-
-module.exports = run;

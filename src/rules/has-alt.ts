@@ -1,21 +1,19 @@
-const Validator = require('../validator');
-const { hasAttribute } = require('../utils');
+import Validator from '../validator';
+import { hasAttribute } from '../utils';
 
-function hasAlt($, content) {
+export default function hasAlt($: any, content: string) {
   return new Validator({
     $template: $,
     content,
     selectors: ['img', 'area'],
     assocAttrs: ['alt'],
-    isInvalid: ($elem, attrs) => !hasAttribute($elem, attrs),
-    warningMessage: (el) => {
+    isInvalid: ($elem: any, attrs: string[]) => !hasAttribute($elem, attrs),
+    warningMessage: (el: any) => {
       const tagName = el[0].name;
       const purpose = tagName === 'img' ? 'image map' : 'link';
       const message = `The alt attribute of the <${tagName} /> tag must state the purpose of the ${purpose}.`;
 
       return message;
-    },
+    }
   });
 }
-
-module.exports = hasAlt;
