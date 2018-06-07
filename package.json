@@ -4,17 +4,15 @@
   "description": "Accessibility analyzer for your frontend",
   "main": "index.ts",
   "scripts": {
-    "start": "npm run-s build",
-    "build": "ts-node index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint **/*.js --fix",
     "cleaninstall": "rimraf ./node_modules && npm i",
-    "demo:html": "ts-node index.ts -p fixtures",
-    "demo:ng": "ts-node index.ts -p fixtures --ng",
-    "demo:vue": "ts-node index.ts -p fixtures --vue"
+    "demo:html": "node index.js -p fixtures",
+    "demo:ng": "node index.js -p fixtures --ng",
+    "demo:vue": "node index.js -p fixtures --vue"
   },
   "bin": {
-    "enabler": "index.ts"
+    "enabler": "index.js"
   },
   "repository": {
     "type": "git",
@@ -39,8 +37,7 @@
     "chalk": "2.4.1",
     "cheerio": "^1.0.0-rc.2",
     "commander": "2.15.1",
-    "glob": "^7.1.2",
-    "ts-node": "6.1.0"
+    "glob": "^7.1.2"
   },
   "devDependencies": {
     "eslint": "^4.19.1",

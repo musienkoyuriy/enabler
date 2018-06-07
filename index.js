@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-require('ts-node').register();
-
 const program = require('commander');
 
 program
@@ -12,9 +10,9 @@ program
   .parse(process.argv);
 
 if (program.ng) {
-  (global as any).framework = 'angular';
+  global.framework = 'angular';
 } else if (program.vue) {
-  (global as any).framework = 'vue';
+  global.framework = 'vue';
 }
 
 module.exports = require('./lib')(program);
