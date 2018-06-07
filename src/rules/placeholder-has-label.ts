@@ -1,13 +1,13 @@
-const Validator = require('../validator');
-const { getAttrValue } = require('../utils');
+import Validator from '../validator';
+import { getAttrValue } from '../utils';
 
-function placeholderHasLabel($, content) {
+export default function placeholderHasLabel($: any,content: string) {
   return new Validator({
     $template: $,
     content,
     selectors: ['input[type=text]', 'textarea'],
     assocAttrs: ['id', 'placeholder'],
-    isInvalid: ($elem, attrs) => {
+    isInvalid: ($elem: any, attrs: string[]) => {
       const placeholderAttrs = attrs.filter(attr => /placeholder/gi.test(attr));
       const idAttrs = attrs.filter(attr => /id/gi.test(attr));
 
@@ -17,8 +17,6 @@ function placeholderHasLabel($, content) {
 
       return !relatedLabel.length && placeholder;
     },
-    warningMessage: 'Placeholders in inputs and textareas should be used in addition to a label, not as a replacement.',
+    warningMessage: 'Placeholders in inputs and textareas should be used in addition to a label, not as a replacement.'
   });
 }
-
-module.exports = placeholderHasLabel;

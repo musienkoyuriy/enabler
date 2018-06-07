@@ -1,15 +1,15 @@
-function getLineNumberByHTMLSegment($elem, template) {
+export function getLineNumberByHTMLSegment($elem: any, template: string) {
   const start = $elem.get(0).startIndex;
   const lineNumber = template.substr(0, start).split('\n').length;
 
   return lineNumber;
 }
 
-function _ecranizeForRegexp(string) {
-  return string.replace(/-/g, '\\-');
+export function _ecranizeForRegexp(strToEcranize: string) {
+  return strToEcranize.replace(/-/g, '\\-');
 }
 
-function getDuplicateAttributes($elem, content) {
+export function getDuplicateAttributes($elem: any, content: string) {
   const dom = $elem.get(0);
   const start = dom.startIndex;
   const end = dom.children.length
@@ -28,43 +28,35 @@ function getDuplicateAttributes($elem, content) {
         console.log(ex);
         console.log(html);
       }
-      const matched = html.match(regexp);
+      const matched = html.match(regexp as any);
 
       return matched !== null && matched.length > 1 ? attr : null;
     })
     .filter(Boolean);
 }
 
-function hasAttribute($elem, attrs) {
+export function hasAttribute($elem: any, attrs: string[]) {
   const attributes = $elem.attr();
 
-  return attrs.some(attr => attr in attributes);
+  console.log('!!!!', attributes);
+
+  return attrs.some((attr: string) => attr in attributes);
 }
 
-function getAttrValue($elem, attrs) {
+export function getAttrValue($elem: any, attrs: string[]) {
   const filledAttrs = attrs.filter(attr => $elem.attr(attr));
 
   return filledAttrs.length ? $elem.attr(filledAttrs[0]) : '';
 }
 
-function isAngular() {
-  return global.framework === 'angular';
+export function isAngular(): boolean {
+  return (global as any).framework === 'angular';
 }
 
-function isVue() {
-  return global.framework === 'vue';
+export function isVue(): boolean {
+  return (global as any).framework === 'vue';
 }
 
-function getFrameworkName() {
-  return global.framework;
+export function getFrameworkName(): string {
+  return (global as any).framework;
 }
-
-module.exports = {
-  getLineNumberByHTMLSegment,
-  getDuplicateAttributes,
-  hasAttribute,
-  getAttrValue,
-  isAngular,
-  isVue,
-  getFrameworkName
-};

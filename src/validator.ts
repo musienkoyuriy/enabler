@@ -1,24 +1,33 @@
-const { getLineNumberByHTMLSegment, isAngular, isVue } = require('./utils');
+import { ValidatorOptions, Warning } from './models';
+import { getLineNumberByHTMLSegment, isAngular, isVue } from './utils';
 
-function completeAttrsWithFrameworkSpecific(attrs) {
+function completeAttrsWithFrameworkSpecific(attrs: string[]) {
   if (isAngular()) {
     const additionalAttrs = attrs.map(attr => `[${attr}]`);
     const additionalAttrsFullSign = attrs.map(attr => `bind-${attr}`);
 
-    return [...attrs, ...additionalAttrs, ...additionalAttrsFullSign];
+    return [
+      ...attrs,
+      ...additionalAttrs,
+      ...additionalAttrsFullSign
+    ];
   }
 
   if (isVue()) {
     const additionalAttrs = attrs.map(attr => `:${attr}`);
     const additionalAttrsWithBind = attrs.map(attr => `v-bind:${attr}`);
 
-    return [...attrs, ...additionalAttrs, ...additionalAttrsWithBind];
+    return [
+      ...attrs,
+      ...additionalAttrs,
+      ...additionalAttrsWithBind
+    ];
   }
 
   return attrs;
 }
 
-function completeEventsWithFrameworkSpecific(events) {
+function completeEventsWithFrameworkSpecific(events: string[]) {
   const nativeEventBindings = events.map(event => `on${event}`);
 
   if (isAngular()) {
@@ -46,14 +55,23 @@ function completeEventsWithFrameworkSpecific(events) {
   return nativeEventBindings;
 }
 
-class Validator {
-  constructor(options) {
+export default class Validator implements ValidatorOptions {
+  isInvalid: Function;
+  selectors: string[] | string;
+  $template: any;
+  warnings: Warning[];
+  warningMessage: string | Function;
+  content: string;
+  assocAttrs: string[];
+  assocEvents: string[];
+
+  constructor(options: ValidatorOptions) {
     this.warnings = [];
 
     this.$template = options.$template;
-    this.selectors = options.selectors || [];
+    this.selectors = options.selectors;
     this.isInvalid = options.isInvalid;
-    this.warningMessage = options.warningMessage || '';
+    this.warningMessage = options.warningMessage;
     this.content = options.content || '';
     this.assocAttrs = options.assocAttrs || [];
     this.assocEvents = options.assocEvents || [];
@@ -62,12 +80,12 @@ class Validator {
     const elements = this.$template(selectors);
     const that = this;
 
-    let element;
-    let attrs;
-    let events;
+    let element: any;
+    let attrs: string[];
+    let events: string[];
 
     if (elements.length) {
-      elements.each(function addWarn() {
+      elements.each(() => {
         element = that.$template(this);
 
         if (that.assocAttrs.length) {
@@ -83,17 +101,14 @@ class Validator {
         }
       });
     }
-
-    return {
-      warnings: this.warnings
-    };
   }
 
-  _normalizeSelectors(selectors) {
+  _normalizeSelectors(selectors: string | string[]): string {
+    // @ts-ignore
     return Array.isArray(this.selectors) ? selectors.join(',') : selectors;
   }
 
-  _addWarning(el) {
+  _addWarning(el: any): void {
     const message =
       typeof this.warningMessage === 'function'
         ? this.warningMessage(el)
@@ -104,6 +119,10 @@ class Validator {
       line: getLineNumberByHTMLSegment(el, this.content)
     });
   }
-}
 
-module.exports = Validator;
+  getWarnings(): {warnings: Warning[]} {
+    return {
+      warnings: this.warnings
+    };
+  }
+}

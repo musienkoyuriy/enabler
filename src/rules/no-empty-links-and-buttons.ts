@@ -1,30 +1,28 @@
-const Validator = require('../validator');
-const { getAttrValue } = require('../utils');
+import Validator from '../validator';
+import { getAttrValue } from '../utils';
 
-function emptyLinksAndButtons($, content) {
+export default function emptyLinksAndButtons($: any,content: string) {
   return new Validator({
     $template: $,
     content,
     selectors: ['input[type="submit"]', 'button', 'a'],
     assocAttrs: ['value'],
-    isInvalid: ($elem, attrs) => {
+    isInvalid: ($elem: any, attrs: string[]) => {
       const tagName = $elem[0].name;
 
       return [
         tagName === 'input' && !getAttrValue($elem, attrs),
         tagName === 'button' && !$elem.text(),
-        tagName === 'a' && !$elem.html(),
+        tagName === 'a' && !$elem.html()
       ].some(Boolean);
     },
-    warningMessage: (el) => {
+    warningMessage: (el: any) => {
       const tagName = el[0].name;
       const message = tagName === 'input' ?
         '"Value" attribute should not be empty in "input" tag' :
         `Text should contains in "${tagName}" tag.`;
 
       return message;
-    },
+    }
   });
 }
-
-module.exports = emptyLinksAndButtons;

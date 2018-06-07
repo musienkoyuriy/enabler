@@ -1,20 +1,18 @@
-const Validator = require('../validator');
-const { getAttrValue } = require('../utils');
+import Validator from '../validator';
+import { getAttrValue } from '../utils';
 
-function linksHasUrl($, content) {
+export default function linksHasUrl($: any,content: string) {
   return new Validator({
     $template: $,
     content,
     selectors: 'a',
     assocAttrs: ['href'],
-    isInvalid: ($elem, attrs) => {
+    isInvalid: ($elem: any, attrs: string[]) => {
       const href = getAttrValue($elem, attrs);
       const hasUrl = href !== '' && href !== '#';
 
       return !hasUrl;
     },
-    warningMessage: 'Specify URL for link.',
+    warningMessage: 'Specify URL for link.'
   });
 }
-
-module.exports = linksHasUrl;

@@ -1,4 +1,4 @@
-const Validator = require('../validator');
+import Validator from '../validator';
 
 const ariaAttributes = [
   'aria-autocomplete',
@@ -32,10 +32,10 @@ const ariaAttributes = [
   'aria-labelledby',
   'aria-owns',
   'aria-posinset',
-  'aria-setsize',
+  'aria-setsize'
 ];
 
-function ariaUnsupportedElements($, content) {
+export default function ariaUnsupportedElements($: any,content: string) {
   return new Validator({
     $template: $,
     content,
@@ -43,16 +43,14 @@ function ariaUnsupportedElements($, content) {
       'meta',
       'html',
       'script',
-      'style',
+      'style'
     ],
     assocAttrs: ariaAttributes,
-    isInvalid: ($elem, attrs) => {
+    isInvalid: ($elem: any, attrs: string[]) => {
       const attributes = $elem.attr();
 
       return attrs.some(attr => attr in attributes);
     },
-    warningMessage: 'Hidden elements shouldn\'t contains aria- attributes.',
+    warningMessage: 'Hidden elements shouldn\'t contains aria- attributes.'
   });
 }
-
-module.exports = ariaUnsupportedElements;
