@@ -15,7 +15,7 @@ export default function noFormattingTags($: any,content: string) {
     ],
     isInvalid: (selector: string) => selector,
     warningMessage: (el: any) => {
-      const tagName = el[0].name;
+      const tagName = el.name;
 
       return `HTML tags and attributes designed exclusively for formatting should not be used. Use CSS rules instead of <${tagName}> tag.`;
     }

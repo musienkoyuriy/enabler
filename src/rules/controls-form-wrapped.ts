@@ -11,7 +11,7 @@ export default function controlsFormWrapped($: any,content: string) {
       return !parentForm.length;
     },
     warningMessage: (el: any) => {
-      const tagName = el[0].name;
+      const tagName = el.name;
 
       return `<${tagName}> element should be wrapped in <form> or <div role="form">.`;
     }

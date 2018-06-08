@@ -1,7 +1,7 @@
 import Validator from '../validator';
 import { getAttrValue } from '../utils';
 
-export default function emptyLinksAndButtons($: any,content: string) {
+export default function emptyLinksAndButtons($: any, content: string) {
   return new Validator({
     $template: $,
     content,
@@ -10,6 +10,8 @@ export default function emptyLinksAndButtons($: any,content: string) {
     isInvalid: ($elem: any, attrs: string[]) => {
       const tagName = $elem[0].name;
 
+      console.log();
+
       return [
         tagName === 'input' && !getAttrValue($elem, attrs),
         tagName === 'button' && !$elem.text(),
@@ -17,7 +19,7 @@ export default function emptyLinksAndButtons($: any,content: string) {
       ].some(Boolean);
     },
     warningMessage: (el: any) => {
-      const tagName = el[0].name;
+      const tagName = el.name;
       const message = tagName === 'input' ?
         '"Value" attribute should not be empty in "input" tag' :
         `Text should contains in "${tagName}" tag.`;

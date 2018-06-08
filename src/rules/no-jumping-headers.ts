@@ -12,7 +12,7 @@ export default function noJumpingHeaders($: any,content: string) {
     content,
     selectors: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
     isInvalid: ($elem: any) => {
-      const headName = $elem.get(0).name;
+      const headName = $elem[0].name;
       const headingLevel = Number(headName[1]);
       const nextHeader = $elem.next(':header');
 

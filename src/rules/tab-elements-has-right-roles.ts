@@ -19,7 +19,7 @@ export default function tabElementsHasRightRoles($: any, content: string) {
               (!isChildrenTabElement && !hasChildrenTabElements);
     },
     warningMessage: (el: any) => {
-      const role = el.attr('role');
+      const role = el.attribs.role;
 
       return role === 'tablist' ?
         'Elements with role="tablist" should should have elements with role="tabpanel" and role="tab".' :

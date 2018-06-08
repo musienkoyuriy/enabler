@@ -1,5 +1,5 @@
 export function getLineNumberByHTMLSegment($elem: any, template: string) {
-  const start = $elem.get(0).startIndex;
+  const start = $elem.startIndex;
   const lineNumber = template.substr(0, start).split('\n').length;
 
   return lineNumber;
@@ -37,8 +37,6 @@ export function getDuplicateAttributes($elem: any, content: string) {
 
 export function hasAttribute($elem: any, attrs: string[]) {
   const attributes = $elem.attr();
-
-  console.log('!!!!', attributes);
 
   return attrs.some((attr: string) => attr in attributes);
 }
