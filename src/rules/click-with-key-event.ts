@@ -1,16 +1,17 @@
-const Validator = require('../validator');
+import { ValidatorOptions } from './../models';
+import Validator from '../validator';
 
-function clickWithKeyboardEvent($, content, options) {
+export default function clickWithKeyboardEvent($: any, content: string, options: any) {
   return new Validator({
     $template: $,
     content,
     selectors: '*',
-    isInvalid: ($elem) => {
+    isInvalid: ($elem: any) => {
       let eventsPairs = [
         {
           targetEvent: 'onclick',
-          assocEvents: ['onkeyup', 'onkeydown', 'onkeypress'],
-        },
+          assocEvents: ['onkeyup', 'onkeydown', 'onkeypress']
+        }
       ];
 
       if (options.ng) {
@@ -18,8 +19,8 @@ function clickWithKeyboardEvent($, content, options) {
           ...eventsPairs,
           {
             targetEvent: '(click)',
-            assocEvents: ['(keyup)', '(keydown)', '(keypress)'],
-          },
+            assocEvents: ['(keyup)', '(keydown)', '(keypress)']
+          }
         ];
       }
 
@@ -32,8 +33,6 @@ function clickWithKeyboardEvent($, content, options) {
         })
         .length;
     },
-    warningMessage: 'Visible, non-interactive elements with click handlers must have at least one keyboard listener.',
+    warningMessage: 'Visible, non-interactive elements with click handlers must have at least one keyboard listener.'
   });
 }
-
-module.exports = clickWithKeyboardEvent;

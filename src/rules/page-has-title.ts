@@ -1,19 +1,17 @@
-const Validator = require('../validator');
+import Validator from '../validator';
 
-function pageHasTitle($, content) {
+export default function pageHasTitle($: any,content: string) {
   return new Validator({
     $template: $,
     content,
     selectors: 'html head',
-    isInvalid: ($elem) => {
+    isInvalid: ($elem: any) => {
       const hasHead = $elem.length;
       const title = $elem.children('title');
       const hasNoTitle = (hasHead && !title.length) || (hasHead && !title.text());
 
       return hasNoTitle;
     },
-    warningMessage: 'Page should have a title.',
+    warningMessage: 'Page should have a title.'
   });
 }
-
-module.exports = pageHasTitle;

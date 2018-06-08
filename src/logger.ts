@@ -1,4 +1,5 @@
-const chalk = require('chalk');
+import chalk from 'chalk';
+import { Warning } from './models';
 
 const { log, warn } = console;
 const error = chalk.bold.red;
@@ -7,13 +8,13 @@ const success = chalk.keyword('green');
 const yellow = chalk.keyword('yellow');
 const { underline } = chalk;
 
-function isWarningsEmpty(templatesWithWarnings) {
+function isWarningsEmpty(templatesWithWarnings: any): boolean {
   return Object.values(templatesWithWarnings).every(
-    warnings => warnings.length === 0
+    (warnings: any) => warnings.length === 0
   );
 }
 
-function printForTemplate(templateName, warnings) {
+function printForTemplate(templateName: string, warnings: Warning[]): void {
   if (!warnings.length) {
     return;
   }
@@ -21,13 +22,13 @@ function printForTemplate(templateName, warnings) {
   log(underline(templateName));
   log();
 
-  warnings.forEach(warnData => {
+  warnings.forEach((warnData: Warning) => {
     const templateWarnInfo = `${yellow('Line: %s')} ${warnData.message}`;
     warn(error(templateWarnInfo), warnData.line);
   });
 }
 
-function printWarnings(templatesWithWarnings) {
+export function printWarnings(templatesWithWarnings: any): void {
   let totalWarns = 0;
 
   if (isWarningsEmpty(templatesWithWarnings)) {
@@ -40,7 +41,7 @@ function printWarnings(templatesWithWarnings) {
   warn(warning('Potential accessibility issues: '));
   log();
 
-  Object.entries(templatesWithWarnings).forEach(template => {
+  Object.entries(templatesWithWarnings).forEach((template: any) => {
     const templateUrl = template[0];
     const warns = template[1];
     totalWarns += warns.length;

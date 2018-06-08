@@ -1,20 +1,20 @@
-const Validator = require('../validator');
-const { hasAttribute } = require('../utils');
+import Validator from '../validator';
+import { hasAttribute } from '../utils';
 
-function unclickableWithoutRole($, content) {
+export default function unclickableWithoutRole($: any,content: string) {
   return new Validator({
     $template: $,
     content,
     selectors: '*',
     assocEvents: ['click'],
-    isInvalid: ($elem, attrs, events) => {
+    isInvalid: ($elem: any, attrs: string[], events: string[]) => {
       const clickableElements = [
         'a[href]',
         'input[type="submit"]',
         'input[type="image"]',
         'label[for]',
         'select',
-        'button',
+        'button'
       ];
       const isClickable = clickableElements.some(sel => $elem.is(sel));
       const hasClick = hasAttribute($elem, events);
@@ -22,8 +22,6 @@ function unclickableWithoutRole($, content) {
 
       return !isClickable && hasClick && !hasRoleButton;
     },
-    warningMessage: 'Unclickable elements with click listener should have a role attribute.',
+    warningMessage: 'Unclickable elements with click listener should have a role attribute.'
   });
 }
-
-module.exports = unclickableWithoutRole;

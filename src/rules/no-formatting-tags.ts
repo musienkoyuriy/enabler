@@ -1,6 +1,6 @@
-const Validator = require('../validator');
+import Validator from '../validator';
 
-function noFormattingTags($, content) {
+export default function noFormattingTags($: any,content: string) {
   return new Validator({
     $template: $,
     content,
@@ -11,15 +11,13 @@ function noFormattingTags($, content) {
       'height', 'basefont',
       'blink', 'center', 'font',
       'marquee', 's', 'strike',
-      'tt', 'u',
+      'tt', 'u'
     ],
-    isInvalid: selector => selector,
-    warningMessage: (el) => {
-      const tagName = el[0].name;
+    isInvalid: (selector: string) => selector,
+    warningMessage: (el: any) => {
+      const tagName = el.name;
 
       return `HTML tags and attributes designed exclusively for formatting should not be used. Use CSS rules instead of <${tagName}> tag.`;
-    },
+    }
   });
 }
-
-module.exports = noFormattingTags;
