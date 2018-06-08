@@ -20,8 +20,8 @@ import tabElementsHasRightRoles from './tab-elements-has-right-roles';
 import textInputHasLabel from './text-input-has-label';
 
 export default {
-  // noJumpingHeaders,
-  // noFormattingTags,
+  noJumpingHeaders,
+  noFormattingTags,
   hasAlt,
   empty,
   placeholderHasLabel,

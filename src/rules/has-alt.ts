@@ -7,9 +7,11 @@ export default function hasAlt($: any, content: string) {
     content,
     selectors: ['img', 'area'],
     assocAttrs: ['alt'],
-    isInvalid: ($elem: any, attrs: string[]) => !hasAttribute($elem, attrs),
+    isInvalid: ($elem: any, attrs: string[]) => {
+      return !hasAttribute($elem, attrs);
+    },
     warningMessage: (el: any) => {
-      const tagName = el[0].name;
+      const tagName = el.name;
       const purpose = tagName === 'img' ? 'image map' : 'link';
       const message = `The alt attribute of the <${tagName} /> tag must state the purpose of the ${purpose}.`;
 

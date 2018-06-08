@@ -85,9 +85,7 @@ export default class Validator implements ValidatorOptions {
     let events: string[];
 
     if (elements.length) {
-      elements.each(() => {
-        element = that.$template(this);
-
+      elements.each((i: number, element: any) => {
         if (that.assocAttrs.length) {
           attrs = completeAttrsWithFrameworkSpecific(that.assocAttrs);
         }
@@ -96,7 +94,7 @@ export default class Validator implements ValidatorOptions {
           events = completeEventsWithFrameworkSpecific(that.assocEvents);
         }
 
-        if (that.isInvalid(element, attrs, events)) {
+        if (that.isInvalid(this.$template(element), attrs, events)) {
           that._addWarning(element);
         }
       });
@@ -105,7 +103,7 @@ export default class Validator implements ValidatorOptions {
 
   _normalizeSelectors(selectors: string | string[]): string {
     // @ts-ignore
-    return Array.isArray(this.selectors) ? selectors.join(',') : selectors;
+    return Array.isArray(this.selectors) ? selectors.join(', ') : selectors;
   }
 
   _addWarning(el: any): void {
