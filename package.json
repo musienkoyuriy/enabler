@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint **/*.js --fix",
-    "cleaninstall": "rimraf ./node_modules && npm i",
+    "cleaninstall": "rimraf ./node_modules && npm cache verify && npm i",
     "demo:html": "node index.js -p fixtures",
     "demo:ng": "node index.js -p fixtures --ng",
     "demo:vue": "node index.js -p fixtures --vue"
