@@ -1,6 +1,6 @@
 {
   "name": "enabler",
-  "version": "1.4.6",
+  "version": "2.0.0",
   "description": "Accessibility analyzer for your frontend",
   "main": "./dist/main.js",
   "scripts": {
