@@ -13,10 +13,10 @@
     "types": ["node"]
   },
   "files": [
-    "main.ts"
+    "cli.ts"
   ],
   "include": [
     "src/**/*",
-    "main.ts"
+    "cli.ts"
   ]
 }

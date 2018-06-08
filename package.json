@@ -2,7 +2,7 @@
   "name": "enabler",
   "version": "2.0.0",
   "description": "Accessibility analyzer for your frontend",
-  "main": "./dist/main.js",
+  "main": "./dist/cli.js",
   "scripts": {
     "start": "npm run-s build",
     "clean": "rimraf dist",
@@ -11,12 +11,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint **/*.js --fix",
     "cleaninstall": "rimraf ./node_modules && npm cache verify && npm i",
-    "demo:html": "node dist/main.js -p fixtures",
-    "demo:ng": "node dist/main.js -p fixtures --ng",
-    "demo:vue": "node dist/main.js -p fixtures --vue"
+    "demo:html": "node dist/cli.js -p fixtures",
+    "demo:ng": "node dist/cli.js -p fixtures --ng",
+    "demo:vue": "node dist/cli.js -p fixtures --vue"
   },
   "bin": {
-    "enabler": "./dist/main.js"
+    "enabler": "./dist/cli.js"
   },
   "repository": {
     "type": "git",
