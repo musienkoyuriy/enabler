@@ -53,6 +53,3 @@ export function printWarnings(templatesWithWarnings: any): void {
   warn(error(`✖ ${totalWarns} problems.`));
 }
 
-module.exports = {
-  printWarnings
-};
