@@ -1,11 +1,11 @@
 const cheerio = require('cheerio');
 import rules from './rules';
 
-function _flattenWarnings(warnings: Array<Array<{message: string}>>) {
+function _flattenWarnings(warnings: Array<Array<{message: string}>>): string[] {
   const messages: any = [];
 
-  warnings.forEach(ruleWarnings => {
-    ruleWarnings.forEach(warn => {
+  warnings.forEach((ruleWarnings: Array<{message: string}>) => {
+    ruleWarnings.forEach((warn: {message: string}) => {
       if (warn.message) {
         messages.push(warn);
       }
@@ -15,7 +15,7 @@ function _flattenWarnings(warnings: Array<Array<{message: string}>>) {
   return messages;
 }
 
-export function getContentFromVueFile(templateContent: string) {
+export function getContentFromVueFile(templateContent: string): string {
   const templateLines = templateContent.split('\n');
 
   const templateOpenTag = templateLines.indexOf('<template>');
@@ -27,7 +27,7 @@ export function getContentFromVueFile(templateContent: string) {
   return vueTemplate;
 }
 
-export function getTemplateFromComponentDecorator(fileContent: string) {
+export function getTemplateFromComponentDecorator(fileContent: string): string {
   const fileAsArray = fileContent.split('\n');
 
   const decoratorLine = fileAsArray.find((line: string) => line.includes('@Component'));
@@ -71,7 +71,7 @@ export function getTemplateFromComponentDecorator(fileContent: string) {
   return angularTemplate;
 }
 
-export function getA11yWarnings(template: string, options: any) {
+export function getA11yWarnings(template: string, options: any): string[] {
   const parsed = cheerio.load(template, {
     xmlMode: true,
     withStartIndices: true,

@@ -1,7 +1,7 @@
 import { IValidatorOptions, IWarning } from './models';
 import { getLineNumberByHTMLSegment, isAngular, isVue } from './utils';
 
-function completeAttrsWithFrameworkSpecific(attrs: string[]) {
+function completeAttrsWithFrameworkSpecific(attrs: string[]): string[] {
   if (isAngular()) {
     const additionalAttrs = attrs.map(attr => `[${attr}]`);
     const additionalAttrsFullSign = attrs.map(attr => `bind-${attr}`);
@@ -27,7 +27,7 @@ function completeAttrsWithFrameworkSpecific(attrs: string[]) {
   return attrs;
 }
 
-function completeEventsWithFrameworkSpecific(events: string[]) {
+function completeEventsWithFrameworkSpecific(events: string[]): string[] {
   const nativeEventBindings = events.map(event => `on${event}`);
 
   if (isAngular()) {

@@ -15,7 +15,7 @@ const error = chalk.bold.red;
 
 const templatesWithWarnings = Object.create(null);
 
-function linkWarningsWithTemplate(messages: any, templateUrl: string) {
+function linkWarningsWithTemplate(messages: any, templateUrl: string): void {
   if (templateUrl in templatesWithWarnings) {
     templatesWithWarnings[templateUrl] = templatesWithWarnings[
       templateUrl
@@ -25,7 +25,7 @@ function linkWarningsWithTemplate(messages: any, templateUrl: string) {
   }
 }
 
-function getTemplate({ fileContent, isTSFile }: {fileContent: string; isTSFile: boolean;}) {
+function getTemplate({ fileContent, isTSFile }: {fileContent: string; isTSFile: boolean;}): string {
   switch (getFrameworkName()) {
     case 'angular':
       return isTSFile
@@ -38,7 +38,7 @@ function getTemplate({ fileContent, isTSFile }: {fileContent: string; isTSFile: 
   }
 }
 
-function parseTemplate(templateUrl: string, options: any) {
+function parseTemplate(templateUrl: string, options: any): void {
   const isTSFile = templateUrl.endsWith('.ts');
 
   let fileContent;
@@ -59,7 +59,7 @@ function parseTemplate(templateUrl: string, options: any) {
   linkWarningsWithTemplate(warnings, templateUrl);
 }
 
-function handleTemplates(fileNames: string[], options: any) {
+function handleTemplates(fileNames: string[], options: any): void {
   fileNames.forEach(fileName => {
     parseTemplate(fileName, options);
   });
@@ -67,7 +67,7 @@ function handleTemplates(fileNames: string[], options: any) {
   printWarnings(templatesWithWarnings);
 }
 
-function getExtensionPattern() {
+function getExtensionPattern(): string {
   const framework = getFrameworkName();
 
   if (framework === 'vue') {
@@ -79,7 +79,7 @@ function getExtensionPattern() {
   return 'html';
 }
 
-export function run(program: any) {
+export function run(program: any): void {
   const { path, ng, vue } = program;
   const options = { ng, vue };
 
