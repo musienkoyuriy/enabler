@@ -1,6 +1,5 @@
 const cheerio = require('cheerio');
 import rules from './rules';
-import { isFunction } from 'util';
 
 function _flattenWarnings(warnings: {message: string}[][]) {
   const messages: any = [];
