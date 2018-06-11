@@ -1,5 +1,5 @@
-import { ValidatorOptions } from './../models';
 import Validator from '../validator';
+import { ValidatorOptions } from './../models';
 
 export default function clickWithKeyboardEvent($: any, content: string, options: any) {
   return new Validator({

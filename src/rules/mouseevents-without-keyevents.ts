@@ -9,10 +9,10 @@ export default function mouseEventsWithoutKeyEvents($: any, content: string) {
     isInvalid: ($elem: any, attrs: string[], events: string[]) => {
       const mouseEvents = events.filter((attr: string) => /mouse/gi.test(attr));
       const blurAndFocusEvents = events.filter((attr: string) => /blur|focus/gi.test(attr));
-      const eventPairs: {
+      const eventPairs: Array<{
         mouse?: string;
         keyboard?: string;
-      }[] = mouseEvents.map((mouseEvent: string) => {
+      }> = mouseEvents.map((mouseEvent: string) => {
         return {
           mouse: mouseEvent
         };

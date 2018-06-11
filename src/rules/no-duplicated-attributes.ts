@@ -1,5 +1,5 @@
-import Validator from '../validator';
 import { getDuplicateAttributes } from '../utils';
+import Validator from '../validator';
 
 export default function noDuplicatedAttributes($: any,content: string) {
   return new Validator({

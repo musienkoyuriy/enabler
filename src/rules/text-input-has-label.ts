@@ -1,5 +1,5 @@
-import Validator from '../validator';
 import { getAttrValue } from '../utils';
+import Validator from '../validator';
 
 export default function textInputHasLabel($: any,content: string) {
   return new Validator({

@@ -1,5 +1,5 @@
-import Validator from '../validator';
 import { hasAttribute } from '../utils';
+import Validator from '../validator';
 
 export default function labelHasFor($: any, content: string) {
   return new Validator({

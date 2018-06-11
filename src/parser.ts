@@ -1,7 +1,7 @@
 const cheerio = require('cheerio');
 import rules from './rules';
 
-function _flattenWarnings(warnings: {message: string}[][]) {
+function _flattenWarnings(warnings: Array<Array<{message: string}>>) {
   const messages: any = [];
 
   warnings.forEach(ruleWarnings => {

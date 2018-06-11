@@ -1,14 +1,14 @@
-export interface ValidatorOptions {
-  isInvalid: Function;
+export interface IValidatorOptions {
+  isInvalid: (elem: any, attrs: string[], events: string[]) => boolean;
   selectors: string[] | string;
   $template: any;
-  warningMessage: string | Function;
+  warningMessage: string | ((el: any) => string);
   content: string;
   assocAttrs?: string[];
   assocEvents?: string[];
 }
 
-export interface Warning {
+export interface IWarning {
   message: string;
   line: number;
 }

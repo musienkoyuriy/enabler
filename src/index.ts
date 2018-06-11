@@ -1,14 +1,14 @@
-import { readFileSync } from 'fs';
 import chalk from 'chalk';
+import { readFileSync } from 'fs';
 
 const glob = require('glob');
 
+import { printWarnings } from './logger';
 import {
   getA11yWarnings,
   getContentFromVueFile,
   getTemplateFromComponentDecorator
 } from './parser';
-import { printWarnings } from './logger';
 import { getFrameworkName } from './utils';
 
 const error = chalk.bold.red;

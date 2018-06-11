@@ -8,6 +8,8 @@
     "semicolon": [true, "always"],
     "space-before-function-paren": false,
     "any": false,
-    "no-var-requires": false
+    "no-var-requires": false,
+    "object-literal-sort-keys": false,
+    "no-console": false
   }
 }

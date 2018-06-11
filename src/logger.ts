@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { Warning } from './models';
+import { IWarning } from './models';
 
 const { log, warn } = console;
 const error = chalk.bold.red;
@@ -14,7 +14,7 @@ function isWarningsEmpty(templatesWithWarnings: any): boolean {
   );
 }
 
-function printForTemplate(templateName: string, warnings: Warning[]): void {
+function printForTemplate(templateName: string, warnings: IWarning[]): void {
   if (!warnings.length) {
     return;
   }
@@ -22,7 +22,7 @@ function printForTemplate(templateName: string, warnings: Warning[]): void {
   log(underline(templateName));
   log();
 
-  warnings.forEach((warnData: Warning) => {
+  warnings.forEach((warnData: IWarning) => {
     const templateWarnInfo = `${yellow('Line: %s')} ${warnData.message}`;
     warn(error(templateWarnInfo), warnData.line);
   });
