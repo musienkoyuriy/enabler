@@ -9,7 +9,7 @@
     "tsc": "tsc",
     "build": "npm run clean && npm run tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint **/*.js --fix",
+    "lint": "tslint \"src/**/*.ts\" --project tsconfig.json",
     "cleaninstall": "rimraf ./node_modules && npm cache verify && npm i",
     "demo:html": "node dist/cli.js -p fixtures",
     "demo:ng": "node dist/cli.js -p fixtures --ng",
@@ -47,10 +47,9 @@
   "devDependencies": {
     "@types/commander": "2.12.2",
     "prettier": "1.13.4",
-    "prettier-eslint-cli": "^4.7.1",
     "rimraf": "2.6.2",
     "tslint": "5.10.0",
-    "tslint-config-standard": "7.0.0",
+    "tslint-config-prettier": "1.13.0",
     "typescript": "2.9.1"
   },
   "eslintIgnore": [

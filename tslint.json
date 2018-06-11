@@ -1,5 +1,8 @@
 {
-  "extends": "tslint-config-standard",
+  "extends": [
+    "tslint:latest",
+    "tslint-config-prettier"
+  ],
   "rules": {
     "no-any": false,
     "semicolon": [true, "always"],
