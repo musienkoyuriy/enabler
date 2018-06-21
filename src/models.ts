@@ -12,3 +12,8 @@ export interface IWarning {
   message: string;
   line: number;
 }
+
+export interface ProgramOptions {
+  ng?: boolean;
+  vue?: boolean;
+}

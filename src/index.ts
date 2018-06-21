@@ -10,6 +10,7 @@ import {
   getTemplateFromComponentDecorator
 } from './parser';
 import { getFrameworkName } from './utils';
+import { ProgramOptions } from './models';
 
 const error = chalk.bold.red;
 
@@ -38,7 +39,7 @@ function getTemplate({ fileContent, isTSFile }: {fileContent: string; isTSFile: 
   }
 }
 
-function parseTemplate(templateUrl: string, options: any): void {
+function parseTemplate(templateUrl: string, options: ProgramOptions): void {
   const isTSFile = templateUrl.endsWith('.ts');
 
   let fileContent;
@@ -59,7 +60,7 @@ function parseTemplate(templateUrl: string, options: any): void {
   linkWarningsWithTemplate(warnings, templateUrl);
 }
 
-function handleTemplates(fileNames: string[], options: any): void {
+function handleTemplates(fileNames: string[], options: ProgramOptions): void {
   fileNames.forEach(fileName => {
     parseTemplate(fileName, options);
   });

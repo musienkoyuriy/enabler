@@ -1,5 +1,6 @@
 const cheerio = require('cheerio');
 import rules from './rules';
+import { ProgramOptions } from './models';
 
 function _flattenWarnings(warnings: Array<Array<{message: string}>>): string[] {
   const messages: any = [];
@@ -71,7 +72,7 @@ export function getTemplateFromComponentDecorator(fileContent: string): string {
   return angularTemplate;
 }
 
-export function getA11yWarnings(template: string, options: any): string[] {
+export function getA11yWarnings(template: string, options: ProgramOptions): string[] {
   const parsed = cheerio.load(template, {
     xmlMode: true,
     withStartIndices: true,
