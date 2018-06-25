@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@types/commander": "2.12.2",
-    "prettier": "1.13.5",
+    "prettier": "1.13.6",
     "rimraf": "2.6.2",
     "tslint": "5.10.0",
     "tslint-config-prettier": "1.13.0",
