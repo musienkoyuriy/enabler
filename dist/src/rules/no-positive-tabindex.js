@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var validator_1 = require("../validator");
 var utils_1 = require("../utils");
+var validator_1 = require("../validator");
 function noPositiveTabindex($, content) {
     return new validator_1.default({
         $template: $,
@@ -10,8 +10,7 @@ function noPositiveTabindex($, content) {
         assocAttrs: ['tabindex'],
         isInvalid: function ($elem, attrs) {
             var tabIndex = utils_1.getAttrValue($elem, attrs);
-            tabIndex = tabIndex ? Number(tabIndex) : 0;
-            return tabIndex > 0;
+            return Number(tabIndex) > 0;
         },
         warningMessage: 'Avoid positive tabindex.'
     });

@@ -1,17 +1,17 @@
-import { ValidatorOptions, Warning } from './models';
-export default class Validator implements ValidatorOptions {
+import { IValidatorOptions, IWarning } from './models';
+export default class Validator implements IValidatorOptions {
     isInvalid: Function;
     selectors: string[] | string;
     $template: any;
-    warnings: Warning[];
-    warningMessage: string | Function;
+    warnings: IWarning[];
+    warningMessage: string | ((el: any) => string);
     content: string;
     assocAttrs: string[];
     assocEvents: string[];
-    constructor(options: ValidatorOptions);
-    _normalizeSelectors(selectors: string | string[]): string;
-    _addWarning(el: any): void;
+    constructor(options: IValidatorOptions);
     getWarnings(): {
-        warnings: Warning[];
+        warnings: IWarning[];
     };
+    private _normalizeSelectors;
+    private _addWarning;
 }

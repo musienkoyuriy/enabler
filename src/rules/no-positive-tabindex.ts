@@ -8,10 +8,9 @@ export default function noPositiveTabindex($: any,content: string) {
     selectors: '*',
     assocAttrs: ['tabindex'],
     isInvalid: ($elem: any, attrs: string[]) => {
-      let tabIndex = getAttrValue($elem, attrs);
-      tabIndex = tabIndex ? Number(tabIndex) : 0;
+      const tabIndex = getAttrValue($elem, attrs);
 
-      return tabIndex > 0;
+      return Number(tabIndex) > 0;
     },
     warningMessage: 'Avoid positive tabindex.'
   });

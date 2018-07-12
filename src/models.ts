@@ -1,5 +1,5 @@
 export interface IValidatorOptions {
-  isInvalid: (elem: any, attrs: string[], events: string[]) => boolean;
+  isInvalid: Function;
   selectors: string[] | string;
   $template: any;
   warningMessage: string | ((el: any) => string);

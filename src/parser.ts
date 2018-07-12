@@ -1,4 +1,5 @@
-import * as cheerio from 'cheerio';
+const cheerio = require('cheerio');
+
 import rules from './rules';
 import { ProgramOptions } from './models';
 

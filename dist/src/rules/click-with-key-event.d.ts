@@ -1,2 +1,3 @@
 import Validator from '../validator';
-export default function clickWithKeyboardEvent($: any, content: string, options: any): Validator;
+import { ProgramOptions } from './../models';
+export default function clickWithKeyboardEvent($: any, content: string, options: ProgramOptions): Validator;

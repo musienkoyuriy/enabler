@@ -41,7 +41,4 @@ function printWarnings(templatesWithWarnings) {
     warn(error("\u2716 " + totalWarns + " problems."));
 }
 exports.printWarnings = printWarnings;
-module.exports = {
-    printWarnings: printWarnings
-};
 //# sourceMappingURL=logger.js.map

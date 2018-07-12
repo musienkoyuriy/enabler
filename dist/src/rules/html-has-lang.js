@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var validator_1 = require("../validator");
 var utils_1 = require("../utils");
+var validator_1 = require("../validator");
 function htmlHasLang($, content) {
     return new validator_1.default({
         $template: $,

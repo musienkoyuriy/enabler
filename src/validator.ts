@@ -56,7 +56,7 @@ function completeEventsWithFrameworkSpecific(events: string[]): string[] {
 }
 
 export default class Validator implements IValidatorOptions {
-  public isInvalid: (elem: any, attrs: string[], events: string[]) => boolean;
+  public isInvalid: Function;
   public selectors: string[] | string;
   public $template: any;
   public warnings: IWarning[];

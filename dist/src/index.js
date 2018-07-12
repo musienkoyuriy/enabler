@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var fs_1 = require("fs");
 var chalk_1 = require("chalk");
+var fs_1 = require("fs");
 var glob = require('glob');
-var parser_1 = require("./parser");
 var logger_1 = require("./logger");
+var parser_1 = require("./parser");
 var utils_1 = require("./utils");
 var error = chalk_1.default.bold.red;
 var templatesWithWarnings = Object.create(null);

@@ -41,24 +41,27 @@ var Validator = /** @class */ (function () {
         this.assocEvents = options.assocEvents || [];
         var selectors = this._normalizeSelectors(this.selectors);
         var elements = this.$template(selectors);
-        var that = this;
-        var element;
         var attrs;
         var events;
         if (elements.length) {
             elements.each(function (i, element) {
-                if (that.assocAttrs.length) {
-                    attrs = completeAttrsWithFrameworkSpecific(that.assocAttrs);
+                if (_this.assocAttrs.length) {
+                    attrs = completeAttrsWithFrameworkSpecific(_this.assocAttrs);
                 }
-                if (that.assocEvents.length) {
-                    events = completeEventsWithFrameworkSpecific(that.assocEvents);
+                if (_this.assocEvents.length) {
+                    events = completeEventsWithFrameworkSpecific(_this.assocEvents);
                 }
-                if (that.isInvalid(_this.$template(element), attrs, events)) {
-                    that._addWarning(element);
+                if (_this.isInvalid(_this.$template(element), attrs, events)) {
+                    _this._addWarning(element);
                 }
             });
         }
     }
+    Validator.prototype.getWarnings = function () {
+        return {
+            warnings: this.warnings
+        };
+    };
     Validator.prototype._normalizeSelectors = function (selectors) {
         // @ts-ignore
         return Array.isArray(this.selectors) ? selectors.join(', ') : selectors;
@@ -71,11 +74,6 @@ var Validator = /** @class */ (function () {
             message: message,
             line: utils_1.getLineNumberByHTMLSegment(el, this.content)
         });
-    };
-    Validator.prototype.getWarnings = function () {
-        return {
-            warnings: this.warnings
-        };
     };
     return Validator;
 }());
