@@ -39,5 +39,5 @@ export default {
   linksHasUrl,
   controlsFormWrapped,
   tabElementsHasRightRoles,
-  textInputHasLabel
+  textInputHasLabel,
 };
