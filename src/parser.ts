@@ -64,7 +64,7 @@ export function getTemplateFromComponentDecorator(fileContent: string): string {
     matchedString,
     ''
   );
-
+ 
   const angularTemplate = stringExceptTemplateLiteral.slice(
     0,
     stringExceptTemplateLiteral.indexOf('`')
