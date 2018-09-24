@@ -1,4 +1,5 @@
 import Validator from '../validator';
+import { EventPair } from '../models';
 
 export default function mouseEventsWithoutKeyEvents($: any, content: string) {
   return new Validator({
@@ -9,10 +10,7 @@ export default function mouseEventsWithoutKeyEvents($: any, content: string) {
     isInvalid: ($elem: any, attrs: string[], events: string[]) => {
       const mouseEvents = events.filter((attr: string) => /mouse/gi.test(attr));
       const blurAndFocusEvents = events.filter((attr: string) => /blur|focus/gi.test(attr));
-      const eventPairs: Array<{
-        mouse?: string;
-        keyboard?: string;
-      }> = mouseEvents.map((mouseEvent: string) => {
+      const eventPairs: EventPair[] = mouseEvents.map((mouseEvent: string) => {
         return {
           mouse: mouseEvent
         };
@@ -23,7 +21,7 @@ export default function mouseEventsWithoutKeyEvents($: any, content: string) {
       });
 
       return eventPairs
-        .filter((eventPair) => {
+        .filter((eventPair: EventPair) => {
           return $elem.attr(eventPair.mouse) && !$elem.attr(eventPair.keyboard);
         }).length;
     },
