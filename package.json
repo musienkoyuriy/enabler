@@ -42,6 +42,7 @@
   "dependencies": {
     "chalk": "2.4.1",
     "cheerio": "^1.0.0-rc.2",
+    "chokidar": "2.0.4",
     "commander": "2.18.0",
     "glob": "^7.1.3"
   },
