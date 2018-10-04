@@ -101,5 +101,9 @@ export function run(program: any): void {
     }
 
     handleTemplates(fileNames, options);
+
+    if (program.watch) {
+      process.stdin.resume();
+    }
   });
 }

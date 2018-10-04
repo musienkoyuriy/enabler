@@ -74,6 +74,9 @@ function run(program) {
             throw new Error("Files search error " + err);
         }
         handleTemplates(fileNames, options);
+        if (program.watch) {
+            process.stdin.resume();
+        }
     });
 }
 exports.run = run;

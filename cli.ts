@@ -8,6 +8,7 @@ program
   .option('-p, --path <s>', 'Path for your root components folder')
   .option('--ng', 'Detect angular abstractions')
   .option('--vue', 'Support .vue files')
+  .option('--watch', 'Whatch for templates')
   .parse(process.argv);
 
 if (program.ng) {
