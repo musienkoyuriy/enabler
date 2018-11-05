@@ -56,14 +56,14 @@ function completeEventsWithFrameworkSpecific(events: string[]): string[] {
 }
 
 export default class Validator implements IValidatorOptions {
-  public isInvalid: Function;
-  public selectors: string[] | string;
-  public $template: any;
-  public warnings: IWarning[];
-  public warningMessage: string | ((el: any) => string);
-  public content: string;
-  public assocAttrs: string[];
-  public assocEvents: string[];
+  isInvalid: Function;
+  selectors: string[] | string;
+  $template: any;
+  warnings: IWarning[];
+  warningMessage: string | ((el: any) => string);
+  content: string;
+  assocAttrs: string[];
+  assocEvents: string[];
 
   constructor(options: IValidatorOptions) {
     this.warnings = [];
@@ -99,7 +99,7 @@ export default class Validator implements IValidatorOptions {
     }
   }
 
-  public getWarnings(): {warnings: IWarning[]} {
+  getWarnings(): {warnings: IWarning[]} {
     return {
       warnings: this.warnings
     };
