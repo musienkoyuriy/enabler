@@ -7,8 +7,8 @@ export default function linksHasUrl($: any,content: string) {
     content,
     selectors: 'a',
     assocAttrs: ['href'],
-    isInvalid: ($elem: any, attrs: string[]) => {
-      const href = getAttrValue($elem, attrs);
+    isInvalid: ($elem: any, attrs?: string[], events?: string[]) => {
+      const href = attrs ? getAttrValue($elem, attrs) : '';
       const hasUrl = href !== '' && href !== '#';
 
       return !hasUrl;

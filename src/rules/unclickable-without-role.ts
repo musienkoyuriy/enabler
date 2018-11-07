@@ -7,7 +7,7 @@ export default function unclickableWithoutRole($: any,content: string) {
     content,
     selectors: '*',
     assocEvents: ['click'],
-    isInvalid: ($elem: any, attrs: string[], events: string[]) => {
+    isInvalid: ($elem: any, attrs?: string[], events?: string[]) => {
       const clickableElements = [
         'a[href]',
         'input[type="submit"]',
@@ -17,7 +17,7 @@ export default function unclickableWithoutRole($: any,content: string) {
         'button'
       ];
       const isClickable = clickableElements.some(sel => $elem.is(sel));
-      const hasClick = hasAttribute($elem, events);
+      const hasClick = events ? hasAttribute($elem, events) : false;
       const hasRoleButton = $elem.is('[role=button]');
 
       return !isClickable && hasClick && !hasRoleButton;

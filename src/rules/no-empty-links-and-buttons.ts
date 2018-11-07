@@ -7,13 +7,11 @@ export default function emptyLinksAndButtons($: any, content: string) {
     content,
     selectors: ['input[type="submit"]', 'button', 'a'],
     assocAttrs: ['value'],
-    isInvalid: ($elem: any, attrs: string[]) => {
+    isInvalid: ($elem: any, attrs?: string[], events?: string[]) => {
       const tagName = $elem[0].name;
 
-      console.log();
-
       return [
-        tagName === 'input' && !getAttrValue($elem, attrs),
+        tagName === 'input' && (attrs ? !getAttrValue($elem, attrs) : ''),
         tagName === 'button' && !$elem.text(),
         tagName === 'a' && !$elem.html()
       ].some(Boolean);

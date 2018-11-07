@@ -10,6 +10,7 @@
     "any": false,
     "no-var-requires": false,
     "object-literal-sort-keys": false,
-    "no-console": false
+    "no-console": false,
+    "interface-name" : [true, "never-prefix"]
   }
 }

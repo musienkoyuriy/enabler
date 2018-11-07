@@ -24,14 +24,16 @@ export default function clickWithKeyboardEvent($: any, content: string, options:
         ];
       }
 
-      return eventsPairs
+      return Boolean(
+        eventsPairs
         .filter((eventPair) => {
           const { targetEvent, assocEvents } = eventPair;
           const hasAssociatedListener = assocEvents.some(eventName => $elem.attr(eventName));
 
           return $elem.attr(targetEvent) && !hasAssociatedListener;
         })
-        .length;
+        .length
+      );
     },
     warningMessage: 'Visible, non-interactive elements with click handlers must have at least one keyboard listener.'
   });

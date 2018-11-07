@@ -1,7 +1,7 @@
 const cheerio = require('cheerio');
 
-import rules from './rules';
 import { ProgramOptions } from './models';
+import rules from './rules';
 
 function _flattenWarnings(warnings: Array<Array<{message: string}>>): string[] {
   const messages: any = [];

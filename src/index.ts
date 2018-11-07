@@ -4,13 +4,13 @@ import { readFileSync } from 'fs';
 const glob = require('glob');
 
 import { printWarnings } from './logger';
+import { ProgramOptions } from './models';
 import {
   getA11yWarnings,
   getContentFromVueFile,
   getTemplateFromComponentDecorator
 } from './parser';
 import { getFrameworkName } from './utils';
-import { ProgramOptions } from './models';
 
 const error = chalk.bold.red;
 

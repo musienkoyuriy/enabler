@@ -7,8 +7,8 @@ export default function hasAlt($: any, content: string) {
     content,
     selectors: ['img', 'area'],
     assocAttrs: ['alt'],
-    isInvalid: ($elem: any, attrs: string[]) => {
-      return !hasAttribute($elem, attrs);
+    isInvalid: ($elem: any, attrs?: string[], events?: string[]) => {
+      return attrs ? !hasAttribute($elem, attrs) : false;
     },
     warningMessage: (el: any) => {
       const tagName = el.name;

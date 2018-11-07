@@ -1,5 +1,5 @@
-export interface IValidatorOptions {
-  isInvalid: Function;
+export interface ValidatorOptions {
+  isInvalid: ($elem: any, attrs?: string[], events?: string[]) => boolean;
   selectors: string[] | string;
   $template: any;
   warningMessage: string | ((el: any) => string);
@@ -8,7 +8,7 @@ export interface IValidatorOptions {
   assocEvents?: string[];
 }
 
-export interface IWarning {
+export interface Warning {
   message: string;
   line: number;
 }

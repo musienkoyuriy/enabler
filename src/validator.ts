@@ -1,4 +1,4 @@
-import { IValidatorOptions, IWarning } from './models';
+import { ValidatorOptions, Warning } from './models';
 import { getLineNumberByHTMLSegment, isAngular, isVue } from './utils';
 
 function completeAttrsWithFrameworkSpecific(attrs: string[]): string[] {
@@ -55,17 +55,17 @@ function completeEventsWithFrameworkSpecific(events: string[]): string[] {
   return nativeEventBindings;
 }
 
-export default class Validator implements IValidatorOptions {
-  isInvalid: Function;
-  selectors: string[] | string;
-  $template: any;
-  warnings: IWarning[];
-  warningMessage: string | ((el: any) => string);
-  content: string;
-  assocAttrs: string[];
-  assocEvents: string[];
+export default class Validator implements ValidatorOptions {
+  public isInvalid: (template: any, attrs?: string[], events?: string[]) => boolean;
+  public selectors: string[] | string;
+  public $template: any;
+  public warnings: Warning[];
+  public warningMessage: string | ((el: any) => string);
+  public content: string;
+  public assocAttrs: string[];
+  public assocEvents: string[];
 
-  constructor(options: IValidatorOptions) {
+  constructor(options: ValidatorOptions) {
     this.warnings = [];
 
     this.$template = options.$template;
@@ -99,7 +99,7 @@ export default class Validator implements IValidatorOptions {
     }
   }
 
-  getWarnings(): {warnings: IWarning[]} {
+  public getWarnings(): {warnings: Warning[]} {
     return {
       warnings: this.warnings
     };

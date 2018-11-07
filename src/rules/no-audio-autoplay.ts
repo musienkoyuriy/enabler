@@ -7,7 +7,7 @@ export default function noAudioAutoplay($: any, content: string) {
     content,
     selectors: 'audio',
     assocAttrs: ['autoplay'],
-    isInvalid: ($elem: any, attrs: string[]) => hasAttribute($elem, attrs),
+    isInvalid: ($elem: any, attrs?: string[]) => attrs ? hasAttribute($elem, attrs) : false,
     warningMessage: 'Audio should not play automatically. Some of your users will have problems focusing and unexpected sounds can distract them further.'
   });
 }

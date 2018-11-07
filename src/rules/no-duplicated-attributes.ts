@@ -9,7 +9,7 @@ export default function noDuplicatedAttributes($: any,content: string) {
     isInvalid: ($elem: any) => {
       const duplicatedAttrs = getDuplicateAttributes($elem, content);
 
-      return duplicatedAttrs.length;
+      return Boolean(duplicatedAttrs.length);
     },
     warningMessage: 'Element should not have duplicated attributes.'
   });

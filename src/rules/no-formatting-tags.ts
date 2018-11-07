@@ -1,6 +1,6 @@
 import Validator from '../validator';
 
-export default function noFormattingTags($: any,content: string) {
+export default function noFormattingTags($: any, content: string) {
   return new Validator({
     $template: $,
     content,
@@ -13,7 +13,7 @@ export default function noFormattingTags($: any,content: string) {
       'marquee', 's', 'strike',
       'tt', 'u'
     ],
-    isInvalid: (selector: string) => selector,
+    isInvalid: ($elem: any) => $elem,
     warningMessage: (el: any) => {
       const tagName = el.name;
 

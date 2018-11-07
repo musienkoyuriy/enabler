@@ -46,10 +46,10 @@ export default function ariaUnsupportedElements($: any,content: string) {
       'style'
     ],
     assocAttrs: ariaAttributes,
-    isInvalid: ($elem: any, attrs: string[]) => {
+    isInvalid: ($elem: any, attrs?: string[]) => {
       const attributes = $elem.attr();
 
-      return attrs.some(attr => attr in attributes);
+      return attrs ? attrs.some(attr => attr in attributes) : false;
     },
     warningMessage: 'Hidden elements shouldn\'t contains aria- attributes.'
   });
