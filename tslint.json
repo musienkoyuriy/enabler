@@ -11,6 +11,7 @@
     "no-var-requires": false,
     "object-literal-sort-keys": false,
     "no-console": false,
-    "interface-name" : [true, "never-prefix"]
+    "interface-name" : [true, "never-prefix"],
+    "member-access": [true, "no-public"]
   }
 }
