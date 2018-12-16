@@ -45,8 +45,8 @@
     "chokidar": "2.0.4",
     "commander": "2.19.0",
     "glob": "^7.1.3",
-    "husky": "1.2.0",
-    "typescript": "3.2.1"
+    "husky": "1.2.1",
+    "typescript": "3.2.2"
   },
   "devDependencies": {
     "prettier": "1.15.3",
