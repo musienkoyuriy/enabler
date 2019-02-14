@@ -61,10 +61,7 @@ function parseTemplate(templateUrl: string, options: ProgramOptions): void {
 }
 
 function handleTemplates(fileNames: string[], options: ProgramOptions): void {
-  fileNames.forEach(fileName => {
-    parseTemplate(fileName, options);
-  });
-
+  fileNames.forEach(fileName => parseTemplate(fileName, options));
   printWarnings(templatesWithWarnings);
 }
 
