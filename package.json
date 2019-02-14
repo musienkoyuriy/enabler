@@ -31,7 +31,10 @@
     "enabler",
     "ngx-a11y",
     "vue-a11y",
-    "accessibility"
+    "accessibility",
+    "semantic",
+    "WCAG",
+    "WAI"
   ],
   "author": "Yuriy Musienko",
   "license": "MIT",
