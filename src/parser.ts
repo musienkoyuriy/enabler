@@ -3,10 +3,10 @@ const cheerio = require('cheerio');
 import { ProgramOptions } from './models';
 import rules from './rules';
 
-function _flattenWarnings(warnings: Array<Array<{message: string}>>): string[] {
+function _flattenWarnings(warnings: {message: string}[][]): string[] {
   const messages: any = [];
 
-  warnings.forEach((ruleWarnings: Array<{message: string}>) => {
+  warnings.forEach((ruleWarnings: {message: string}[]) => {
     ruleWarnings.forEach((warn: {message: string}) => {
       if (warn.message) {
         messages.push(warn);
@@ -64,7 +64,7 @@ export function getTemplateFromComponentDecorator(fileContent: string): string {
     matchedString,
     ''
   );
- 
+
   const angularTemplate = stringExceptTemplateLiteral.slice(
     0,
     stringExceptTemplateLiteral.indexOf('`')

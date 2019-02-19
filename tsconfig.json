@@ -10,7 +10,7 @@
     "declaration": true,
     "sourceMap": true,
     "inlineSources": true,
-    "types": ["node"]
+    "types": ["node"],
   },
   "files": [
     "cli.ts"
@@ -19,4 +19,4 @@
     "src/**/*",
     "cli.ts"
   ]
-} 
+}

@@ -12,6 +12,7 @@
     "object-literal-sort-keys": false,
     "no-console": false,
     "interface-name" : [true, "never-prefix"],
-    "member-access": [true, "no-public"]
+    "member-access": [true, "no-public"],
+    "array-type": [true, "array"]
   }
 }
