@@ -1,6 +1,6 @@
 import Validator from '../validator';
 
-export default function controlsFormWrapped($: any,content: string) {
+export default function controlsFormWrapped($: any, content: string): Validator {
   return new Validator({
     $template: $,
     content,

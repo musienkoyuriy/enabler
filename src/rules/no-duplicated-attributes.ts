@@ -1,7 +1,7 @@
 import { getDuplicateAttributes } from '../utils';
 import Validator from '../validator';
 
-export default function noDuplicatedAttributes($: any,content: string) {
+export default function noDuplicatedAttributes($: any,content: string): Validator {
   return new Validator({
     $template: $,
     content,

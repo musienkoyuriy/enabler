@@ -1,7 +1,7 @@
 import { getAttrValue } from '../utils';
 import Validator from '../validator';
 
-export default function noPositiveTabindex($: any,content: string) {
+export default function noPositiveTabindex($: any, content: string): Validator {
   return new Validator({
     $template: $,
     content,

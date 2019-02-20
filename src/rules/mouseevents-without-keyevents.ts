@@ -1,7 +1,7 @@
 import { EventPair } from '../models';
 import Validator from '../validator';
 
-export default function mouseEventsWithoutKeyEvents($: any, content: string) {
+export default function mouseEventsWithoutKeyEvents($: any, content: string): Validator {
   return new Validator({
     $template: $,
     content,

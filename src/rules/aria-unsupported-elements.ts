@@ -35,7 +35,7 @@ const ariaAttributes = [
   'aria-setsize'
 ];
 
-export default function ariaUnsupportedElements($: any,content: string) {
+export default function ariaUnsupportedElements($: any, content: string): Validator {
   return new Validator({
     $template: $,
     content,

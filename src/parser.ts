@@ -1,18 +1,19 @@
 const cheerio = require('cheerio');
 
-import { ProgramOptions } from './models';
-import rules from './rules';
+import { ProgramOptions, Warning, ValidatorFactory } from './models';
+import * as rules from './rules';
 
-function _flattenWarnings(warnings: {message: string}[][]): string[] {
-  const messages: any = [];
+function _flattenWarnings(warnings: Warning[][]): Warning[] {
+  const messages: Warning[] = [];
 
-  warnings.forEach((ruleWarnings: {message: string}[]) => {
-    ruleWarnings.forEach((warn: {message: string}) => {
+  warnings.forEach((ruleWarnings: Warning[]) => {
+    ruleWarnings.forEach((warn: Warning) => {
       if (warn.message) {
         messages.push(warn);
       }
     });
   });
+
 
   return messages;
 }
@@ -73,18 +74,18 @@ export function getTemplateFromComponentDecorator(fileContent: string): string {
   return angularTemplate;
 }
 
-export function getA11yWarnings(template: string, options: ProgramOptions): string[] {
+export function getA11yWarnings(template: string, options: ProgramOptions): Warning[] {
   const parsed = cheerio.load(template, {
     xmlMode: true,
     withStartIndices: true,
     withEndIndices: true
   });
 
-  const warnings: any = [];
+  const warnings: Warning[][] = [];
+  const rulesFunctions: ValidatorFactory[] = Object.values(rules);
 
-  Object.values(rules).forEach((r: any) => {
+  rulesFunctions.forEach((r: ValidatorFactory) => {
     const rule = r(parsed, template, options);
-    const warns = rule.getWarnings();
 
     if (rule.warnings.length) {
       warnings.push(rule.warnings);

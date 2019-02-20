@@ -1,7 +1,7 @@
 import { hasAttribute } from '../utils';
 import Validator from '../validator';
 
-export default function noAudioAutoplay($: any, content: string) {
+export default function noAudioAutoplay($: any, content: string): Validator {
   return new Validator({
     $template: $,
     content,

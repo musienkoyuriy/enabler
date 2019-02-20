@@ -1,12 +1,12 @@
 import Validator from '../validator';
 
-function isDiffersByMoreThanLevel(headingLevel: number, nextHeader: any) {
+function isDiffersByMoreThanLevel(headingLevel: number, nextHeader: any): boolean {
   const nextHeadingLevel = Number(nextHeader[0].name[1]);
 
   return Math.abs(headingLevel - nextHeadingLevel) > 1;
 }
 
-export default function noJumpingHeaders($: any,content: string) {
+export default function noJumpingHeaders($: any, content: string): Validator {
   return new Validator({
     $template: $,
     content,

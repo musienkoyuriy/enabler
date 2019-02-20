@@ -19,7 +19,7 @@ import tabElementsHasRightRoles from './tab-elements-has-right-roles';
 import textInputHasLabel from './text-input-has-label';
 import unclickableWithoutRole from './unclickable-without-role';
 
-export default {
+export {
   noJumpingHeaders,
   noFormattingTags,
   hasAlt,

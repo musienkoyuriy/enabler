@@ -1,13 +1,13 @@
 import { getAttrValue } from '../utils';
 import Validator from '../validator';
 
-export default function placeholderHasLabel($: any,content: string) {
+export default function placeholderHasLabel($: any, content: string): Validator {
   return new Validator({
     $template: $,
     content,
     selectors: ['input[type=text]', 'textarea'],
     assocAttrs: ['id', 'placeholder'],
-    isInvalid: ($elem: any, attrs?: string[], events?: string[]) => {
+    isInvalid: ($elem: any, attrs?: string[]) => {
       const placeholderAttrs = attrs ? attrs.filter(attr => /placeholder/gi.test(attr)) : [];
       const idAttrs = attrs ? attrs.filter(attr => /id/gi.test(attr)) : [];
 

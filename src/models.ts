@@ -1,3 +1,5 @@
+import Validator from './validator';
+
 export interface ValidatorOptions {
   isInvalid: ($elem: any, attrs?: string[], events?: string[]) => boolean;
   selectors: string[] | string;
@@ -7,6 +9,8 @@ export interface ValidatorOptions {
   assocAttrs?: string[];
   assocEvents?: string[];
 }
+
+export type ValidatorFactory = ($: any, content: string, options: ProgramOptions) => Validator;
 
 export interface Warning {
   message: string;
