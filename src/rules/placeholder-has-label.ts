@@ -7,7 +7,7 @@ export default function placeholderHasLabel($: any, content: string): Validator 
     content,
     selectors: ['input[type=text]', 'textarea'],
     assocAttrs: ['id', 'placeholder'],
-    isInvalid: ($elem: any, attrs?: string[]) => {
+    isInvalid: ($elem: Cheerio, attrs?: string[]) => {
       const placeholderAttrs = attrs ? attrs.filter(attr => /placeholder/gi.test(attr)) : [];
       const idAttrs = attrs ? attrs.filter(attr => /id/gi.test(attr)) : [];
 

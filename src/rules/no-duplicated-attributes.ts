@@ -6,7 +6,7 @@ export default function noDuplicatedAttributes($: any,content: string): Validato
     $template: $,
     content,
     selectors: '*',
-    isInvalid: ($elem: any) => {
+    isInvalid: ($elem: Cheerio) => {
       const duplicatedAttrs = getDuplicateAttributes($elem, content);
 
       return Boolean(duplicatedAttrs.length);

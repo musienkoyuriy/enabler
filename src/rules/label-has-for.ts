@@ -7,7 +7,7 @@ export default function labelHasFor($: any, content: string): Validator {
     content,
     selectors: 'label',
     assocAttrs: ['for'],
-    isInvalid: ($elem: any, attrs?: string[], events?: string[]) =>
+    isInvalid: ($elem: Cheerio, attrs?: string[], events?: string[]) =>
       attrs ? !hasAttribute($elem, attrs) : false,
     warningMessage: '"for" attribute is missing in "label".'
   });

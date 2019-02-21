@@ -1,6 +1,6 @@
 const cheerio = require('cheerio');
 
-import { ProgramOptions, Warning, ValidatorFactory } from './models';
+import { ProgramOptions, ValidatorFactory, Warning } from './models';
 import * as rules from './rules';
 
 function _flattenWarnings(warnings: Warning[][]): Warning[] {
@@ -75,7 +75,7 @@ export function getTemplateFromComponentDecorator(fileContent: string): string {
 }
 
 export function getA11yWarnings(template: string, options: ProgramOptions): Warning[] {
-  const parsed = cheerio.load(template, {
+  const parsed: CheerioOptionsInterface = cheerio.load(template, {
     xmlMode: true,
     withStartIndices: true,
     withEndIndices: true

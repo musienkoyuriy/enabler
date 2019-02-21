@@ -7,7 +7,7 @@ export default function emptyLinksAndButtons($: any, content: string): Validator
     content,
     selectors: ['input[type="submit"]', 'button', 'a'],
     assocAttrs: ['value'],
-    isInvalid: ($elem: any, attrs?: string[], events?: string[]) => {
+    isInvalid: ($elem: Cheerio, attrs?: string[], events?: string[]) => {
       const tagName = $elem[0].name;
 
       return [

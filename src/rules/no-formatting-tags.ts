@@ -13,7 +13,7 @@ export default function noFormattingTags($: any, content: string): Validator {
       'marquee', 's', 'strike',
       'tt', 'u'
     ],
-    isInvalid: ($elem: any) => $elem,
+    isInvalid: ($elem: Cheerio) => $elem.length > 0,
     warningMessage: (el: any) => {
       const tagName = el.name;
 

@@ -6,7 +6,7 @@ export default function clickWithKeyboardEvent($: any, content: string, options:
     $template: $,
     content,
     selectors: '*',
-    isInvalid: ($elem: any) => {
+    isInvalid: ($elem: Cheerio) => {
       let eventsPairs = [
         {
           targetEvent: 'onclick',
@@ -28,7 +28,7 @@ export default function clickWithKeyboardEvent($: any, content: string, options:
         eventsPairs
         .filter((eventPair) => {
           const { targetEvent, assocEvents } = eventPair;
-          const hasAssociatedListener = assocEvents.some(eventName => $elem.attr(eventName));
+          const hasAssociatedListener = assocEvents.some(eventName => Boolean($elem.attr(eventName)));
 
           return $elem.attr(targetEvent) && !hasAssociatedListener;
         })

@@ -9,7 +9,7 @@ export default function tabElementsHasRightRoles($: any, content: string): Valid
       '[role="tablist"]',
       '[role="tab"]'
     ],
-    isInvalid: ($elem: any) => {
+    isInvalid: ($elem: Cheerio) => {
       const role = $elem.attr('role');
       const isChildrenTabElement = role === 'tab' || role === 'tabpanel';
       const hasParentTablist = $elem.closest('[role=tablist]').length;

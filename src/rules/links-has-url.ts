@@ -7,7 +7,7 @@ export default function linksHasUrl($: any,content: string): Validator {
     content,
     selectors: 'a',
     assocAttrs: ['href'],
-    isInvalid: ($elem: any, attrs?: string[], events?: string[]) => {
+    isInvalid: ($elem: Cheerio, attrs?: string[], events?: string[]) => {
       const href = attrs ? getAttrValue($elem, attrs) : '';
       const hasUrl = href !== '' && href !== '#';
 

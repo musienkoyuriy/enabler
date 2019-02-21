@@ -9,7 +9,7 @@ export function _ecranizeForRegexp(strToEcranize: string): string {
   return strToEcranize.replace(/-/g, '\\-');
 }
 
-export function getDuplicateAttributes($elem: any, content: string) {
+export function getDuplicateAttributes($elem: Cheerio, content: string) {
   const dom = $elem.get(0);
   const start = dom.startIndex;
   const end = dom.children.length
@@ -35,13 +35,13 @@ export function getDuplicateAttributes($elem: any, content: string) {
     .filter(Boolean);
 }
 
-export function hasAttribute($elem: any, attrs: string[]): boolean {
+export function hasAttribute($elem: Cheerio, attrs: string[]): boolean {
   const attributes = $elem.attr();
 
   return attrs.some((attr: string) => attr in attributes);
 }
 
-export function getAttrValue($elem: any, attrs: string[]): string {
+export function getAttrValue($elem: Cheerio, attrs: string[]): string {
   const filledAttrs = attrs.filter(attr => $elem.attr(attr));
 
   return filledAttrs.length ? $elem.attr(filledAttrs[0]) : '';

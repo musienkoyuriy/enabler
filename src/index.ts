@@ -4,7 +4,7 @@ import { readFileSync } from 'fs';
 const glob = require('glob');
 
 import { printWarnings } from './logger';
-import { ProgramOptions } from './models';
+import { ProgramOptions, Warning } from './models';
 import {
   getA11yWarnings,
   getContentFromVueFile,
@@ -16,13 +16,13 @@ const error = chalk.bold.red;
 
 const templatesWithWarnings = Object.create(null);
 
-function linkWarningsWithTemplate(messages: any, templateUrl: string): void {
+function linkWarningsWithTemplate(warnings: Warning[], templateUrl: string): void {
   if (templateUrl in templatesWithWarnings) {
     templatesWithWarnings[templateUrl] = templatesWithWarnings[
       templateUrl
-    ].concat(messages);
+    ].concat(warnings);
   } else {
-    templatesWithWarnings[templateUrl] = messages;
+    templatesWithWarnings[templateUrl] = warnings;
   }
 }
 

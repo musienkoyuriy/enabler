@@ -7,7 +7,7 @@ export default function mouseEventsWithoutKeyEvents($: any, content: string): Va
     content,
     selectors: '*',
     assocEvents: ['mouseover', 'mouseout', 'focus', 'blur'],
-    isInvalid: ($elem: any, attrs?: string[], events?: string[]) => {
+    isInvalid: ($elem: Cheerio, attrs?: string[], events?: string[]) => {
       const mouseEvents = events ? events.filter((attr: string) => /mouse/gi.test(attr)) : [];
       const blurAndFocusEvents = events ? events.filter((attr: string) => /blur|focus/gi.test(attr)) : [];
       const eventPairs: EventPair[] = mouseEvents.map((mouseEvent: string) => {
@@ -23,7 +23,7 @@ export default function mouseEventsWithoutKeyEvents($: any, content: string): Va
       return Boolean(
         eventPairs
         .filter((eventPair: EventPair) => {
-          return $elem.attr(eventPair.mouse) && !$elem.attr(eventPair.keyboard);
+          return $elem.attr(eventPair.mouse as string) && !$elem.attr(eventPair.keyboard as string);
         }).length
       );
     },

@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { Warning } from './models';
+import { TemplatesWithWarnings, Warning } from './models';
 
 const { log, warn } = console;
 const error = chalk.bold.red;
@@ -8,9 +8,9 @@ const success = chalk.keyword('green');
 const yellow = chalk.keyword('yellow');
 const { underline } = chalk;
 
-function isWarningsEmpty(templatesWithWarnings: any): boolean {
+function isWarningsEmpty(templatesWithWarnings: TemplatesWithWarnings): boolean {
   return Object.values(templatesWithWarnings).every(
-    (warnings: any) => warnings.length === 0
+    (warnings: Warning[]) => warnings.length === 0
   );
 }
 
@@ -28,7 +28,7 @@ function printForTemplate(templateName: string, warnings: Warning[]): void {
   });
 }
 
-export function printWarnings(templatesWithWarnings: any): void {
+export function printWarnings(templatesWithWarnings: TemplatesWithWarnings): void {
   let totalWarns = 0;
 
   if (isWarningsEmpty(templatesWithWarnings)) {
@@ -41,15 +41,15 @@ export function printWarnings(templatesWithWarnings: any): void {
   warn(warning('Potential accessibility issues: '));
   log();
 
-  Object.entries(templatesWithWarnings).forEach((template: any) => {
-    const templateUrl = template[0];
-    const warns = template[1];
-    totalWarns += warns.length;
+  Object.entries(templatesWithWarnings)
+    .forEach((template: [string, Warning[]]) => {
+      const templateUrl = template[0];
+      const warns = template[1];
+      totalWarns += warns.length;
 
-    printForTemplate(templateUrl, warns);
-  });
+      printForTemplate(templateUrl, warns);
+    });
 
   log();
   warn(error(`✖ ${totalWarns} problems.`));
 }
-
