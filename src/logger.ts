@@ -33,7 +33,8 @@ export function printWarnings(templatesWithWarnings: TemplatesWithWarnings): voi
 
   if (isWarningsEmpty(templatesWithWarnings)) {
     log();
-    log(success('A11Y issues not found.'));
+    log(success('\tAccesibility issues not found.'));
+    log();
     return;
   }
 
@@ -51,5 +52,5 @@ export function printWarnings(templatesWithWarnings: TemplatesWithWarnings): voi
     });
 
   log();
-  warn(error(`✖ ${totalWarns} problems.`));
+  warn(error(`   ✖ ${totalWarns} problems.`));
 }
