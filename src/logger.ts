@@ -8,6 +8,12 @@ const success = chalk.keyword('green');
 const yellow = chalk.keyword('yellow');
 const { underline } = chalk;
 
+const spacedLog = (text: string) => {
+  log();
+  log(text);
+  log()
+}
+
 function isWarningsEmpty(templatesWithWarnings: TemplatesWithWarnings): boolean {
   return Object.values(templatesWithWarnings).every(
     (warnings: Warning[]) => warnings.length === 0
@@ -32,15 +38,11 @@ export function printWarnings(templatesWithWarnings: TemplatesWithWarnings): voi
   let totalWarns = 0;
 
   if (isWarningsEmpty(templatesWithWarnings)) {
-    log();
-    log(success('\tAccesibility issues not found.'));
-    log();
+    spacedLog(success('\tAccesibility issues not found.'));
     return;
   }
 
-  log();
-  warn(warning('Potential accessibility issues: '));
-  log();
+  spacedLog(warning('Potential accessibility issues: '));
 
   Object.entries(templatesWithWarnings)
     .forEach((template: [string, Warning[]]) => {
