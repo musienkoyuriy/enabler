@@ -8,6 +8,7 @@ export interface ValidatorOptions {
   content: string;
   assocAttrs?: string[];
   assocEvents?: string[];
+  solve?: (el: Cheerio) => void;
 }
 
 export type ValidatorFactory = ($: any, content: string, options: ProgramOptions) => Validator;

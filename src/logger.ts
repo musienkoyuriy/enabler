@@ -11,8 +11,8 @@ const { underline } = chalk;
 const spacedLog = (text: string) => {
   log();
   log(text);
-  log()
-}
+  log();
+};
 
 function isWarningsEmpty(templatesWithWarnings: TemplatesWithWarnings): boolean {
   return Object.values(templatesWithWarnings).every(
