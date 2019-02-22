@@ -8,7 +8,7 @@ const success = chalk.keyword('green');
 const yellow = chalk.keyword('yellow');
 const { underline } = chalk;
 
-const spacedLog = (text: string): void=> {
+const spacedLog = (text: string): void => {
   log();
   log(text);
   log();
