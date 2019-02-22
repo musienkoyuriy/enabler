@@ -1,4 +1,5 @@
-import { ValidatorOptions, Warning } from './models';
+import { ValidatorOptions } from './models/validator';
+import { Warning } from './models/warnings';
 import { getLineNumberByHTMLSegment, isAngular, isVue } from './utils';
 
 function completeAttrsWithFrameworkSpecific(attrs: string[]): string[] {

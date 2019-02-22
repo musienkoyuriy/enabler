@@ -1,4 +1,5 @@
-import Validator from './validator';
+import Validator from '../validator';
+import { ProgramOptions } from './common';
 
 export interface ValidatorOptions {
   isInvalid: ($elem: Cheerio, attrs?: string[], events?: string[]) => boolean;
@@ -12,19 +13,3 @@ export interface ValidatorOptions {
 }
 
 export type ValidatorFactory = ($: any, content: string, options: ProgramOptions) => Validator;
-export interface TemplatesWithWarnings {[key: string]: Warning[];}
-
-export interface Warning {
-  message: string;
-  line: number;
-}
-
-export interface ProgramOptions {
-  ng?: boolean;
-  vue?: boolean;
-}
-
-export interface EventPair {
-  mouse?: string;
-  keyboard?: string;
-}

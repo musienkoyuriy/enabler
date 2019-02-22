@@ -4,7 +4,8 @@ import { readFileSync } from 'fs';
 const glob = require('glob');
 
 import { printWarnings } from './logger';
-import { ProgramOptions, Warning } from './models';
+import { ProgramOptions } from './models/common';
+import { Warning } from './models/warnings';
 import {
   getA11yWarnings,
   getContentFromVueFile,

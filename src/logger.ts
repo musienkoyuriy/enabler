@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { TemplatesWithWarnings, Warning } from './models';
+import { TemplatesWithWarnings, Warning } from './models/warnings';
 
 const { log, warn } = console;
 const error = chalk.bold.red;

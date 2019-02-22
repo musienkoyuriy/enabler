@@ -1,6 +1,8 @@
 const cheerio = require('cheerio');
 
-import { ProgramOptions, ValidatorFactory, Warning } from './models';
+import { ProgramOptions } from './models/common';
+import { ValidatorFactory } from './models/validator';
+import { Warning } from './models/warnings';
 import * as rules from './rules';
 
 function _flattenWarnings(warnings: Warning[][]): Warning[] {
