@@ -21,7 +21,7 @@ function linkWarningsWithTemplate(warnings: Warning[], templateUrl: string): voi
     templatesWithWarnings[templateUrl] = [
       ...templatesWithWarnings[templateUrl],
       ...warnings
-    ]
+    ];
   } else {
     templatesWithWarnings[templateUrl] = warnings;
   }
