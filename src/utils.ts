@@ -1,12 +1,10 @@
+const ecranizeForRegexp = (strToEcranize: string): string => strToEcranize.replace(/-/g, '\\-');
+
 export function getLineNumberByHTMLSegment($elem: any, template: string): number {
   const start = $elem.startIndex;
   const lineNumber = template.substr(0, start).split('\n').length;
 
   return lineNumber;
-}
-
-export function _ecranizeForRegexp(strToEcranize: string): string {
-  return strToEcranize.replace(/-/g, '\\-');
 }
 
 export function getDuplicateAttributes($elem: Cheerio, content: string) {
@@ -20,7 +18,7 @@ export function getDuplicateAttributes($elem: Cheerio, content: string) {
   return Object.keys(dom.attribs)
     .map(attr => {
       let regexp;
-      const attrForRegexp = _ecranizeForRegexp(attr);
+      const attrForRegexp = ecranizeForRegexp(attr);
 
       try {
         regexp = new RegExp(`\\s${attrForRegexp}="(.*?)"`, 'gi');

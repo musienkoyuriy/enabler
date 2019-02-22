@@ -16,7 +16,6 @@ function _flattenWarnings(warnings: Warning[][]): Warning[] {
     });
   });
 
-
   return messages;
 }
 
