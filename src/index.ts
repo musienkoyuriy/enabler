@@ -18,9 +18,10 @@ const templatesWithWarnings = Object.create(null);
 
 function linkWarningsWithTemplate(warnings: Warning[], templateUrl: string): void {
   if (templateUrl in templatesWithWarnings) {
-    templatesWithWarnings[templateUrl] = templatesWithWarnings[
-      templateUrl
-    ].concat(warnings);
+    templatesWithWarnings[templateUrl] = [
+      ...templatesWithWarnings[templateUrl],
+      ...warnings
+    ]
   } else {
     templatesWithWarnings[templateUrl] = warnings;
   }
