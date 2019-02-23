@@ -4,7 +4,7 @@ import program = require('commander');
 import { run } from '.';
 
 program
-  .version('2.3.0', '-v, --version')
+  .version('2.4.1', '-v, --version')
   .option('-p, --path <s>', 'Path for your root components folder')
   .option('--ng', 'Detect angular abstractions')
   .option('--vue', 'Support .vue files')
