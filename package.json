@@ -2,23 +2,23 @@
   "name": "enabler",
   "version": "2.2.0",
   "description": "Accessibility analyzer for your frontend",
-  "main": "./dist/cli.js",
+  "main": "./lib/cli.js",
   "scripts": {
     "start": "npm run-s build",
-    "clean": "rimraf dist",
-    "tsc": "tsc",
+    "clean": "rimraf lib",
+    "tsc": "tsc -p src",
     "build": "npm run clean && npm run tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "tslint \"src/**/*.ts\" --project tsconfig.json --fix",
-    "lint:nofix": "tslint \"src/**/*.ts\" --project tsconfig.json",
+    "lint": "tslint \"src/**/*.ts\" --project src/tsconfig.json --fix",
+    "lint:nofix": "tslint \"src/**/*.ts\" --project src/tsconfig.json",
     "cleaninstall": "rimraf ./node_modules && npm cache verify && npm i",
-    "demo:html": "node dist/cli.js -p fixtures",
-    "demo:ng": "node dist/cli.js -p fixtures --ng",
-    "demo:vue": "node dist/cli.js -p fixtures --vue",
+    "demo:html": "node lib/cli.js -p fixtures",
+    "demo:ng": "node lib/cli.js -p fixtures --ng",
+    "demo:vue": "node lib/cli.js -p fixtures --vue",
     "prepublish": "npm run build"
   },
   "bin": {
-    "enabler": "./dist/cli.js"
+    "enabler": "./lib/enabler"
   },
   "repository": {
     "type": "git",

@@ -7,7 +7,7 @@ export default function hasAlt($: any, content: string): Validator {
     content,
     selectors: ['img', 'area'],
     assocAttrs: ['alt'],
-    isInvalid: ($elem: Cheerio, attrs?: string[], events?: string[]) => {
+    isInvalid: ($elem: Cheerio, attrs?: string[]) => {
       return attrs ? !hasAttribute($elem, attrs) : false;
     },
     warningMessage: (el: any) => {

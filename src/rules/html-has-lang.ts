@@ -7,9 +7,7 @@ export default function htmlHasLang($: any, content: string): Validator {
     content,
     selectors: 'html',
     assocAttrs: ['lang'],
-    isInvalid: ($elem: Cheerio, attrs?: string[], events?: string[]) => {
-      return attrs ? !hasAttribute($elem, attrs) : false;
-    },
+    isInvalid: ($elem: Cheerio, attrs?: string[]) => attrs ? !hasAttribute($elem, attrs) : false,
     warningMessage: '<html> tag should have "lang" attribute.'
   });
 }

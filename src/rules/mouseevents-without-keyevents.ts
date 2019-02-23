@@ -1,4 +1,4 @@
-import { EventPair } from '../../models/common';
+import { EventPair } from '../models/common';
 import Validator from '../validator';
 
 export default function mouseEventsWithoutKeyEvents($: any, content: string): Validator {
@@ -7,6 +7,7 @@ export default function mouseEventsWithoutKeyEvents($: any, content: string): Va
     content,
     selectors: '*',
     assocEvents: ['mouseover', 'mouseout', 'focus', 'blur'],
+    // @ts-ignore
     isInvalid: ($elem: Cheerio, attrs?: string[], events?: string[]) => {
       const mouseEvents = events ? events.filter((attr: string) => /mouse/gi.test(attr)) : [];
       const blurAndFocusEvents = events ? events.filter((attr: string) => /blur|focus/gi.test(attr)) : [];

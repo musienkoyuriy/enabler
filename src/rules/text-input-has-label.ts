@@ -7,7 +7,7 @@ export default function textInputHasLabel($: any, content: string): Validator {
     content,
     selectors: 'input[type="text"]',
     assocAttrs: ['id'],
-    isInvalid: ($elem: Cheerio, attrs?: string[], events?: string[]) => {
+    isInvalid: ($elem: Cheerio, attrs?: string[]) => {
       const inputId = attrs ? getAttrValue($elem, attrs) : '';
 
       if (!inputId) {

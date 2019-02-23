@@ -7,6 +7,7 @@ export default function unclickableWithoutRole($: any, content: string): Validat
     content,
     selectors: '*',
     assocEvents: ['click'],
+    // @ts-ignore
     isInvalid: ($elem: Cheerio, attrs?: string[], events?: string[]) => {
       const clickableElements = [
         'a[href]',

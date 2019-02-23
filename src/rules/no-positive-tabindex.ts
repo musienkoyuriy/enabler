@@ -7,7 +7,7 @@ export default function noPositiveTabindex($: any, content: string): Validator {
     content,
     selectors: '*',
     assocAttrs: ['tabindex'],
-    isInvalid: ($elem: Cheerio, attrs?: string[], events?: string[]) => {
+    isInvalid: ($elem: Cheerio, attrs?: string[]) => {
       const tabIndex = attrs ? getAttrValue($elem, attrs) : '';
 
       return Number(tabIndex) > 0;

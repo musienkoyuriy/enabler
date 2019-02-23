@@ -84,6 +84,7 @@ export default class Validator implements ValidatorOptions {
     let events: string[];
 
     if (elements.length) {
+      // @ts-ignore
       elements.each((i: number, element: any) => {
         if (this.assocAttrs.length) {
           attrs = completeAttrsWithFrameworkSpecific(this.assocAttrs);

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "importHelpers": true,
+    "declaration": true,
+    "sourceMap": true,
+    "target": "es5",
+    "lib": ["es2017", "dom"],
+    "outDir": "../lib"
+  }
+}

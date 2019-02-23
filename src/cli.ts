@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import program = require('commander');
-import { run } from './src';
+import { run } from '.';
 
 program
   .version('2.0.4', '-v, --version')
