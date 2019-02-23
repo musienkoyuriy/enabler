@@ -18,7 +18,7 @@
     "prepublish": "npm run build"
   },
   "bin": {
-    "enabler": "./lib/enabler"
+    "enabler": "./bin/enabler"
   },
   "repository": {
     "type": "git",
