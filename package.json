@@ -61,6 +61,7 @@
   "eslintIgnore": [
     "fixtures/**"
   ],
+  "files": ["lib/**/*"],
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint",
