@@ -1,6 +1,6 @@
 {
   "name": "enabler",
-  "version": "2.4.3",
+  "version": "2.4.4",
   "description": "Accessibility analyzer for your frontend",
   "main": "./lib/cli.js",
   "scripts": {
