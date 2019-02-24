@@ -15,7 +15,11 @@
     "demo:html": "node lib/cli.js -p fixtures",
     "demo:ng": "node lib/cli.js -p fixtures --ng",
     "demo:vue": "node lib/cli.js -p fixtures --vue",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "prepare" : "npm run build",
+    "preversion" : "npm run lint",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "bin": {
     "enabler": "./bin/enabler"
