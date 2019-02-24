@@ -9,3 +9,4 @@
 .editorconfig
 tslint.json
 /src/
+.prettierrc
