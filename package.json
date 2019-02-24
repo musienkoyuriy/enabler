@@ -1,6 +1,6 @@
 {
   "name": "enabler",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "Accessibility analyzer for your frontend",
   "main": "./lib/cli.js",
   "scripts": {
@@ -16,8 +16,8 @@
     "demo:ng": "node lib/cli.js -p fixtures --ng",
     "demo:vue": "node lib/cli.js -p fixtures --vue",
     "prepublish": "npm run build",
-    "prepare" : "npm run build",
-    "preversion" : "npm run lint",
+    "prepare": "npm run build",
+    "preversion": "npm run lint",
     "version": "git add -A src",
     "postversion": "git push && git push --tags"
   },
@@ -65,7 +65,9 @@
   "eslintIgnore": [
     "fixtures/**"
   ],
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint",
