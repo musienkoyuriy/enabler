@@ -21,6 +21,7 @@
     "version": "git add -A src",
     "postversion": "git push && git push --tags"
   },
+  "files": ["lib/**/*.js"],
   "bin": {
     "enabler": "./bin/enabler"
   },
