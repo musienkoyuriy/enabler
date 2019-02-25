@@ -22,7 +22,8 @@
     "postversion": "git push && git push --tags"
   },
   "files": [
-    "lib/**/*.js"
+    "lib/**/*.js",
+    "bin/enabler"
   ],
   "bin": {
     "enabler": "./bin/enabler"
