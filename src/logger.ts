@@ -1,6 +1,6 @@
 import chalk from 'chalk';
-import { maybePluralize } from './utils';
 import { TemplatesWithWarnings, Warning } from './models/warnings';
+import { maybePluralize } from './utils';
 
 const { log, warn } = console;
 const error = chalk.bold.red;
