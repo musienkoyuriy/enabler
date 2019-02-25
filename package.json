@@ -1,6 +1,6 @@
 {
   "name": "enabler",
-  "version": "2.4.5",
+  "version": "2.4.6",
   "description": "Accessibility analyzer for your frontend",
   "main": "./lib/cli.js",
   "scripts": {
@@ -21,7 +21,9 @@
     "version": "git add -A src",
     "postversion": "git push && git push --tags"
   },
-  "files": ["lib/**/*.js"],
+  "files": [
+    "lib/**/*.js"
+  ],
   "bin": {
     "enabler": "./bin/enabler"
   },
