@@ -101,12 +101,6 @@ export default class Validator implements ValidatorOptions {
     }
   }
 
-  getWarnings(): {warnings: Warning[]} {
-    return {
-      warnings: this.warnings
-    };
-  }
-
   private _normalizeSelectors(selectors: string | string[]): string {
     // @ts-ignore
     return Array.isArray(this.selectors) ? selectors.join(', ') : selectors;
