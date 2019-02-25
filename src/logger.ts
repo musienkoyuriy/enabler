@@ -1,4 +1,5 @@
 import chalk from 'chalk';
+import { maybePluralize } from './utils';
 import { TemplatesWithWarnings, Warning } from './models/warnings';
 
 const { log, warn } = console;
@@ -6,6 +7,7 @@ const error = chalk.bold.red;
 const warning = chalk.keyword('orange');
 const success = chalk.keyword('green');
 const yellow = chalk.keyword('yellow');
+
 const { underline } = chalk;
 
 const spacedLog = (text: string): void => {
@@ -54,5 +56,5 @@ export function printWarnings(templatesWithWarnings: TemplatesWithWarnings): voi
     });
 
   log();
-  warn(error(`   ✖ ${totalWarns} problems.`));
+  warn(error(`   ✖ ${maybePluralize(totalWarns, 'problem')}.`));
 }

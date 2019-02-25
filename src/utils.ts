@@ -1,5 +1,8 @@
 const ecranizeForRegexp = (strToEcranize: string): string => strToEcranize.replace(/-/g, '\\-');
 
+export const maybePluralize = (count: number, noun: string): string =>
+  `${count} ${noun}${count !== 1 ? 's' : ''}`;
+
 export function getLineNumberByHTMLSegment($elem: any, template: string): number {
   const start = $elem.startIndex;
   const lineNumber = template.substr(0, start).split('\n').length;
