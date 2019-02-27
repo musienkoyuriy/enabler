@@ -1,4 +1,5 @@
 import ariaUnsupportedElements from './aria-unsupported-elements';
+import buttonHasType from './button-has-type';
 import clickWithKeyboardEvent from './click-with-key-event';
 import controlsFormWrapped from './controls-form-wrapped';
 import hasAlt from './has-alt';
@@ -18,7 +19,6 @@ import placeholderHasLabel from './placeholder-has-label';
 import tabElementsHasRightRoles from './tab-elements-has-right-roles';
 import textInputHasLabel from './text-input-has-label';
 import unclickableWithoutRole from './unclickable-without-role';
-import buttonHasType from './button-has-type';
 
 export {
   noJumpingHeaders,

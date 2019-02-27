@@ -13,7 +13,7 @@ export default function hasAlt($: any, content: string): Validator {
     warningMessage: (el: any) => {
       const tagName = el.name;
       const purpose = tagName === 'img' ? 'image map' : 'link';
-      const message = `The alt attribute of the <${tagName} /> tag must state the purpose of the ${purpose}.`;
+      const message = `The alt attribute of the <${tagName} /> element must state the purpose of the ${purpose}.`;
 
       return message;
     }
