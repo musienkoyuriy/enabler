@@ -39,7 +39,7 @@ export function getDuplicateAttributes($elem: Cheerio, content: string) {
 export function hasAttribute($elem: Cheerio, attrs: string[]): boolean {
   const attributes = $elem.attr();
 
-  return attrs.some((attr: string) => attr in attributes);
+  return attrs.some((attr: string) => (attr in attributes && $elem.attr(attr).trim() !== ""));
 }
 
 export function getAttrValue($elem: Cheerio, attrs: string[]): string {
