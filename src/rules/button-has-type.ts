@@ -14,6 +14,6 @@ export default function buttonHasType($: any, content: string): Validator {
       }
       return false;
     },
-    warningMessage: '<button> element should have "type" to prevent unexpected behavior. If you need button just as an interface element use <button type="button"> instead'
+    warningMessage: '<button> element should have "type" to prevent unexpected behavior. For example if you need button just as an interface element use <button type="button"> instead'
   });
 }
