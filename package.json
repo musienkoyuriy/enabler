@@ -42,7 +42,8 @@
     "accessibility",
     "semantic",
     "WCAG",
-    "WAI"
+    "WAI",
+    "ADA Compliance"
   ],
   "author": "Yuriy Musienko",
   "license": "MIT",
