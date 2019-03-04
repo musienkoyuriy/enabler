@@ -45,7 +45,11 @@
     "WAI",
     "ADA Compliance"
   ],
-  "author": "Yuriy Musienko <musienkoyuriy@gmail.com>",
+  "author": {
+    "name": "Yuriy Musienko",
+    "email": "musienkoyuriy@gmail.com",
+    "url":  "https://twitter.com/musienko_yuriy"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/musienkoyuriy/enabler/issues"
