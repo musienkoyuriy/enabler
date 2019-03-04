@@ -17,18 +17,32 @@ Frameworks support: Angular, Vue.
 
 ```
 > npm i --save-dev enabler
+```
 
+*or*
+
+```
+> yarn add enabler --dev
+```
 
 package.json
 
+```
 ...
 scripts: {
   "a11y": 'enabler --path ./templates-root-folder'
 }
 ...
+```
 
-
+```
 > npx a11y
+```
+
+*or*
+
+```
+> yarn run a11y
 
 ```
 
