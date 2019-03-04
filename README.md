@@ -36,7 +36,7 @@ scripts: {
 ```
 
 ```
-> npx a11y
+> npm run a11y
 ```
 
 *or*
