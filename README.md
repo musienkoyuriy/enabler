@@ -43,7 +43,6 @@ scripts: {
 
 ```
 > yarn run a11y
-
 ```
 
 ## Options:
