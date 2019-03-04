@@ -11,6 +11,8 @@ import {
   getContentFromVueXTemplate,
   getTemplateFromAngularDecorator,
   getTemplateFromVueObject
+  getTemplateFromComponentDecorator,
+  getTemplateFromReactComponents
 } from './parser';
 import { getExtension, getFrameworkName } from './utils';
 
@@ -35,6 +37,8 @@ function getTemplate({ fileContent, fileExtension }: {fileContent: string; fileE
       return fileExtension === 'ts'
         ? getTemplateFromAngularDecorator(fileContent)
         : fileContent;
+    case 'react':
+      return getTemplateFromReactComponents(fileContent);
     case 'vue':
       if (fileExtension === 'vue') {
         return getContentFromVueFile(fileContent);
@@ -81,6 +85,8 @@ function getExtensionPattern(): string {
     return '+(vue|ts|js|html)';
   } else if (framework === 'angular') {
     return '+(html|ts)';
+  } else if (framework === 'react') {
+    return '+(js|jsx)';
   }
 
   return '+(html|htm)';

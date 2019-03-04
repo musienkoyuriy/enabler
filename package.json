@@ -15,6 +15,7 @@
     "demo:html": "node lib/cli.js -p fixtures",
     "demo:ng": "node lib/cli.js -p fixtures --ng",
     "demo:vue": "node lib/cli.js -p fixtures --vue",
+    "demo:react": "node lib/cli.js -p fixtures --react",
     "prepublish": "npm run build",
     "prepare": "npm run build",
     "preversion": "npm run lint",
@@ -58,13 +59,18 @@
   "dependencies": {
     "@types/cheerio": "0.22.11",
     "aria-query": "3.0.0",
-    "chalk": "2.4.2",
     "cheerio": "^1.0.0-rc.2",
     "commander": "2.20.0",
-    "esprima": "4.0.1",
     "glob": "^7.1.4",
     "husky": "2.4.1",
-    "typescript": "3.5.2"
+    "typescript": "3.5.2",
+    "chalk": "2.4.2",
+    "chokidar": "2.1.2",
+    "escodegen": "1.11.1",
+    "escodegen-jsx": "0.1.0-1.4.2dev",
+    "esprima": "4.0.1",
+    "is-react": "1.3.3",
+    "tslib": "1.9.3"
   },
   "devDependencies": {
     "prettier": "1.18.2",
