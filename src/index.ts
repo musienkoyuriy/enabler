@@ -76,7 +76,7 @@ function getExtensionPattern(): string {
     return '+(html|ts)';
   }
 
-  return 'html';
+  return '+(html|htm)';
 }
 
 export function run(program: any): void {
