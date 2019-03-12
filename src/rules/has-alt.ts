@@ -1,4 +1,4 @@
-import { hasAttribute } from '../utils';
+import { hasNonEmptyAttribute } from '../utils';
 import Validator from '../validator';
 
 export default function hasAlt($: any, content: string): Validator {
@@ -8,7 +8,7 @@ export default function hasAlt($: any, content: string): Validator {
     selectors: ['img', 'area'],
     assocAttrs: ['alt'],
     isInvalid: ($elem: Cheerio, attrs?: string[]) => {
-      return attrs ? !hasAttribute($elem, attrs) : false;
+      return attrs ? !hasNonEmptyAttribute($elem, attrs) : false;
     },
     warningMessage: (el: any) => {
       const tagName = el.name;

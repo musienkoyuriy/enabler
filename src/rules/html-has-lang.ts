@@ -1,4 +1,4 @@
-import { hasAttribute } from '../utils';
+import { hasNonEmptyAttribute } from '../utils';
 import Validator from '../validator';
 
 export default function htmlHasLang($: any, content: string): Validator {
@@ -7,7 +7,7 @@ export default function htmlHasLang($: any, content: string): Validator {
     content,
     selectors: 'html',
     assocAttrs: ['lang'],
-    isInvalid: ($elem: Cheerio, attrs?: string[]) => attrs ? !hasAttribute($elem, attrs) : false,
+    isInvalid: ($elem: Cheerio, attrs?: string[]) => attrs ? !hasNonEmptyAttribute($elem, attrs) : false,
     warningMessage: '<html> element should have "lang" attribute.'
   });
 }

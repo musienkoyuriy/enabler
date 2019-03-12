@@ -1,4 +1,4 @@
-import { hasAttribute } from '../utils';
+import { hasNonEmptyAttribute } from '../utils';
 import Validator from '../validator';
 
 export default function noAudioAutoplay($: any, content: string): Validator {
@@ -7,7 +7,7 @@ export default function noAudioAutoplay($: any, content: string): Validator {
     content,
     selectors: 'audio',
     assocAttrs: ['autoplay'],
-    isInvalid: ($elem: Cheerio, attrs?: string[]) => attrs ? hasAttribute($elem, attrs) : false,
+    isInvalid: ($elem: Cheerio, attrs?: string[]) => attrs ? hasNonEmptyAttribute($elem, attrs) : false,
     warningMessage: 'Audio should not play automatically. Some of your users will have problems focusing and unexpected sounds can distract them further.'
   });
 }

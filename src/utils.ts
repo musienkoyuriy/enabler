@@ -37,9 +37,11 @@ export function getDuplicateAttributes($elem: Cheerio, content: string) {
 }
 
 export function hasAttribute($elem: Cheerio, attrs: string[]): boolean {
-  const attributes = $elem.attr();
+  return attrs.some((attr: string) => attr in $elem.attr());
+}
 
-  return attrs.some((attr: string) => (attr in attributes && $elem.attr(attr).trim() !== ""));
+export function hasNonEmptyAttribute($elem: Cheerio, attrs: string[]): boolean {
+  return attrs.some((attr: string) => (attr in $elem.attr() && $elem.attr(attr).trim() !== ""));
 }
 
 export function getAttrValue($elem: Cheerio, attrs: string[]): string {

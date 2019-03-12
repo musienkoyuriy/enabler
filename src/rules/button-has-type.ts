@@ -1,4 +1,4 @@
-import { hasAttribute } from '../utils';
+import { hasNonEmptyAttribute } from '../utils';
 import Validator from '../validator';
 
 export default function buttonHasType($: any, content: string): Validator {
@@ -10,7 +10,7 @@ export default function buttonHasType($: any, content: string): Validator {
     isInvalid: ($elem: Cheerio, attrs?: string[]) => {
       const buttonTypes = ['button', 'reset', 'submit'];
       if (attrs) {
-        return !hasAttribute($elem, attrs) || !buttonTypes.includes($elem.attr('type'));
+        return !hasNonEmptyAttribute($elem, attrs) || !buttonTypes.includes($elem.attr('type'));
       }
       return false;
     },

@@ -17,10 +17,11 @@ import noJumpingHeaders from './no-jumping-headers';
 import noPositiveTabindex from './no-positive-tabindex';
 import pageHasTitle from './page-has-title';
 import placeholderHasLabel from './placeholder-has-label';
+import scopeOnlyInCell from './scope-only-in-cell';
 import tabElementsHasRightRoles from './tab-elements-has-right-roles';
 import textInputHasLabel from './text-input-has-label';
 import unclickableWithoutRole from './unclickable-without-role';
-import scopeOnlyInCell from './scope-only-in-cell';
+import rolesAreValid from './roles-are-valid';
 
 export {
   noJumpingHeaders,
@@ -45,5 +46,6 @@ export {
   textInputHasLabel,
   buttonHasType,
   iFrameHasTitle,
-  scopeOnlyInCell
+  scopeOnlyInCell,
+  rolesAreValid
 };

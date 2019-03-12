@@ -1,4 +1,4 @@
-import { hasAttribute } from '../utils';
+import { hasNonEmptyAttribute } from '../utils';
 import Validator from '../validator';
 
 export default function unclickableWithoutRole($: any, content: string): Validator {
@@ -18,7 +18,7 @@ export default function unclickableWithoutRole($: any, content: string): Validat
         'button'
       ];
       const isClickable = clickableElements.some(sel => $elem.is(sel));
-      const hasClick = events ? hasAttribute($elem, events) : false;
+      const hasClick = events ? hasNonEmptyAttribute($elem, events) : false;
       const hasRoleButton = $elem.is('[role=button]');
 
       return !isClickable && hasClick && !hasRoleButton;

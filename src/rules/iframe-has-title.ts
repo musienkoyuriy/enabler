@@ -1,4 +1,4 @@
-import { hasAttribute } from '../utils';
+import { hasNonEmptyAttribute } from '../utils';
 import Validator from '../validator';
 
 export default function iFrameHasTitle($: any, content: string): Validator {
@@ -7,7 +7,7 @@ export default function iFrameHasTitle($: any, content: string): Validator {
     content,
     selectors: 'iframe',
     assocAttrs: ['title'],
-    isInvalid: ($elem: Cheerio, attrs?: string[]) => attrs ? !hasAttribute($elem, attrs) : false,
+    isInvalid: ($elem: Cheerio, attrs?: string[]) => attrs ? !hasNonEmptyAttribute($elem, attrs) : false,
     warningMessage: '<iframe> element should have a unique non-empty title attribute'
   });
 }
