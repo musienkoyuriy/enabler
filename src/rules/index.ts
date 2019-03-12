@@ -5,6 +5,7 @@ import controlsFormWrapped from './controls-form-wrapped';
 import hasAlt from './has-alt';
 import headingHasContent from './heading-has-content';
 import htmlHasLang from './html-has-lang';
+import iFrameHasTitle from './iframe-has-title';
 import labelHasFor from './label-has-for';
 import linksHasUrl from './links-has-url';
 import mouseEventsWithoutKeyEvents from './mouseevents-without-keyevents';
@@ -41,5 +42,6 @@ export {
   controlsFormWrapped,
   tabElementsHasRightRoles,
   textInputHasLabel,
-  buttonHasType
+  buttonHasType,
+  iFrameHasTitle
 };
