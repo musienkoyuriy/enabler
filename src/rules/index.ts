@@ -20,6 +20,7 @@ import placeholderHasLabel from './placeholder-has-label';
 import tabElementsHasRightRoles from './tab-elements-has-right-roles';
 import textInputHasLabel from './text-input-has-label';
 import unclickableWithoutRole from './unclickable-without-role';
+import scopeOnlyInCell from './scope-only-in-cell';
 
 export {
   noJumpingHeaders,
@@ -43,5 +44,6 @@ export {
   tabElementsHasRightRoles,
   textInputHasLabel,
   buttonHasType,
-  iFrameHasTitle
+  iFrameHasTitle,
+  scopeOnlyInCell
 };
