@@ -1,7 +1,7 @@
-import { ProgramOptions } from '../models/common';
 import Validator from '../validator';
+import { isAngular } from '../utils';
 
-export default function clickWithKeyboardEvent($: any, content: string, options: ProgramOptions): Validator {
+export default function clickWithKeyboardEvent($: any, content: string): Validator {
   return new Validator({
     $template: $,
     content,
@@ -14,7 +14,7 @@ export default function clickWithKeyboardEvent($: any, content: string, options:
         }
       ];
 
-      if (options.ng) {
+      if (isAngular()) {
         eventsPairs = [
           ...eventsPairs,
           {

@@ -4,7 +4,6 @@ import { readFileSync } from 'fs';
 const glob = require('glob');
 
 import { printWarnings } from './logger';
-import { ProgramOptions } from './models/common';
 import { Warning } from './models/warnings';
 import {
   getA11yWarnings,
@@ -41,7 +40,7 @@ function getTemplate({ fileContent, isTSFile }: {fileContent: string; isTSFile: 
   }
 }
 
-function parseTemplate(templateUrl: string, options: ProgramOptions): void {
+function parseTemplate(templateUrl: string): void {
   const isTSFile = templateUrl.endsWith('.ts');
 
   let fileContent;
@@ -57,13 +56,13 @@ function parseTemplate(templateUrl: string, options: ProgramOptions): void {
     fileContent
   });
 
-  const warnings = getA11yWarnings(template, options);
+  const warnings = getA11yWarnings(template);
 
   linkWarningsWithTemplate(warnings, templateUrl);
 }
 
-function handleTemplates(fileNames: string[], options: ProgramOptions): void {
-  fileNames.forEach(fileName => parseTemplate(fileName, options));
+function handleTemplates(fileNames: string[]): void {
+  fileNames.forEach(fileName => parseTemplate(fileName));
   printWarnings(templatesWithWarnings);
 }
 
@@ -80,8 +79,7 @@ function getExtensionPattern(): string {
 }
 
 export function run(program: any): void {
-  const { path, ng, vue } = program;
-  const options = { ng, vue };
+  const { path } = program;
 
   if (!path) {
     console.error(
@@ -99,7 +97,7 @@ export function run(program: any): void {
       throw new Error(`Files search error ${err}`);
     }
 
-    handleTemplates(fileNames, options);
+    handleTemplates(fileNames);
 
     if (program.watch) {
       process.stdin.resume();

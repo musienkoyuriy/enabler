@@ -1,6 +1,5 @@
 const cheerio = require('cheerio');
 
-import { ProgramOptions } from './models/common';
 import { ValidatorFactory } from './models/validator';
 import { Warning } from './models/warnings';
 import * as rules from './rules';
@@ -75,7 +74,7 @@ export function getTemplateFromComponentDecorator(fileContent: string): string {
   return angularTemplate;
 }
 
-export function getA11yWarnings(template: string, options: ProgramOptions): Warning[] {
+export function getA11yWarnings(template: string): Warning[] {
   const parsed: CheerioOptionsInterface = cheerio.load(template, {
     xmlMode: true,
     withStartIndices: true,
@@ -86,7 +85,7 @@ export function getA11yWarnings(template: string, options: ProgramOptions): Warn
   const rulesFunctions: ValidatorFactory[] = Object.values(rules);
 
   rulesFunctions.forEach((r: ValidatorFactory) => {
-    const rule = r(parsed, template, options);
+    const rule = r(parsed, template);
 
     if (rule.warnings.length) {
       warnings.push(rule.warnings);

@@ -1,5 +1,4 @@
 import Validator from '../validator';
-import { ProgramOptions } from './common';
 
 export interface ValidatorOptions {
   isInvalid: ($elem: Cheerio, attrs?: string[], events?: string[]) => boolean;
@@ -12,4 +11,4 @@ export interface ValidatorOptions {
   solve?: (el: Cheerio) => void;
 }
 
-export type ValidatorFactory = ($: any, content: string, options: ProgramOptions) => Validator;
+export type ValidatorFactory = ($: any, content: string) => Validator;
