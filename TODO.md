@@ -9,3 +9,4 @@
 - [ ] JSX Support
 - [ ] Automatic Fixing errors
 - [ ] Unit tests for each rule
+- [ ] CSS accessibility linting
