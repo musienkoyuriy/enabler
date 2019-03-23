@@ -1,8 +1,8 @@
-import { getAttrValue } from '../utils';
-import Validator from '../validator';
+import { getAttrValue } from '../../utils';
+import DOMNodesValidator from '../../validator';
 
-export default function linksHasUrl($: any,content: string): Validator {
-  return new Validator({
+export default function linksHasUrl($: any,content: string): DOMNodesValidator {
+  return new DOMNodesValidator({
     $template: $,
     content,
     selectors: 'a',

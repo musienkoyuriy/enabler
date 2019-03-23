@@ -1,7 +1,7 @@
-import Validator from '../validator';
+import DOMNodesValidator from '../../validator';
 
-export default function pageHasTitle($: any, content: string): Validator {
-  return new Validator({
+export default function pageHasTitle($: any, content: string): DOMNodesValidator {
+  return new DOMNodesValidator({
     $template: $,
     content,
     selectors: 'html head',

@@ -1,8 +1,8 @@
-import { getDuplicateAttributes } from '../utils';
-import Validator from '../validator';
+import { getDuplicateAttributes } from '../../utils';
+import DOMNodesValidator from '../../validator';
 
-export default function noDuplicatedAttributes($: any,content: string): Validator {
-  return new Validator({
+export default function noDuplicatedAttributes($: any,content: string): DOMNodesValidator {
+  return new DOMNodesValidator({
     $template: $,
     content,
     selectors: '*',

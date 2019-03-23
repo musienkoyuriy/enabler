@@ -1,4 +1,4 @@
-import Validator from '../validator';
+import DOMNodesValidator from '../../validator';
 
 function isDiffersByMoreThanLevel(headingLevel: number, nextHeader: any): boolean {
   const nextHeadingLevel = Number(nextHeader[0].name[1]);
@@ -6,8 +6,8 @@ function isDiffersByMoreThanLevel(headingLevel: number, nextHeader: any): boolea
   return Math.abs(headingLevel - nextHeadingLevel) > 1;
 }
 
-export default function noJumpingHeaders($: any, content: string): Validator {
-  return new Validator({
+export default function noJumpingHeaders($: any, content: string): DOMNodesValidator {
+  return new DOMNodesValidator({
     $template: $,
     content,
     selectors: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],

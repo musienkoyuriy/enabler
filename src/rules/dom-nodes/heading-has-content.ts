@@ -1,7 +1,7 @@
-import Validator from '../validator';
+import DOMNodesValidator from '../../validator';
 
-export default function headingHasContent($: any, content: string): Validator {
-  return new Validator({
+export default function headingHasContent($: any, content: string): DOMNodesValidator {
+  return new DOMNodesValidator({
     $template: $,
     content,
     selectors: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],

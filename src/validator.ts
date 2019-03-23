@@ -1,4 +1,4 @@
-import { ValidatorOptions } from './models/validator';
+import { DOMNodesValidatorOptions } from './models/validator';
 import { Warning } from './models/warnings';
 import { getLineNumberByHTMLSegment, isAngular, isVue } from './utils';
 
@@ -56,7 +56,7 @@ function completeEventsWithFrameworkSpecific(events: string[]): string[] {
   return nativeEventBindings;
 }
 
-export default class Validator implements ValidatorOptions {
+export default class DOMNodesValidator implements DOMNodesValidatorOptions {
   isInvalid: (template: any, attrs?: string[], events?: string[]) => boolean;
   selectors: string[] | string;
   $template: any;
@@ -66,7 +66,7 @@ export default class Validator implements ValidatorOptions {
   assocAttrs: string[];
   assocEvents: string[];
 
-  constructor(options: ValidatorOptions) {
+  constructor(options: DOMNodesValidatorOptions) {
     this.warnings = [];
 
     this.$template = options.$template;
@@ -84,8 +84,7 @@ export default class Validator implements ValidatorOptions {
     let events: string[];
 
     if (elements.length) {
-      // @ts-ignore
-      elements.each((i: number, element: any) => {
+      elements.each((_: number, element: any) => {
         if (this.assocAttrs.length) {
           attrs = completeAttrsWithFrameworkSpecific(this.assocAttrs);
         }

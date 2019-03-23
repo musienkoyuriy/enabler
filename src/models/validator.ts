@@ -1,6 +1,7 @@
-import Validator from '../validator';
+import DOMNodesValidator from '../validator';
+import WholeTemplateValidator from '../whole-template-validator';
 
-export interface ValidatorOptions {
+export interface DOMNodesValidatorOptions {
   isInvalid: ($elem: Cheerio, attrs?: string[], events?: string[]) => boolean;
   selectors: string[] | string;
   $template: any;
@@ -11,4 +12,5 @@ export interface ValidatorOptions {
   solve?: (el: Cheerio) => void;
 }
 
-export type ValidatorFactory = ($: any, content: string) => Validator;
+export type DOMNodesValidatorFactory = ($: CheerioOptionsInterface, content: string) => DOMNodesValidator;
+export type WholeValidatorFactory = ($: CheerioOptionsInterface) => WholeTemplateValidator;

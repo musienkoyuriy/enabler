@@ -1,10 +1,11 @@
 const cheerio = require('cheerio');
 
-import { ValidatorFactory } from './models/validator';
+import { DOMNodesValidatorFactory, WholeValidatorFactory } from './models/validator';
 import { Warning } from './models/warnings';
-import * as rules from './rules';
+import * as domNodeRules from './rules/dom-nodes';
+import * as wholeTemplateRules from './rules/whole-template';
 
-function _flattenWarnings(warnings: Warning[][]): Warning[] {
+function flatWarnings(warnings: Warning[][]): Warning[] {
   const messages: Warning[] = [];
 
   warnings.forEach((ruleWarnings: Warning[]) => {
@@ -81,16 +82,42 @@ export function getA11yWarnings(template: string): Warning[] {
     withEndIndices: true
   });
 
-  const warnings: Warning[][] = [];
-  const rulesFunctions: ValidatorFactory[] = Object.values(rules);
+  const domNodeRulesFunctions: DOMNodesValidatorFactory[] = Object.values(domNodeRules);
+  const wholeTemplateRulesFunctions: any[] = Object.values(wholeTemplateRules);
 
-  rulesFunctions.forEach((r: ValidatorFactory) => {
-    const rule = r(parsed, template);
+  return [
+    ...getWarnsFromTemplatesByNodeRules(domNodeRulesFunctions, template, parsed),
+    ...getWarnsFromWholeTemplates(wholeTemplateRulesFunctions, parsed)
+  ];
+}
+
+function getWarnsFromTemplatesByNodeRules(
+  rules: DOMNodesValidatorFactory[],
+  templateString: string,
+  loadedTemplate: CheerioOptionsInterface
+): Warning[] {
+  const warnings: Warning[][] = [];
+  rules.forEach((r: DOMNodesValidatorFactory) => {
+    const rule = r(loadedTemplate, templateString);
 
     if (rule.warnings.length) {
       warnings.push(rule.warnings);
     }
   });
 
-  return _flattenWarnings(warnings);
+  return flatWarnings(warnings);
+}
+
+function getWarnsFromWholeTemplates(rules: any, $: any): any[] {
+  const warnings: Warning[][] = [];
+
+  rules.forEach((r: WholeValidatorFactory) => {
+    const rule = r($);
+
+    if (rule.warnings.length) {
+      warnings.push(rule.warnings);
+    }
+  });
+
+  return flatWarnings(warnings);
 }

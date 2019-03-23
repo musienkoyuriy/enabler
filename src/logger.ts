@@ -31,8 +31,8 @@ function printForTemplate(templateName: string, warnings: Warning[]): void {
   log();
 
   warnings.forEach((warnData: Warning) => {
-    const templateWarnInfo = `${yellow('Line: %s')} ${warnData.message}`;
-    warn(error(templateWarnInfo), warnData.line);
+    const templateWarnInfo = `${warnData.line ? yellow('Line: %s') : ''} ${warnData.message}`;
+    warn(error(templateWarnInfo), warnData.line || '');
   });
 }
 

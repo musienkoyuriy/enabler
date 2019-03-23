@@ -1,8 +1,8 @@
-import { hasNonEmptyAttribute } from '../utils';
-import Validator from '../validator';
+import { hasNonEmptyAttribute } from '../../utils';
+import DOMNodesValidator from '../../validator';
 
-export default function unclickableWithoutRole($: any, content: string): Validator {
-  return new Validator({
+export default function unclickableWithoutRole($: any, content: string): DOMNodesValidator {
+  return new DOMNodesValidator({
     $template: $,
     content,
     selectors: '*',

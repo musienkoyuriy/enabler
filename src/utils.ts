@@ -10,6 +10,12 @@ export function getLineNumberByHTMLSegment($elem: any, template: string): number
   return lineNumber;
 }
 
+export const getDuplicates = (list: any[]): string[] => {
+  return list.reduce((acc, el, i, arr) => {
+    if (arr.indexOf(el) !== i && acc.indexOf(el) < 0) { acc.push(el); } return acc;
+  }, []);
+};
+
 export function getDuplicateAttributes($elem: Cheerio, content: string) {
   const dom = $elem.get(0);
   const start = dom.startIndex;

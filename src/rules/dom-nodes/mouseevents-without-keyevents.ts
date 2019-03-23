@@ -1,8 +1,8 @@
-import { EventPair } from '../models/common';
-import Validator from '../validator';
+import { EventPair } from '../../models/common';
+import DOMNodesValidator from '../../validator';
 
-export default function mouseEventsWithoutKeyEvents($: any, content: string): Validator {
-  return new Validator({
+export default function mouseEventsWithoutKeyEvents($: any, content: string): DOMNodesValidator {
+  return new DOMNodesValidator({
     $template: $,
     content,
     selectors: '*',

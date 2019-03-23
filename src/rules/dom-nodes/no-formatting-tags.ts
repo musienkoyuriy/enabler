@@ -1,7 +1,7 @@
-import Validator from '../validator';
+import DOMNodesValidator from '../../validator';
 
-export default function noFormattingTags($: any, content: string): Validator {
-  return new Validator({
+export default function noFormattingTags($: any, content: string): DOMNodesValidator {
+  return new DOMNodesValidator({
     $template: $,
     content,
     selectors: [

@@ -1,4 +1,4 @@
-import Validator from '../validator';
+import DOMNodesValidator from '../../validator';
 
 const ariaAttributes = [
   'aria-autocomplete',
@@ -35,8 +35,8 @@ const ariaAttributes = [
   'aria-setsize'
 ];
 
-export default function ariaUnsupportedElements($: any, content: string): Validator {
-  return new Validator({
+export default function ariaUnsupportedElements($: any, content: string): DOMNodesValidator {
+  return new DOMNodesValidator({
     $template: $,
     content,
     selectors: [
