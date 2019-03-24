@@ -4,7 +4,7 @@ export default function headingHasContent($: any, content: string): DOMNodesVali
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+    selectors: [':header'],
     isInvalid: ($elem: Cheerio) => !$elem.text(),
     warningMessage: 'Heading tags should contains a text.'
   });

@@ -10,7 +10,7 @@ export default function noJumpingHeaders($: any, content: string): DOMNodesValid
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+    selectors: [':header'],
     isInvalid: ($elem: Cheerio) => {
       const headName = $elem[0].name;
       const headingLevel = Number(headName[1]);
