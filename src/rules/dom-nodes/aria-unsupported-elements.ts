@@ -1,4 +1,4 @@
-import DOMNodesValidator from '../../validator';
+import DOMNodesValidator from '../../dom-nodes-validator';
 
 const ariaAttributes = [
   'aria-autocomplete',

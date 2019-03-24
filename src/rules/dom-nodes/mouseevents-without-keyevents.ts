@@ -1,5 +1,5 @@
 import { EventPair } from '../../models/common';
-import DOMNodesValidator from '../../validator';
+import DOMNodesValidator from '../../dom-nodes-validator';
 
 export default function mouseEventsWithoutKeyEvents($: any, content: string): DOMNodesValidator {
   return new DOMNodesValidator({

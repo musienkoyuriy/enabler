@@ -1,5 +1,5 @@
 import { hasNonEmptyAttribute } from '../../utils';
-import DOMNodesValidator from '../../validator';
+import DOMNodesValidator from '../../dom-nodes-validator';
 
 export default function htmlHasLang($: any, content: string): DOMNodesValidator {
   return new DOMNodesValidator({

@@ -1,4 +1,4 @@
-import DOMNodesValidator from '../../validator';
+import DOMNodesValidator from '../../dom-nodes-validator';
 
 function isDiffersByMoreThanLevel(headingLevel: number, nextHeader: any): boolean {
   const nextHeadingLevel = Number(nextHeader[0].name[1]);

@@ -1,4 +1,4 @@
-import DOMNodesValidator from '../../validator';
+import DOMNodesValidator from '../../dom-nodes-validator';
 
 export default function noFormattingTags($: any, content: string): DOMNodesValidator {
   return new DOMNodesValidator({

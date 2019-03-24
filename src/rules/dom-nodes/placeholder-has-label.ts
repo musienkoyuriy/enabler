@@ -1,5 +1,5 @@
 import { getAttrValue } from '../../utils';
-import DOMNodesValidator from '../../validator';
+import DOMNodesValidator from '../../dom-nodes-validator';
 
 export default function placeholderHasLabel($: any, content: string): DOMNodesValidator {
   return new DOMNodesValidator({

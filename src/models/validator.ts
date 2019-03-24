@@ -1,4 +1,4 @@
-import DOMNodesValidator from '../validator';
+import DOMNodesValidator from '../dom-nodes-validator';
 import WholeTemplateValidator from '../whole-template-validator';
 
 export interface DOMNodesValidatorOptions {
