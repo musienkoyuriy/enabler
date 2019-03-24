@@ -33,6 +33,7 @@ function printForTemplate(templateName: string, warnings: Warning[]): void {
   warnings.forEach((warnData: Warning) => {
     const templateWarnInfo = `${warnData.line ? yellow('Line: %s') : ''} ${warnData.message}`;
     warn(error(templateWarnInfo), warnData.line || '');
+    log();
   });
 }
 
