@@ -7,7 +7,7 @@ export default function scopeOnlyInCell($: any, content: string): DOMNodesValida
     content,
     selectors: ':not(th)',
     assocAttrs: ['scope'],
-    isInvalid: ($elem: Cheerio, attrs?: string[]) => attrs ? hasNonEmptyAttribute($elem, attrs) : false,
+    isInvalid: (elem: CheerioElement, attrs?: string[]) => attrs ? hasNonEmptyAttribute($(elem), attrs) : false,
     warningMessage: '"scope" attribute can only be applied to <th> element'
   });
 }

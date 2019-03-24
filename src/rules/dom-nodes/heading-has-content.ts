@@ -5,7 +5,7 @@ export default function headingHasContent($: any, content: string): DOMNodesVali
     $template: $,
     content,
     selectors: [':header'],
-    isInvalid: ($elem: Cheerio) => !$elem.text(),
+    isInvalid: (elem: CheerioElement) => !$(elem).text(),
     warningMessage: 'Heading tags should contains a text.'
   });
 }

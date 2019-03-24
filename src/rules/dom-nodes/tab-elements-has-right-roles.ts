@@ -9,11 +9,11 @@ export default function tabElementsHasRightRoles($: any, content: string): DOMNo
       '[role="tablist"]',
       '[role="tab"]'
     ],
-    isInvalid: ($elem: Cheerio) => {
-      const role = $elem.attr('role');
+    isInvalid: (elem: CheerioElement) => {
+      const role = $(elem).attr('role');
       const isChildrenTabElement = role === 'tab' || role === 'tabpanel';
-      const hasParentTablist = $elem.closest('[role=tablist]').length;
-      const hasChildrenTabElements = $elem.find('[role="tab"], [role="tabpanel"]').length;
+      const hasParentTablist = $(elem).closest('[role=tablist]').length;
+      const hasChildrenTabElements = $(elem).find('[role="tab"], [role="tabpanel"]').length;
 
       return (isChildrenTabElement && !hasParentTablist) ||
               (!isChildrenTabElement && !hasChildrenTabElements);

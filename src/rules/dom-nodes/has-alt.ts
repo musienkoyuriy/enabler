@@ -7,8 +7,8 @@ export default function hasAlt($: any, content: string): DOMNodesValidator {
     content,
     selectors: ['img', 'area'],
     assocAttrs: ['alt'],
-    isInvalid: ($elem: Cheerio, attrs?: string[]) => {
-      return attrs ? !hasNonEmptyAttribute($elem, attrs) : false;
+    isInvalid: (elem: CheerioElement, attrs?: string[]) => {
+      return attrs ? !hasNonEmptyAttribute($(elem), attrs) : false;
     },
     warningMessage: (el: any) => {
       const tagName = el.name;

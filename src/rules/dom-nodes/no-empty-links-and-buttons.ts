@@ -7,13 +7,13 @@ export default function emptyLinksAndButtons($: any, content: string): DOMNodesV
     content,
     selectors: ['input[type="submit"]', 'button', 'a'],
     assocAttrs: ['value'],
-    isInvalid: ($elem: Cheerio, attrs?: string[]) => {
-      const tagName = $elem[0].name;
+    isInvalid: (elem: CheerioElement, attrs?: string[]) => {
+      const tagName = $(elem)[0].name;
 
       return [
-        tagName === 'input' && (attrs ? !getAttrValue($elem, attrs) : ''),
-        tagName === 'button' && !$elem.text(),
-        tagName === 'a' && !$elem.html()
+        tagName === 'input' && (attrs ? !getAttrValue($(elem), attrs) : ''),
+        tagName === 'button' && !$(elem).text(),
+        tagName === 'a' && !$(elem).html()
       ].some(Boolean);
     },
     warningMessage: (el: any) => {

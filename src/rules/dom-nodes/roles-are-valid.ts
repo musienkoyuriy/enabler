@@ -8,9 +8,9 @@ export default function rolesAreValid($: any, content: string): DOMNodesValidato
     content,
     selectors: '*',
     assocAttrs: ['role'],
-    isInvalid: ($elem: any, attrs?: string[]) => {
-      if (attrs && hasAttribute($elem, attrs)) {
-        const roleValue = getAttrValue($elem, attrs);
+    isInvalid: (elem: CheerioElement, attrs?: string[]) => {
+      if (attrs && hasAttribute($(elem), attrs)) {
+        const roleValue = getAttrValue($(elem), attrs);
         const validRoles = Array.from(roles.keys());
 
         return !validRoles.includes(roleValue);

@@ -7,10 +7,10 @@ export default function buttonHasType($: any, content: string): DOMNodesValidato
     content,
     selectors: 'button',
     assocAttrs: ['type'],
-    isInvalid: ($elem: Cheerio, attrs?: string[]) => {
+    isInvalid: (elem: CheerioElement, attrs?: string[]) => {
       const buttonTypes = ['button', 'reset', 'submit'];
       if (attrs) {
-        return !hasNonEmptyAttribute($elem, attrs) || !buttonTypes.includes($elem.attr('type'));
+        return !hasNonEmptyAttribute($(elem), attrs) || !buttonTypes.includes($(elem).attr('type'));
       }
       return false;
     },

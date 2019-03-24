@@ -7,8 +7,8 @@ export default function linksHasUrl($: any,content: string): DOMNodesValidator {
     content,
     selectors: 'a',
     assocAttrs: ['href'],
-    isInvalid: ($elem: Cheerio, attrs?: string[]) => {
-      const href = attrs ? getAttrValue($elem, attrs) : '';
+    isInvalid: (elem: CheerioElement, attrs?: string[]) => {
+      const href = attrs ? getAttrValue($(elem), attrs) : '';
       const hasUrl = href !== '' && href !== '#';
 
       return !hasUrl;

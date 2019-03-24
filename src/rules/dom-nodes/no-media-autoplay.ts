@@ -7,7 +7,7 @@ export default function noMediaAutoplay($: any, content: string): DOMNodesValida
     content,
     selectors: 'audio, video',
     assocAttrs: ['autoplay'],
-    isInvalid: ($elem: Cheerio, attrs?: string[]) => attrs ? hasNonEmptyAttribute($elem, attrs) : false,
+    isInvalid: (elem: CheerioElement, attrs?: string[]) => attrs ? hasNonEmptyAttribute($(elem), attrs) : false,
     warningMessage: (elem: any) => {
       const tagName = elem.tagName;
 

@@ -7,7 +7,7 @@ export default function iFrameHasTitle($: any, content: string): DOMNodesValidat
     content,
     selectors: 'iframe',
     assocAttrs: ['title'],
-    isInvalid: ($elem: Cheerio, attrs?: string[]) => attrs ? !hasNonEmptyAttribute($elem, attrs) : false,
+    isInvalid: (elem: CheerioElement, attrs?: string[]) => attrs ? !hasNonEmptyAttribute($(elem), attrs) : false,
     warningMessage: '<iframe> element should have a unique non-empty title attribute'
   });
 }

@@ -7,8 +7,8 @@ export default function textInputHasLabel($: any, content: string): DOMNodesVali
     content,
     selectors: 'input[type="text"]',
     assocAttrs: ['id'],
-    isInvalid: ($elem: Cheerio, attrs?: string[]) => {
-      const inputId = attrs ? getAttrValue($elem, attrs) : '';
+    isInvalid: (elem: CheerioElement, attrs?: string[]) => {
+      const inputId = attrs ? getAttrValue($(elem), attrs) : '';
 
       if (!inputId) {
         return false;

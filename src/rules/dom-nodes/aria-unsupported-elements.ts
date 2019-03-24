@@ -46,8 +46,8 @@ export default function ariaUnsupportedElements($: any, content: string): DOMNod
       'style'
     ],
     assocAttrs: ariaAttributes,
-    isInvalid: ($elem: Cheerio, attrs?: string[]) => {
-      const attributes = $elem.attr();
+    isInvalid: (elem: CheerioElement, attrs?: string[]) => {
+      const attributes = $(elem).attr();
 
       return attrs ? attrs.some(attr => attr in attributes) : false;
     },

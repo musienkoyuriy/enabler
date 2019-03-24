@@ -7,7 +7,7 @@ export default function labelHasFor($: any, content: string): DOMNodesValidator 
     content,
     selectors: 'label',
     assocAttrs: ['for'],
-    isInvalid: ($elem: Cheerio, attrs?: string[]) => attrs ? !hasNonEmptyAttribute($elem, attrs) : false,
+    isInvalid: (elem: CheerioElement, attrs?: string[]) => attrs ? !hasNonEmptyAttribute($(elem), attrs) : false,
     warningMessage: '"for" attribute is missing in "label".'
   });
 }

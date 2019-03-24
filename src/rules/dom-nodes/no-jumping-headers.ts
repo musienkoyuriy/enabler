@@ -11,10 +11,10 @@ export default function noJumpingHeaders($: any, content: string): DOMNodesValid
     $template: $,
     content,
     selectors: [':header'],
-    isInvalid: ($elem: Cheerio) => {
-      const headName = $elem[0].name;
+    isInvalid: (elem: CheerioElement) => {
+      const headName = $(elem)[0].name;
       const headingLevel = Number(headName[1]);
-      const nextHeader = $elem.next(':header');
+      const nextHeader = $(elem).next(':header');
 
       return nextHeader.length > 0 && isDiffersByMoreThanLevel(headingLevel, nextHeader);
     },

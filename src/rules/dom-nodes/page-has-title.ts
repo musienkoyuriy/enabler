@@ -5,9 +5,9 @@ export default function pageHasTitle($: any, content: string): DOMNodesValidator
     $template: $,
     content,
     selectors: 'html head',
-    isInvalid: ($elem: Cheerio) => {
-      const hasHead = $elem.length > 0;
-      const title = $elem.children('title');
+    isInvalid: (elem: CheerioElement) => {
+      const hasHead = $(elem).length > 0;
+      const title = $(elem).children('title');
       const hasNoTitle = (hasHead && !title.length) || (hasHead && !title.text());
 
       return hasNoTitle;

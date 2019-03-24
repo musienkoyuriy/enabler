@@ -13,7 +13,7 @@ export default function noFormattingTags($: any, content: string): DOMNodesValid
       'marquee', 's', 'strike',
       'tt', 'u'
     ],
-    isInvalid: ($elem: Cheerio) => $elem.length > 0,
+    isInvalid: (elem: CheerioElement) => $(elem).length > 0,
     warningMessage: (el: any) => {
       const tagName = el.name;
 

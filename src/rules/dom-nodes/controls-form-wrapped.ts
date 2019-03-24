@@ -5,8 +5,8 @@ export default function controlsFormWrapped($: any, content: string): DOMNodesVa
     $template: $,
     content,
     selectors: ['input', 'select', 'textarea'],
-    isInvalid: ($elem: Cheerio) => {
-      const parentForm = $elem.closest('form, div[role=form]');
+    isInvalid: (elem: CheerioElement) => {
+      const parentForm = $(elem).closest('form, div[role=form]');
 
       return !parentForm.length;
     },

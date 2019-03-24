@@ -7,12 +7,12 @@ export default function placeholderHasLabel($: any, content: string): DOMNodesVa
     content,
     selectors: ['input[type=text]', 'textarea'],
     assocAttrs: ['id', 'placeholder'],
-    isInvalid: ($elem: Cheerio, attrs?: string[]) => {
+    isInvalid: (elem: CheerioElement, attrs?: string[]) => {
       const placeholderAttrs = attrs ? attrs.filter(attr => /placeholder/gi.test(attr)) : [];
       const idAttrs = attrs ? attrs.filter(attr => /id/gi.test(attr)) : [];
 
-      const inputsId = getAttrValue($elem, idAttrs);
-      const placeholder = getAttrValue($elem, placeholderAttrs);
+      const inputsId = getAttrValue($(elem), idAttrs);
+      const placeholder = getAttrValue($(elem), placeholderAttrs);
       const relatedLabel = $(`label[for="${inputsId}"]`);
 
       return !relatedLabel.length && Boolean(placeholder);

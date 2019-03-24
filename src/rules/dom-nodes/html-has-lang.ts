@@ -7,7 +7,7 @@ export default function htmlHasLang($: any, content: string): DOMNodesValidator 
     content,
     selectors: 'html',
     assocAttrs: ['lang'],
-    isInvalid: ($elem: Cheerio, attrs?: string[]) => attrs ? !hasNonEmptyAttribute($elem, attrs) : false,
+    isInvalid: (elem: CheerioElement, attrs?: string[]) => attrs ? !hasNonEmptyAttribute($(elem), attrs) : false,
     warningMessage: '<html> element should have "lang" attribute.'
   });
 }
