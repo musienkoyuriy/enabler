@@ -1,7 +1,7 @@
 import { getDuplicates } from '../../utils';
 import WholeTemplateValidator from '../../whole-template-validator';
 
-export default function noDuplicatedIds($: any) {
+export default function noDuplicatedIds($: any): WholeTemplateValidator {
   return new WholeTemplateValidator({
     loadedTemplate: $,
     isInvalid: () => {
