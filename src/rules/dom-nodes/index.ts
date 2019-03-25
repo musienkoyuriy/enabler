@@ -8,6 +8,7 @@ import htmlHasLang from './html-has-lang';
 import iFrameHasTitle from './iframe-has-title';
 import labelHasFor from './label-has-for';
 import linksHasUrl from './links-has-url';
+import mainHasRole from './main-has-role';
 import mouseEventsWithoutKeyEvents from './mouseevents-without-keyevents';
 import noDuplicatedAttributes from './no-duplicated-attributes';
 import empty from './no-empty-links-and-buttons';
@@ -22,7 +23,7 @@ import scopeOnlyInCell from './scope-only-in-cell';
 import tabElementsHasRightRoles from './tab-elements-has-right-roles';
 import textInputHasLabel from './text-input-has-label';
 import unclickableWithoutRole from './unclickable-without-role';
-import mainHasRole from './main-has-role';
+import articleHasRole from './article-has-role';
 
 export {
   noJumpingHeaders,
@@ -49,5 +50,6 @@ export {
   iFrameHasTitle,
   scopeOnlyInCell,
   rolesAreValid,
-  mainHasRole
+  mainHasRole,
+  articleHasRole
 };
