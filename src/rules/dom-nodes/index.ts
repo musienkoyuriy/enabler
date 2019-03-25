@@ -4,6 +4,7 @@ import buttonHasType from './button-has-type';
 import clickWithKeyboardEvent from './click-with-key-event';
 import controlsFormWrapped from './controls-form-wrapped';
 import hasAlt from './has-alt';
+import headerHasRole from './header-has-role';
 import headingHasContent from './heading-has-content';
 import htmlHasLang from './html-has-lang';
 import iFrameHasTitle from './iframe-has-title';
@@ -24,7 +25,7 @@ import scopeOnlyInCell from './scope-only-in-cell';
 import tabElementsHasRightRoles from './tab-elements-has-right-roles';
 import textInputHasLabel from './text-input-has-label';
 import unclickableWithoutRole from './unclickable-without-role';
-import headerHasRole from './header-has-role';
+import asideHasRole from './aside-has-role';
 
 export {
   noJumpingHeaders,
@@ -53,5 +54,6 @@ export {
   rolesAreValid,
   mainHasRole,
   articleHasRole,
-  headerHasRole
+  headerHasRole,
+  asideHasRole
 };
