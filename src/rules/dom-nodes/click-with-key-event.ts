@@ -1,5 +1,5 @@
-import { isAngular } from '../../utils';
 import DOMNodesValidator from '../../dom-nodes-validator';
+import { isAngular } from '../../utils';
 
 export default function clickWithKeyboardEvent($: any, content: string): DOMNodesValidator {
   return new DOMNodesValidator({

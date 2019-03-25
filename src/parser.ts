@@ -25,7 +25,7 @@ export function getContentFromVueFile(templateContent: string): string {
   const templateOpenTag = templateLines.indexOf('<template>');
   const templateCloseTag = templateLines.indexOf('</template>');
   const vueTemplate = templateLines
-    .slice(templateOpenTag + 1, templateCloseTag)
+    .slice(templateOpenTag - 1, templateCloseTag)
     .join('\n');
 
   return vueTemplate;

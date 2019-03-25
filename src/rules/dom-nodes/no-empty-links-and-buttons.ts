@@ -1,5 +1,5 @@
-import { getAttrValue } from '../../utils';
 import DOMNodesValidator from '../../dom-nodes-validator';
+import { getAttrValue } from '../../utils';
 
 export default function emptyLinksAndButtons($: any, content: string): DOMNodesValidator {
   return new DOMNodesValidator({

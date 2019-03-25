@@ -1,5 +1,5 @@
-import { getDuplicateAttributes } from '../../utils';
 import DOMNodesValidator from '../../dom-nodes-validator';
+import { getDuplicateAttributes } from '../../utils';
 
 export default function noDuplicatedAttributes($: any,content: string): DOMNodesValidator {
   return new DOMNodesValidator({

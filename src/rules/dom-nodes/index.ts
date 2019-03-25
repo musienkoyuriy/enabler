@@ -22,6 +22,7 @@ import scopeOnlyInCell from './scope-only-in-cell';
 import tabElementsHasRightRoles from './tab-elements-has-right-roles';
 import textInputHasLabel from './text-input-has-label';
 import unclickableWithoutRole from './unclickable-without-role';
+import mainHasRole from './main-has-role';
 
 export {
   noJumpingHeaders,
@@ -47,5 +48,6 @@ export {
   buttonHasType,
   iFrameHasTitle,
   scopeOnlyInCell,
-  rolesAreValid
+  rolesAreValid,
+  mainHasRole
 };

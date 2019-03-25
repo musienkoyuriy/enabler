@@ -1,5 +1,5 @@
-import { hasNonEmptyAttribute } from '../../utils';
 import DOMNodesValidator from '../../dom-nodes-validator';
+import { hasNonEmptyAttribute } from '../../utils';
 
 export default function hasAlt($: any, content: string): DOMNodesValidator {
   return new DOMNodesValidator({
