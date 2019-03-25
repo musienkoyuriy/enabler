@@ -5,7 +5,7 @@ export default function clickWithKeyboardEvent($: any, content: string): DOMNode
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: '*',
+    selector: '*',
     isInvalid: (elem: CheerioElement) => {
       let eventsPairs = [
         {

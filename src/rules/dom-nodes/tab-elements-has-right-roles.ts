@@ -4,7 +4,7 @@ export default function tabElementsHasRightRoles($: any, content: string): DOMNo
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: [
+    selector: [
       '[role="tabpanel"]',
       '[role="tablist"]',
       '[role="tab"]'

@@ -5,7 +5,7 @@ export default function iFrameHasTitle($: any, content: string): DOMNodesValidat
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: 'iframe',
+    selector: 'iframe',
     assocAttrs: ['title'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => attrs ? !hasNonEmptyAttribute($(elem), attrs) : false,
     warningMessage: '<iframe> element should have a unique non-empty title attribute'

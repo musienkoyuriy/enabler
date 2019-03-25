@@ -5,7 +5,7 @@ export default function scopeOnlyInCell($: any, content: string): DOMNodesValida
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: ':not(th)',
+    selector: ':not(th)',
     assocAttrs: ['scope'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => attrs ? hasNonEmptyAttribute($(elem), attrs) : false,
     warningMessage: '"scope" attribute can only be applied to <th> element'

@@ -1,5 +1,6 @@
 import ariaUnsupportedElements from './aria-unsupported-elements';
 import articleHasRole from './article-has-role';
+import asideHasRole from './aside-has-role';
 import buttonHasType from './button-has-type';
 import clickWithKeyboardEvent from './click-with-key-event';
 import controlsFormWrapped from './controls-form-wrapped';
@@ -25,7 +26,6 @@ import scopeOnlyInCell from './scope-only-in-cell';
 import tabElementsHasRightRoles from './tab-elements-has-right-roles';
 import textInputHasLabel from './text-input-has-label';
 import unclickableWithoutRole from './unclickable-without-role';
-import asideHasRole from './aside-has-role';
 
 export {
   noJumpingHeaders,

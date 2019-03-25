@@ -4,7 +4,7 @@ export default function controlsFormWrapped($: any, content: string): DOMNodesVa
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: ['input', 'select', 'textarea'],
+    selector: ['input', 'select', 'textarea'],
     isInvalid: (elem: CheerioElement) => {
       const parentForm = $(elem).closest('form, div[role=form]');
 

@@ -5,7 +5,7 @@ export default function emptyLinksAndButtons($: any, content: string): DOMNodesV
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: ['input[type="submit"]', 'button', 'a'],
+    selector: ['input[type="submit"]', 'button', 'a'],
     assocAttrs: ['value'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => {
       const tagName = $(elem)[0].name;

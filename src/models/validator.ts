@@ -3,7 +3,7 @@ import WholeTemplateValidator from '../whole-template-validator';
 
 export interface DOMNodesValidatorOptions {
   isInvalid: (elem: CheerioElement, attrs?: string[], events?: string[]) => boolean;
-  selectors: string[] | string;
+  selector: string[] | string;
   $template: any;
   warningMessage: string | ((el: Cheerio) => string);
   content: string;

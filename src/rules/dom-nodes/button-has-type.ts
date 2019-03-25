@@ -5,7 +5,7 @@ export default function buttonHasType($: any, content: string): DOMNodesValidato
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: 'button',
+    selector: 'button',
     assocAttrs: ['type'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => {
       const buttonTypes = ['button', 'reset', 'submit'];

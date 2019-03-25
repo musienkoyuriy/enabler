@@ -5,7 +5,7 @@ export default function unclickableWithoutRole($: any, content: string): DOMNode
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: '*',
+    selector: '*',
     assocEvents: ['click'],
     // @ts-ignore
     isInvalid: (elem: CheerioElement, attrs?: string[], events?: string[]) => {

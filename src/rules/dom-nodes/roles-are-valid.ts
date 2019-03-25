@@ -6,7 +6,7 @@ export default function rolesAreValid($: any, content: string): DOMNodesValidato
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: '*',
+    selector: '*',
     assocAttrs: ['role'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => {
       if (attrs && hasAttribute($(elem), attrs)) {

@@ -39,7 +39,7 @@ export default function ariaUnsupportedElements($: any, content: string): DOMNod
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: [
+    selector: [
       'meta',
       'html',
       'script',

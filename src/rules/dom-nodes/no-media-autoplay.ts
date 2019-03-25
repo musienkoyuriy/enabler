@@ -5,7 +5,7 @@ export default function noMediaAutoplay($: any, content: string): DOMNodesValida
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: 'audio, video',
+    selector: 'audio, video',
     assocAttrs: ['autoplay'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => attrs ? hasNonEmptyAttribute($(elem), attrs) : false,
     warningMessage: (elem: any) => {

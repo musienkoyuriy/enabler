@@ -5,7 +5,7 @@ export default function mouseEventsWithoutKeyEvents($: any, content: string): DO
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: '*',
+    selector: '*',
     assocEvents: ['mouseover', 'mouseout', 'focus', 'blur'],
     // @ts-ignore
     isInvalid: (elem: CheerioElement, attrs?: string[], events?: string[]) => {

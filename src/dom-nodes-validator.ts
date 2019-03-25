@@ -58,7 +58,7 @@ function completeEventsWithFrameworkSpecific(events: string[]): string[] {
 
 export default class DOMNodesValidator implements DOMNodesValidatorOptions {
   isInvalid: (template: any, attrs?: string[], events?: string[]) => boolean;
-  selectors: string[] | string;
+  selector: string[] | string;
   $template: any;
   warnings: Warning[];
   warningMessage: string | ((el: any) => string);
@@ -70,15 +70,15 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
     this.warnings = [];
 
     this.$template = options.$template;
-    this.selectors = options.selectors;
+    this.selector = options.selector;
     this.isInvalid = options.isInvalid;
     this.warningMessage = options.warningMessage;
     this.content = options.content || '';
     this.assocAttrs = options.assocAttrs || [];
     this.assocEvents = options.assocEvents || [];
 
-    const selectors = this._normalizeSelectors(this.selectors);
-    const elements = this.$template(selectors);
+    const selector = this._normalizeselector(this.selector);
+    const elements = this.$template(selector);
 
     let attrs: string[];
     let events: string[];
@@ -100,9 +100,9 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
     }
   }
 
-  private _normalizeSelectors(selectors: string | string[]): string {
+  private _normalizeselector(selector: string | string[]): string {
     // @ts-ignore
-    return Array.isArray(this.selectors) ? selectors.join(', ') : selectors;
+    return Array.isArray(this.selector) ? selector.join(', ') : selector;
   }
 
   private _addWarning(el: any): void {

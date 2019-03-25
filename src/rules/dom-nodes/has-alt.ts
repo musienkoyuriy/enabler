@@ -5,7 +5,7 @@ export default function hasAlt($: any, content: string): DOMNodesValidator {
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: ['img', 'area'],
+    selector: ['img', 'area'],
     assocAttrs: ['alt'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => {
       return attrs ? !hasNonEmptyAttribute($(elem), attrs) : false;

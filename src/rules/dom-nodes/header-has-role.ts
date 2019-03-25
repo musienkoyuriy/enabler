@@ -5,7 +5,7 @@ export default function headerHasRole($: any, content: string): DOMNodesValidato
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: 'header',
+    selector: 'header',
     assocAttrs: ['role'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => {
       const roleValue = attrs ? getAttrValue($(elem), attrs) : '';

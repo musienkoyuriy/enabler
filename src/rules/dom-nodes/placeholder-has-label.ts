@@ -5,7 +5,7 @@ export default function placeholderHasLabel($: any, content: string): DOMNodesVa
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: ['input[type=text]', 'textarea'],
+    selector: ['input[type=text]', 'textarea'],
     assocAttrs: ['id', 'placeholder'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => {
       const placeholderAttrs = attrs ? attrs.filter(attr => /placeholder/gi.test(attr)) : [];

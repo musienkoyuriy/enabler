@@ -5,7 +5,7 @@ export default function articleHasRole($: any, content: string): DOMNodesValidat
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: 'article',
+    selector: 'article',
     assocAttrs: ['role'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => {
       const roleValue = attrs ? getAttrValue($(elem), attrs) : '';

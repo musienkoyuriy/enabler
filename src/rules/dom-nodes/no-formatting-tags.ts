@@ -4,7 +4,7 @@ export default function noFormattingTags($: any, content: string): DOMNodesValid
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: [
+    selector: [
       'align', 'alink', 'background',
       'basefont', 'bgcolor', 'border',
       'color', 'text', 'vlink',

@@ -5,7 +5,7 @@ export default function noDuplicatedAttributes($: any,content: string): DOMNodes
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: '*',
+    selector: '*',
     isInvalid: (elem: CheerioElement) => {
       const duplicatedAttrs = getDuplicateAttributes($(elem), content);
 

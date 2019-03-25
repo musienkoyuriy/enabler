@@ -5,7 +5,7 @@ export default function noPositiveTabindex($: any, content: string): DOMNodesVal
   return new DOMNodesValidator({
     $template: $,
     content,
-    selectors: '*',
+    selector: '*',
     assocAttrs: ['tabindex'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => {
       const tabIndex = attrs ? getAttrValue($(elem), attrs) : '';
