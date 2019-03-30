@@ -1,4 +1,6 @@
-# enabler
+![Enabler Logo](https://i.imgur.com/9iNnawV.jpg)
+
+
  ✋ *Accessibility analyzer for your frontend.*
 
 [<img src="https://badge.fury.io/js/enabler.svg" alt="npm version" >](https://badge.fury.io/js/enabler)
@@ -6,6 +8,7 @@
 [![Dependency Status](https://david-dm.org/palantir/tslint.svg)](https://david-dm.org/musienkoyuriy/enabler)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg)](https://opensource.org/licenses/mit-license.php)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
 
 > It's just a node.js util which analyzes your templates all over the project and warns you about potential accessibility problems.
 
