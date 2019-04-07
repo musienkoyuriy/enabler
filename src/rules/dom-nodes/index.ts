@@ -26,8 +26,10 @@ import scopeOnlyInCell from './scope-only-in-cell';
 import tabElementsHasRightRoles from './tab-elements-has-right-roles';
 import textInputHasLabel from './text-input-has-label';
 import unclickableWithoutRole from './unclickable-without-role';
+import videoHasSubtitles from './video-has-subtitles';
 
 export {
+  videoHasSubtitles,
   noJumpingHeaders,
   noFormattingTags,
   hasAlt,
