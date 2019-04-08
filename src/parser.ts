@@ -2,8 +2,8 @@ const cheerio = require('cheerio');
 
 import { DOMNodesValidatorFactory, WholeValidatorFactory } from './models/validator';
 import { Warning } from './models/warnings';
-import * as domNodeRules from './rules/dom-nodes';
-import * as wholeTemplateRules from './rules/whole-template';
+import * as domNodeRules from './rules/dom-nodes-rules';
+import * as wholeTemplateRules from './rules/whole-template-rules';
 
 function flatWarnings(warnings: Warning[][]): Warning[] {
   const messages: Warning[] = [];
