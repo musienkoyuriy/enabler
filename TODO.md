@@ -1,10 +1,9 @@
 > What is needed to `enabler` enhacement:
 
-- [ ] Support more `Vue.js` component templates declarations:
 
 - [ ] Template literals in `Vue.component` instances
-- [ ] X-templates
-- [ ] Inline templates
+- [ ] X-templates (Vue)
+- [ ] Inline templates (Vue)
 - [ ] Render functions
 - [ ] JSX Support
 - [ ] Automatic Fixing errors
