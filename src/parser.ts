@@ -31,20 +31,34 @@ export function getContentFromVueFile(templateContent: string): string {
   return vueTemplate;
 }
 
-export function getTemplateFromComponentDecorator(fileContent: string): string {
+export function getTemplateFromVueObject(fileContent: string): string {
+  return getTemplateFromFrameworkWrapper(
+    'Vue.component',
+    fileContent
+  );
+}
+
+export function getTemplateFromAngularDecorator(fileContent: string): string {
+  return getTemplateFromFrameworkWrapper(
+    '@Component',
+    fileContent
+  );
+}
+
+export function getTemplateFromFrameworkWrapper(specificLine: string, fileContent: string): string {
   const fileAsArray = fileContent.split('\n');
 
-  const decoratorLine = fileAsArray.find((line: string) => line.includes('@Component'));
+  const frameworkSpecificLine = fileAsArray.find((line: string) => line.includes(specificLine));
 
-  if (!decoratorLine) {
+  if (!frameworkSpecificLine) {
     return '';
   }
 
-  const decoratorLineNumber = fileAsArray.indexOf(decoratorLine) + 1;
+  const decoratorLineNumber = fileAsArray.indexOf(frameworkSpecificLine) + 1;
   const templatePropPattern = /template\s{0,}:\s{0,}`/;
 
-  const stringExceptComponentDecorator = fileAsArray.slice(decoratorLineNumber);
-  const templateStartLine = stringExceptComponentDecorator.find(line =>
+  const stringExceptFrameworkSpecificLine = fileAsArray.slice(decoratorLineNumber);
+  const templateStartLine = stringExceptFrameworkSpecificLine.find(line =>
     templatePropPattern.test(line)
   );
 
@@ -52,11 +66,11 @@ export function getTemplateFromComponentDecorator(fileContent: string): string {
     return '';
   }
 
-  const templateStartLineNumber = stringExceptComponentDecorator.indexOf(
+  const templateStartLineNumber = stringExceptFrameworkSpecificLine.indexOf(
     templateStartLine
   );
 
-  const joinedTemplateString = stringExceptComponentDecorator
+  const joinedTemplateString = stringExceptFrameworkSpecificLine
     .slice(templateStartLineNumber)
     .join('\n');
 
@@ -67,12 +81,12 @@ export function getTemplateFromComponentDecorator(fileContent: string): string {
     ''
   );
 
-  const angularTemplate = stringExceptTemplateLiteral.slice(
+  const template = stringExceptTemplateLiteral.slice(
     0,
     stringExceptTemplateLiteral.indexOf('`')
   );
 
-  return angularTemplate;
+  return template;
 }
 
 export function getA11yWarnings(template: string): Warning[] {

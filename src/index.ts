@@ -8,9 +8,10 @@ import { Warning } from './models/warnings';
 import {
   getA11yWarnings,
   getContentFromVueFile,
-  getTemplateFromComponentDecorator
+  getTemplateFromAngularDecorator,
+  getTemplateFromVueObject
 } from './parser';
-import { getFrameworkName } from './utils';
+import { getExtension, getFrameworkName } from './utils';
 
 const error = chalk.bold.red;
 
@@ -27,21 +28,25 @@ function linkWarningsWithTemplate(warnings: Warning[], templateUrl: string): voi
   }
 }
 
-function getTemplate({ fileContent, isTSFile }: {fileContent: string; isTSFile: boolean;}): string {
+function getTemplate({ fileContent, fileExtension }: {fileContent: string; fileExtension: string;}): string {
   switch (getFrameworkName()) {
     case 'angular':
-      return isTSFile
-        ? getTemplateFromComponentDecorator(fileContent)
+      return fileExtension === 'ts'
+        ? getTemplateFromAngularDecorator(fileContent)
         : fileContent;
     case 'vue':
-      return getContentFromVueFile(fileContent);
+      if (fileExtension === 'vue') {
+        return getContentFromVueFile(fileContent);
+      } else if (fileExtension === 'js' || fileExtension === 'ts') {
+        return getTemplateFromVueObject(fileContent);
+      }
     default:
       return fileContent;
   }
 }
 
 function parseTemplate(templateUrl: string): void {
-  const isTSFile = templateUrl.endsWith('.ts');
+  const fileExtension = getExtension(templateUrl);
 
   let fileContent;
 
@@ -52,7 +57,7 @@ function parseTemplate(templateUrl: string): void {
   }
 
   const template = getTemplate({
-    isTSFile,
+    fileExtension,
     fileContent
   });
 
@@ -70,7 +75,7 @@ function getExtensionPattern(): string {
   const framework = getFrameworkName();
 
   if (framework === 'vue') {
-    return 'vue';
+    return '+(vue|ts|js)';
   } else if (framework === 'angular') {
     return '+(html|ts)';
   }

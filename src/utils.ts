@@ -16,6 +16,10 @@ export const getDuplicates = (list: any[]): string[] => {
   }, []);
 };
 
+export const getExtension = (fileName: string): string => {
+  return fileName.slice((Math.max(0, fileName.lastIndexOf(".")) || Infinity) + 1);
+};
+
 export function getDuplicateAttributes($elem: Cheerio, content: string) {
   const dom = $elem.get(0);
   const start = dom.startIndex;
