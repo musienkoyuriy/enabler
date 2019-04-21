@@ -8,6 +8,7 @@ import { Warning } from './models/warnings';
 import {
   getA11yWarnings,
   getContentFromVueFile,
+  getContentFromVueXTemplate,
   getTemplateFromAngularDecorator,
   getTemplateFromVueObject
 } from './parser';
@@ -39,6 +40,8 @@ function getTemplate({ fileContent, fileExtension }: {fileContent: string; fileE
         return getContentFromVueFile(fileContent);
       } else if (fileExtension === 'js' || fileExtension === 'ts') {
         return getTemplateFromVueObject(fileContent);
+      } else {
+        return getContentFromVueXTemplate(fileContent);
       }
     default:
       return fileContent;
@@ -75,7 +78,7 @@ function getExtensionPattern(): string {
   const framework = getFrameworkName();
 
   if (framework === 'vue') {
-    return '+(vue|ts|js)';
+    return '+(vue|ts|js|html)';
   } else if (framework === 'angular') {
     return '+(html|ts)';
   }

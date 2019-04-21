@@ -19,8 +19,8 @@ function flatWarnings(warnings: Warning[][]): Warning[] {
   return messages;
 }
 
-export function getContentFromVueFile(templateContent: string): string {
-  const templateLines = templateContent.split('\n');
+export function getContentFromVueFile(fileContent: string): string {
+  const templateLines = fileContent.split('\n');
 
   const templateOpenTag = templateLines.indexOf('<template>');
   const templateCloseTag = templateLines.indexOf('</template>');
@@ -29,6 +29,20 @@ export function getContentFromVueFile(templateContent: string): string {
     .join('\n');
 
   return vueTemplate;
+}
+
+export function getContentFromVueXTemplate(fileContent: string): any {
+  const $ = cheerio.load(fileContent, {
+    xmlMode: true,
+    withStartIndices: true,
+    withEndIndices: true
+  });
+
+  const template = $('script[type="text/x-template"]').html();
+
+  return typeof template === 'string'
+    ? template
+    : '';
 }
 
 export function getTemplateFromVueObject(fileContent: string): string {
