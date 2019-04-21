@@ -1,7 +1,7 @@
 > What is needed to `enabler` enhacement:
 
 
-- [ ] Template literals in `Vue.component` instances
+- [x] Template literals in `Vue.component` instances
 - [ ] X-templates (Vue)
 - [ ] Inline templates (Vue)
 - [ ] Render functions
