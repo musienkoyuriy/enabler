@@ -31,18 +31,28 @@ export function getContentFromVueFile(fileContent: string): string {
   return vueTemplate;
 }
 
-export function getContentFromVueXTemplate(fileContent: string): any {
+export function getContentFromVueXTemplate(fileContent: string): string {
   const $ = cheerio.load(fileContent, {
     xmlMode: true,
     withStartIndices: true,
     withEndIndices: true
   });
 
-  const template = $('script[type="text/x-template"]').html();
+  const xTemplates = $('script[type="text/x-template"]');
 
-  return typeof template === 'string'
-    ? template
-    : '';
+  if (!xTemplates.length) {
+    return '';
+  }
+
+  const resultTemplate = xTemplates
+    .toArray()
+    .reduce((acc: string, xTemplate: Cheerio) => {
+      acc += $(xTemplate).html();
+
+      return acc;
+    }, '');
+
+  return resultTemplate;
 }
 
 export function getTemplateFromVueObject(fileContent: string): string {
