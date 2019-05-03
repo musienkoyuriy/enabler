@@ -121,7 +121,7 @@ export function getA11yWarnings(template: string): Warning[] {
   });
 
   const domNodeRulesFunctions: DOMNodesValidatorFactory[] = Object.values(domNodeRules);
-  const wholeTemplateRulesFunctions: any[] = Object.values(wholeTemplateRules);
+  const wholeTemplateRulesFunctions = Object.values(wholeTemplateRules);
 
   return [
     ...getWarnsFromTemplatesByNodeRules(domNodeRulesFunctions, template, parsed),
@@ -146,7 +146,7 @@ function getWarnsFromTemplatesByNodeRules(
   return flatWarnings(warnings);
 }
 
-function getWarnsFromWholeTemplates(rules: any, $: any): any[] {
+function getWarnsFromWholeTemplates(rules: WholeValidatorFactory[], $: CheerioOptionsInterface): Warning[] {
   const warnings: Warning[][] = [];
 
   rules.forEach((r: WholeValidatorFactory) => {
