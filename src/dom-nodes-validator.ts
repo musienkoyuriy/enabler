@@ -77,7 +77,7 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
     this.assocAttrs = options.assocAttrs || [];
     this.assocEvents = options.assocEvents || [];
 
-    const selector = this._normalizeselector(this.selector);
+    const selector = this._normalizeSelector(this.selector);
     const elements = this.$template(selector);
 
     let attrs: string[];
@@ -100,7 +100,7 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
     }
   }
 
-  private _normalizeselector(selector: string | string[]): string {
+  private _normalizeSelector(selector: string | string[]): string {
     // @ts-ignore
     return Array.isArray(this.selector) ? selector.join(', ') : selector;
   }
