@@ -63,6 +63,10 @@ scripts: {
 
 - [chalk](https://github.com/chalk/chalk) - Terminal string styling done right
 
+## Questions?
+
+If you have any questions/suggestions/ideas to enhancements - feel free to create a [Github issue](https://github.com/musienkoyuriy/enabler/issues/new). Let's affect accessibility together
+
 ## LICENSE
 
 **The software is license under "MIT"**
