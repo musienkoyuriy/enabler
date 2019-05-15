@@ -62,7 +62,7 @@
     "cheerio": "^1.0.0-rc.2",
     "commander": "2.20.0",
     "glob": "^7.1.4",
-    "husky": "2.2.0",
+    "husky": "2.3.0",
     "typescript": "3.4.5"
   },
   "devDependencies": {
