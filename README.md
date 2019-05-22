@@ -71,7 +71,7 @@ If you have any questions/suggestions/ideas to enhancements - feel free to creat
 
 **The software is license under "MIT"**
 
-> Copyright (c) 2018 Musienko Yuriy
+> Copyright (c) 2018 - 2019 Musienko Yuriy
 >
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 > of this software and associated documentation files (the "Software"), to deal
