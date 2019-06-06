@@ -63,7 +63,7 @@
     "commander": "2.20.0",
     "esprima": "4.0.1",
     "glob": "^7.1.4",
-    "husky": "2.3.0",
+    "husky": "2.4.0",
     "typescript": "3.5.1"
   },
   "devDependencies": {
