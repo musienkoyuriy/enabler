@@ -63,11 +63,11 @@
     "commander": "2.20.0",
     "esprima": "4.0.1",
     "glob": "^7.1.4",
-    "husky": "2.4.0",
+    "husky": "2.4.1",
     "typescript": "3.5.1"
   },
   "devDependencies": {
-    "prettier": "1.17.1",
+    "prettier": "1.18.2",
     "rimraf": "2.6.3",
     "tslint": "5.17.0",
     "tslint-config-prettier": "1.18.0"
