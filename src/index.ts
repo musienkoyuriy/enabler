@@ -4,6 +4,7 @@ import { readFileSync } from 'fs';
 const glob = require('glob');
 
 import { printWarnings } from './logger';
+import { ProgramOptions, FileMetadata } from './models/common';
 import { Warning } from './models/warnings';
 import {
   getA11yWarnings,
@@ -31,7 +32,7 @@ function linkWarningsWithTemplate(warnings: Warning[], templateUrl: string): voi
   }
 }
 
-function getTemplate({ fileContent, fileExtension }: {fileContent: string; fileExtension: string;}): string {
+function getTemplate({ fileContent, isTSFile }: FileMetadata): string {
   switch (getFrameworkName()) {
     case 'angular':
       return fileExtension === 'ts'
