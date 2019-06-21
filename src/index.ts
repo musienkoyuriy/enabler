@@ -4,7 +4,7 @@ import { readFileSync } from 'fs';
 const glob = require('glob');
 
 import { printWarnings } from './logger';
-import { ProgramOptions, FileMetadata } from './models/common';
+import { FileMetadata, ProgramOptions } from './models/common';
 import { Warning } from './models/warnings';
 import {
   getA11yWarnings,
@@ -105,9 +105,7 @@ export function run(program: any): void {
     process.exit(0);
   }
 
-  const extension = getExtensionPattern();
-
-  glob(`${path}/**/*.${extension}`, (err: Error, fileNames: string[]) => {
+  glob(`${path}/**/*.${getExtensionPattern()}`, (err: Error, fileNames: string[]) => {
     if (err) {
       throw new Error(`Files search error ${err}`);
     }

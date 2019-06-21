@@ -123,7 +123,7 @@ export function getTemplateFromReactComponents(fileContent: string): string {
   const potentialComponents = ASTTree.body.filter((node: any) => nodeTypes.includes(node.type));
 
   const fn = escodegen.generate(potentialComponents[1]);
-  console.log(fn)
+  console.log(fn);
   return '';
 }
 
