@@ -5,7 +5,6 @@ const escodegen = require('escodegen-jsx');
 
 import { DOMNodesValidatorFactory, WholeValidatorFactory } from './models/validator';
 import { Warning } from './models/warnings';
-import { ProgramOptions } from './models/common';
 import * as domNodeRules from './rules/dom-nodes-rules';
 import * as wholeTemplateRules from './rules/whole-template-rules';
 
@@ -127,7 +126,7 @@ export function getTemplateFromReactComponents(fileContent: string): string {
   return '';
 }
 
-export function getA11yWarnings(template: string, options: ProgramOptions): Warning[] {
+export function getA11yWarnings(template: string): Warning[] {
   const parsed: CheerioOptionsInterface = cheerio.load(template, {
     xmlMode: true,
     withStartIndices: true,

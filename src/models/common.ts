@@ -5,5 +5,5 @@ export interface EventPair {
 
 export interface FileMetadata {
   fileContent: string;
-  isTSFile: boolean;
+  fileExtension: string;
 }

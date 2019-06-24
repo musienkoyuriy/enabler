@@ -4,7 +4,7 @@ import { readFileSync } from 'fs';
 const glob = require('glob');
 
 import { printWarnings } from './logger';
-import { FileMetadata, ProgramOptions } from './models/common';
+import { FileMetadata } from './models/common';
 import { Warning } from './models/warnings';
 import {
   getA11yWarnings,
@@ -12,8 +12,8 @@ import {
   getContentFromVueXTemplate,
   getTemplateFromAngularDecorator,
   getTemplateFromVueObject
-  getTemplateFromComponentDecorator,
-  getTemplateFromReactComponents
+  // getTemplateFromComponentDecorator,
+  // getTemplateFromReactComponents
 } from './parser';
 import { getExtension, getFrameworkName } from './utils';
 
@@ -32,7 +32,7 @@ function linkWarningsWithTemplate(warnings: Warning[], templateUrl: string): voi
   }
 }
 
-function getTemplate({ fileContent, isTSFile }: FileMetadata): string {
+function getTemplate({ fileContent, fileExtension }: FileMetadata): string {
   switch (getFrameworkName()) {
     case 'angular':
       return fileExtension === 'ts'
