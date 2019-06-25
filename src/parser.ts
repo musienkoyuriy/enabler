@@ -1,5 +1,5 @@
 const cheerio = require('cheerio');
-const esprima = require('esprima-fb');
+const esprima = require('esprima');
 const escodegen = require('escodegen-jsx');
 // const isReactComponent = require('is-react');
 
