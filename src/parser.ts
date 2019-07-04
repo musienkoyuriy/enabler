@@ -1,6 +1,6 @@
 const cheerio = require('cheerio');
 const esprima = require('esprima');
-const escodegen = require('escodegen-jsx');
+// const escodegen = require('escodegen-jsx');
 // const isReactComponent = require('is-react');
 
 import { DOMNodesValidatorFactory, WholeValidatorFactory } from './models/validator';
@@ -118,11 +118,11 @@ export function getTemplateFromFrameworkWrapper(specificLine: string, fileConten
 
 export function getTemplateFromReactComponents(fileContent: string): string {
   const ASTTree = esprima.parseScript(fileContent, { jsx: true });
-  const nodeTypes = ['ClassDeclaration', 'FunctionDeclaration'];
-  const potentialComponents = ASTTree.body.filter((node: any) => nodeTypes.includes(node.type));
+  // const nodeTypes = ['ClassDeclaration', 'FunctionDeclaration'];
+  // const potentialComponents = ASTTree.body.filter((node: any) => nodeTypes.includes(node.type));
 
-  const fn = escodegen.generate(potentialComponents[1]);
-  console.log(fn);
+  // const fn = escodegen.generate(potentialComponents[1]);
+  console.log(JSON.stringify(ASTTree));
   return '';
 }
 

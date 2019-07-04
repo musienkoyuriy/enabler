@@ -38,8 +38,6 @@ function getTemplate({ fileContent, fileExtension }: FileMetadata): string {
       return fileExtension === 'ts'
         ? getTemplateFromAngularDecorator(fileContent)
         : fileContent;
-    case 'react':
-      return getTemplateFromReactComponents(fileContent);
     case 'vue':
       if (fileExtension === 'vue') {
         return getContentFromVueFile(fileContent);
@@ -64,14 +62,18 @@ function parseTemplate(templateUrl: string): void {
     throw new Error(err);
   }
 
-  const template = getTemplate({
-    fileExtension,
-    fileContent
-  });
+  if (framework !== 'react') {
+    const template = getTemplate({
+      isTSFile,
+      fileContent
+    });
 
-  const warnings = getA11yWarnings(template);
+    const warnings = getA11yWarnings(template, options);
 
-  linkWarningsWithTemplate(warnings, templateUrl);
+    linkWarningsWithTemplate(warnings, templateUrl);
+  } else {
+    const
+  }
 }
 
 function handleTemplates(fileNames: string[]): void {
