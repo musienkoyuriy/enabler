@@ -4,13 +4,17 @@ import { readFileSync } from 'fs';
 const glob = require('glob');
 
 import { printWarnings } from './logger';
+import { FileMetadata } from './models/common';
 import { Warning } from './models/warnings';
 import {
-  getA11yWarnings,
+  getA11yWarningsFromStringTemplate,
+  // getA11yWarningsFromJSXTemplate,
   getContentFromVueFile,
   getContentFromVueXTemplate,
   getTemplateFromAngularDecorator,
   getTemplateFromVueObject
+  // getTemplateFromComponentDecorator,
+  // getTemplateFromReactComponents
 } from './parser';
 import { getExtension, getFrameworkName } from './utils';
 
@@ -29,7 +33,7 @@ function linkWarningsWithTemplate(warnings: Warning[], templateUrl: string): voi
   }
 }
 
-function getTemplate({ fileContent, fileExtension }: {fileContent: string; fileExtension: string;}): string {
+function getStringTemplate({ fileContent, fileExtension }: FileMetadata): string {
   switch (getFrameworkName()) {
     case 'angular':
       return fileExtension === 'ts'
@@ -49,6 +53,7 @@ function getTemplate({ fileContent, fileExtension }: {fileContent: string; fileE
 }
 
 function parseTemplate(templateUrl: string): void {
+  const framework = getFrameworkName()
   const fileExtension = getExtension(templateUrl);
 
   let fileContent;
@@ -59,14 +64,21 @@ function parseTemplate(templateUrl: string): void {
     throw new Error(err);
   }
 
-  const template = getTemplate({
-    fileExtension,
-    fileContent
-  });
+  if (framework !== 'react') {
+    const template = getStringTemplate({
+      fileExtension,
+      fileContent
+    });
 
-  const warnings = getA11yWarnings(template);
+    const warnings = getA11yWarningsFromStringTemplate(template);
 
-  linkWarningsWithTemplate(warnings, templateUrl);
+    linkWarningsWithTemplate(warnings, templateUrl);
+  } else {
+    // const template = getTemplateFromReactComponents(fileContent);
+
+    // const warnings = getA11yWarningsFromJSXTemplate(template, options);
+    // linkWarningsWithTemplate(warnings, templateUrl);
+  }
 }
 
 function handleTemplates(fileNames: string[]): void {
@@ -81,6 +93,8 @@ function getExtensionPattern(): string {
     return '+(vue|ts|js|html)';
   } else if (framework === 'angular') {
     return '+(html|ts)';
+  } else if (framework === 'react') {
+    return '+(js|jsx)';
   }
 
   return '+(html|htm)';
@@ -98,9 +112,7 @@ export function run(program: any): void {
     process.exit(0);
   }
 
-  const extension = getExtensionPattern();
-
-  glob(`${path}/**/*.${extension}`, (err: Error, fileNames: string[]) => {
+  glob(`${path}/**/*.${getExtensionPattern()}`, (err: Error, fileNames: string[]) => {
     if (err) {
       throw new Error(`Files search error ${err}`);
     }

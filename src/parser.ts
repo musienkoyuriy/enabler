@@ -1,4 +1,7 @@
 const cheerio = require('cheerio');
+const esprima = require('esprima');
+// const escodegen = require('escodegen-jsx');
+// const isReactComponent = require('is-react');
 
 import { DOMNodesValidatorFactory, WholeValidatorFactory } from './models/validator';
 import { Warning } from './models/warnings';
@@ -113,7 +116,17 @@ export function getTemplateFromFrameworkWrapper(specificLine: string, fileConten
   return template;
 }
 
-export function getA11yWarnings(template: string): Warning[] {
+export function getTemplateFromReactComponents(fileContent: string): string {
+  const ASTTree = esprima.parseScript(fileContent, { jsx: true });
+  // const nodeTypes = ['ClassDeclaration', 'FunctionDeclaration'];
+  // const potentialComponents = ASTTree.body.filter((node: any) => nodeTypes.includes(node.type));
+
+  // const fn = escodegen.generate(potentialComponents[1]);
+  console.log(JSON.stringify(ASTTree));
+  return '';
+}
+
+export function getA11yWarningsFromStringTemplate(template: string): Warning[] {
   const parsed: CheerioOptionsInterface = cheerio.load(template, {
     xmlMode: true,
     withStartIndices: true,
@@ -158,4 +171,8 @@ function getWarnsFromWholeTemplates(rules: WholeValidatorFactory[], $: CheerioOp
   });
 
   return flatWarnings(warnings);
+}
+
+export function getA11yWarningsFromJSXTemplate(template: string) {
+  console.log(template);
 }
