@@ -178,5 +178,5 @@ function getWarnsFromWholeTemplates(rules: WholeValidatorFactory[], $: CheerioOp
 }
 
 export function getA11yWarningsFromJSXTemplate(template: string) {
-  console.log(template)
+  console.log(template);
 }
