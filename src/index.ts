@@ -7,12 +7,13 @@ import { printWarnings } from './logger';
 import { FileMetadata } from './models/common';
 import { Warning } from './models/warnings';
 import {
-  getA11yWarnings,
+  getA11yWarningsFromStringTemplate,
+  getA11yWarningsFromJSXTemplate,
   getContentFromVueFile,
   getContentFromVueXTemplate,
   getTemplateFromAngularDecorator,
   getTemplateFromVueObject
-  // getTemplateFromComponentDecorator,
+  getTemplateFromComponentDecorator,
   // getTemplateFromReactComponents
 } from './parser';
 import { getExtension, getFrameworkName } from './utils';
@@ -32,7 +33,7 @@ function linkWarningsWithTemplate(warnings: Warning[], templateUrl: string): voi
   }
 }
 
-function getTemplate({ fileContent, fileExtension }: FileMetadata): string {
+function getStringTemplate({ fileContent, fileExtension }: FileMetadata): string {
   switch (getFrameworkName()) {
     case 'angular':
       return fileExtension === 'ts'
@@ -63,16 +64,19 @@ function parseTemplate(templateUrl: string): void {
   }
 
   if (framework !== 'react') {
-    const template = getTemplate({
+    const template = getStringTemplate({
       isTSFile,
       fileContent
     });
 
-    const warnings = getA11yWarnings(template, options);
+    const warnings = getA11yWarningsFromStringTemplate(template, options);
 
     linkWarningsWithTemplate(warnings, templateUrl);
   } else {
-    const
+    // const template = getTemplateFromReactComponents(fileContent);
+
+    // const warnings = getA11yWarningsFromJSXTemplate(template, options);
+    // linkWarningsWithTemplate(warnings, templateUrl);
   }
 }
 
