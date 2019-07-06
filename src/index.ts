@@ -12,9 +12,8 @@ import {
   getContentFromVueFile,
   getContentFromVueXTemplate,
   getTemplateFromAngularDecorator,
-  getTemplateFromVueObject
-  // getTemplateFromComponentDecorator,
-  // getTemplateFromReactComponents
+  getTemplateFromVueObject,
+  getASTTreeFromJSXFile
 } from './parser';
 import { getExtension, getFrameworkName } from './utils';
 
@@ -74,7 +73,8 @@ function parseTemplate(templateUrl: string): void {
 
     linkWarningsWithTemplate(warnings, templateUrl);
   } else {
-    // const template = getTemplateFromReactComponents(fileContent);
+    const ASTTree = getASTTreeFromJSXFile(fileContent);
+    console.log(ASTTree)
 
     // const warnings = getA11yWarningsFromJSXTemplate(template, options);
     // linkWarningsWithTemplate(warnings, templateUrl);

@@ -116,7 +116,7 @@ export function getTemplateFromFrameworkWrapper(specificLine: string, fileConten
   return template;
 }
 
-export function getTemplateFromReactComponents(fileContent: string): string {
+export function getASTTreeFromJSXFile(fileContent: string): string {
   const ASTTree = esprima.parseScript(fileContent, { jsx: true });
   // const nodeTypes = ['ClassDeclaration', 'FunctionDeclaration'];
   // const potentialComponents = ASTTree.body.filter((node: any) => nodeTypes.includes(node.type));
