@@ -59,6 +59,7 @@
   "dependencies": {
     "@types/cheerio": "0.22.12",
     "@types/esprima": "4.0.2",
+    "aria-query": "3.0.0",
     "chalk": "2.4.2",
     "cheerio": "^1.0.0-rc.2",
     "chokidar": "3.0.1",

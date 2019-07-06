@@ -126,11 +126,7 @@ export function getTemplateFromReactComponents(fileContent: string): string {
   return '';
 }
 
-<<<<<<< HEAD
-export function getA11yWarnings(template: string): Warning[] {
-=======
-export function getA11yWarningsFromStringTemplate(template: string, options: ProgramOptions): Warning[] {
->>>>>>> separate logic for ng/vue/html parsing and react templates parsing
+export function getA11yWarningsFromStringTemplate(template: string): Warning[] {
   const parsed: CheerioOptionsInterface = cheerio.load(template, {
     xmlMode: true,
     withStartIndices: true,
