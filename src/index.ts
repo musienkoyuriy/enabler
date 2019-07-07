@@ -9,11 +9,11 @@ import { Warning } from './models/warnings';
 import {
   getA11yWarningsFromStringTemplate,
   // getA11yWarningsFromJSXTemplate,
+  getASTTreeFromJSXFile,
   getContentFromVueFile,
   getContentFromVueXTemplate,
   getTemplateFromAngularDecorator,
-  getTemplateFromVueObject,
-  getASTTreeFromJSXFile
+  getTemplateFromVueObject
 } from './parser';
 import { getExtension, getFrameworkName } from './utils';
 
@@ -52,7 +52,7 @@ function getStringTemplate({ fileContent, fileExtension }: FileMetadata): string
 }
 
 function parseTemplate(templateUrl: string): void {
-  const framework = getFrameworkName()
+  const framework = getFrameworkName();
   const fileExtension = getExtension(templateUrl);
 
   let fileContent;
@@ -74,7 +74,7 @@ function parseTemplate(templateUrl: string): void {
     linkWarningsWithTemplate(warnings, templateUrl);
   } else {
     const ASTTree = getASTTreeFromJSXFile(fileContent);
-    console.log(ASTTree)
+    console.log(ASTTree);
 
     // const warnings = getA11yWarningsFromJSXTemplate(template, options);
     // linkWarningsWithTemplate(warnings, templateUrl);
