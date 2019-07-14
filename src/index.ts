@@ -52,7 +52,6 @@ function getStringTemplate({ fileContent, fileExtension }: FileMetadata): string
 }
 
 function parseTemplate(templateUrl: string): void {
-  const framework = getFrameworkName();
   const fileExtension = getExtension(templateUrl);
 
   let fileContent;
@@ -63,7 +62,7 @@ function parseTemplate(templateUrl: string): void {
     throw new Error(err);
   }
 
-  if (framework !== 'react') {
+  if (getFrameworkName() !== 'react') {
     const template = getStringTemplate({
       fileExtension,
       fileContent
