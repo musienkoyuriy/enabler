@@ -1,5 +1,5 @@
-import { ariaAttributes } from './../../constants';
 import DOMNodesValidator from '../../dom-nodes-validator';
+import { ariaAttributes } from './../../constants';
 
 export default function ariaUnsupportedElements($: any, content: string): DOMNodesValidator {
   return new DOMNodesValidator({
