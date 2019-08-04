@@ -68,7 +68,7 @@
     "escodegen-jsx": "0.1.0-1.4.2dev",
     "esprima": "4.0.1",
     "glob": "^7.1.4",
-    "husky": "3.0.1",
+    "husky": "3.0.2",
     "is-react": "1.3.3",
     "tslib": "1.10.0",
     "typescript": "3.5.3"
