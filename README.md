@@ -50,11 +50,11 @@ scripts: {
 
 ## Options:
 ```
-    -v, --version   output the version number
-    -p, --path <s>  Path for your root components folder
-    --ng            Detect angular abstractions
-    --vue           Support .vue files
-    -h, --help      output usage information
+    -v, --version    output the version number
+    -p, --path <s>   Path for your root components folder
+    --ng, --angular  Detect angular abstractions
+    --vue            Support .vue files
+    -h, --help       output usage information
  ```
 
  ## Built with:
