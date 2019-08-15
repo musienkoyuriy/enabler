@@ -57,14 +57,14 @@
   },
   "homepage": "https://github.com/musienkoyuriy/enabler#readme",
   "dependencies": {
-    "@types/cheerio": "0.22.12",
+    "@types/cheerio": "0.22.13",
     "@types/esprima": "4.0.2",
     "aria-query": "3.0.0",
     "chalk": "2.4.2",
     "cheerio": "^1.0.0-rc.2",
     "chokidar": "3.0.2",
     "commander": "3.0.0",
-    "escodegen": "1.11.1",
+    "escodegen": "1.12.0",
     "escodegen-jsx": "0.1.0-1.4.2dev",
     "esprima": "4.0.1",
     "glob": "^7.1.4",
@@ -75,7 +75,7 @@
   },
   "devDependencies": {
     "prettier": "1.18.2",
-    "rimraf": "2.6.3",
+    "rimraf": "3.0.0",
     "tslint": "5.18.0",
     "tslint-config-prettier": "1.18.0"
   },
