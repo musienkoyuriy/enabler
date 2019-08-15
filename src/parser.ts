@@ -5,8 +5,8 @@ const esprima = require('esprima');
 
 import { DOMNodesValidatorFactory, WholeValidatorFactory } from './models/validator';
 import { Warning } from './models/warnings';
-import * as domNodeRules from './rules/dom-nodes-rules';
-import * as wholeTemplateRules from './rules/whole-template-rules';
+import * as htmlDOMNodeRules from './rules/html/dom-nodes-rules';
+import * as htmlWholeTemplateRules from './rules/html/whole-template-rules';
 
 function flatWarnings(warnings: Warning[][]): Warning[] {
   const messages: Warning[] = [];
@@ -133,8 +133,8 @@ export function getA11yWarningsFromStringTemplate(template: string): Warning[] {
     withEndIndices: true
   });
 
-  const domNodeRulesFunctions: DOMNodesValidatorFactory[] = Object.values(domNodeRules);
-  const wholeTemplateRulesFunctions = Object.values(wholeTemplateRules);
+  const domNodeRulesFunctions: DOMNodesValidatorFactory[] = Object.values(htmlDOMNodeRules);
+  const wholeTemplateRulesFunctions = Object.values(htmlWholeTemplateRules);
 
   return [
     ...getWarnsFromTemplatesByNodeRules(domNodeRulesFunctions, template, parsed),
