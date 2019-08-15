@@ -9,12 +9,15 @@ import * as htmlDOMNodeRules from './rules/html/dom-nodes-rules';
 import * as htmlWholeTemplateRules from './rules/html/whole-template-rules';
 
 function flatWarnings(warnings: Warning[][]): Warning[] {
-  const messages: Warning[] = [];
+  let messages: Warning[] = [];
 
   warnings.forEach((ruleWarnings: Warning[]) => {
     ruleWarnings.forEach((warn: Warning) => {
       if (warn.message) {
-        messages.push(warn);
+        messages = [
+          ...messages,
+          warn
+        ]
       }
     });
   });
@@ -141,12 +144,15 @@ function getWarnsFromTemplatesByNodeRules(
   templateString: string,
   loadedTemplate: CheerioOptionsInterface
 ): Warning[] {
-  const warnings: Warning[][] = [];
+  let warnings: Warning[][] = [];
   rules.forEach((r: DOMNodesValidatorFactory) => {
     const rule = r(loadedTemplate, templateString);
 
     if (rule.warnings.length) {
-      warnings.push(rule.warnings);
+      warnings = [
+        ...warnings,
+        rule.warnings
+      ]
     }
   });
 
@@ -154,13 +160,16 @@ function getWarnsFromTemplatesByNodeRules(
 }
 
 function getWarnsFromWholeTemplates(rules: WholeValidatorFactory[], $: CheerioOptionsInterface): Warning[] {
-  const warnings: Warning[][] = [];
+  let warnings: Warning[][] = [];
 
   rules.forEach((r: WholeValidatorFactory) => {
     const rule = r($);
 
     if (rule.warnings.length) {
-      warnings.push(rule.warnings);
+      warnings = [
+        ...warnings,
+        rule.warnings
+      ]
     }
   });
 
