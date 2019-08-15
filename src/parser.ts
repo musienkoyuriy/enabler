@@ -116,14 +116,8 @@ export function getTemplateFromFrameworkWrapper(specificLine: string, fileConten
   return template;
 }
 
-export function getASTTreeFromJSXFile(fileContent: string): string {
-  const ASTTree = esprima.parseScript(fileContent, { jsx: true });
-  // const nodeTypes = ['ClassDeclaration', 'FunctionDeclaration'];
-  // const potentialComponents = ASTTree.body.filter((node: any) => nodeTypes.includes(node.type));
-
-  // const fn = escodegen.generate(potentialComponents[1]);
-  console.log(JSON.stringify(ASTTree));
-  return '';
+export function getASTTreeFromJSXFile(fileContent: string): {[key: string]: any} {
+  return esprima.parseScript(fileContent, { jsx: true });
 }
 
 export function getA11yWarningsFromStringTemplate(template: string): Warning[] {
@@ -173,6 +167,6 @@ function getWarnsFromWholeTemplates(rules: WholeValidatorFactory[], $: CheerioOp
   return flatWarnings(warnings);
 }
 
-export function getA11yWarningsFromJSXTemplate(template: string) {
-  console.log(template);
+export function getA11yWarningsFromJSXTemplate(templateAsAST: {[key: string]: any}) {
+  console.log(templateAsAST);
 }
