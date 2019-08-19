@@ -9,7 +9,6 @@ export interface DOMNodesValidatorOptions {
   content: string;
   assocAttrs?: string[];
   assocEvents?: string[];
-  solve?: (el: Cheerio) => void;
 }
 
 export type DOMNodesValidatorFactory = ($: CheerioOptionsInterface, content: string) => DOMNodesValidator;

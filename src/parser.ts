@@ -17,7 +17,7 @@ function flatWarnings(warnings: Warning[][]): Warning[] {
         messages = [
           ...messages,
           warn
-        ]
+        ];
       }
     });
   });
@@ -152,7 +152,7 @@ function getWarnsFromTemplatesByNodeRules(
       warnings = [
         ...warnings,
         rule.warnings
-      ]
+      ];
     }
   });
 
@@ -169,7 +169,7 @@ function getWarnsFromWholeTemplates(rules: WholeValidatorFactory[], $: CheerioOp
       warnings = [
         ...warnings,
         rule.warnings
-      ]
+      ];
     }
   });
 
