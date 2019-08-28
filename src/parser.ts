@@ -5,8 +5,8 @@ const esprima = require('esprima');
 
 import { DOMNodesValidatorFactory, WholeValidatorFactory } from './models/validator';
 import { Warning } from './models/warnings';
-import * as htmlDOMNodeRules from './rules/html/dom-nodes-rules';
-import * as htmlWholeTemplateRules from './rules/html/whole-template-rules';
+import * as htmlDOMNodeRules from './rules/dom-nodes-rules';
+import * as htmlWholeTemplateRules from './rules/whole-template-rules';
 
 function flatWarnings(warnings: Warning[][]): Warning[] {
   let messages: Warning[] = [];
