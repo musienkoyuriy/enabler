@@ -1,4 +1,9 @@
 {
+  "baseUrl": "../src",
+  "paths": {
+    "@models/*": ["models/*"]
+  },
+  "moduleResolution": "node",
   "compilerOptions": {
     "module": "commonjs",
     "noImplicitAny": true,

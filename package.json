@@ -63,15 +63,17 @@
     "chalk": "2.4.2",
     "cheerio": "^1.0.0-rc.2",
     "chokidar": "3.0.2",
-    "commander": "3.0.0",
+    "commander": "3.0.1",
     "escodegen": "1.12.0",
     "escodegen-jsx": "0.1.0-1.4.2dev",
     "esprima": "4.0.1",
     "glob": "^7.1.4",
-    "husky": "3.0.4",
+    "husky": "3.0.5",
     "is-react": "1.3.3",
+    "module-alias": "2.2.1",
+    "npm-check-updates": "3.1.21",
     "tslib": "1.10.0",
-    "typescript": "3.5.3"
+    "typescript": "3.6.2"
   },
   "devDependencies": {
     "prettier": "1.18.2",
@@ -87,5 +89,8 @@
       "pre-commit": "npm run lint",
       "pre-push": "npm run lint && npm run build"
     }
+  },
+  "_moduleAliases": {
+    "@models": "dist/lib/models"
   }
 }
