@@ -1,10 +1,8 @@
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { hasNonEmptyAttribute } from '../../utils';
 
-export default function hasAlt($: any, content: string): DOMNodesValidator {
+export default function hasAlt($: any): DOMNodesValidator {
   return new DOMNodesValidator({
-    $template: $,
-    content,
     selector: ['img', 'area'],
     assocAttrs: ['alt'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => {

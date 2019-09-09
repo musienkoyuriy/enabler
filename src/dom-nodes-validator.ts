@@ -62,20 +62,24 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
   $template: any;
   warnings: Warning[];
   warningMessage: string | ((el: any) => string);
-  content: string;
   assocAttrs: string[];
   assocEvents: string[];
+
+  content = ''
 
   constructor(options: DOMNodesValidatorOptions) {
     this.warnings = [];
 
-    this.$template = options.$template;
     this.selector = options.selector;
     this.isInvalid = options.isInvalid;
     this.warningMessage = options.warningMessage;
-    this.content = options.content || '';
     this.assocAttrs = options.assocAttrs || [];
     this.assocEvents = options.assocEvents || [];
+  }
+
+  validateAsHTML($: any, content = ''): Warning[] {
+    this.$template = $;
+    this.content = content;
 
     const selector = this._normalizeSelector(this.selector);
     const elements = this.$template(selector);
@@ -98,6 +102,8 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
         }
       });
     }
+
+    return this.warnings
   }
 
   private _normalizeSelector(selector: string | string[]): string {

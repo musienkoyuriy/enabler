@@ -1,10 +1,8 @@
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { getAttrValue } from '../../utils';
 
-export default function linksHasUrl($: any,content: string): DOMNodesValidator {
+export default function linksHasUrl($: any): DOMNodesValidator {
   return new DOMNodesValidator({
-    $template: $,
-    content,
     selector: 'a',
     assocAttrs: ['href'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => {

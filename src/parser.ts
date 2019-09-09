@@ -146,12 +146,14 @@ function getWarnsFromTemplatesByNodeRules(
 ): Warning[] {
   let warnings: Warning[][] = [];
   rules.forEach((r: DOMNodesValidatorFactory) => {
-    const rule = r(loadedTemplate, templateString);
+    const ruleWarns = r(loadedTemplate).validateAsHTML(
+      loadedTemplate, templateString
+    );
 
-    if (rule.warnings.length) {
+    if (ruleWarns.length) {
       warnings = [
         ...warnings,
-        rule.warnings
+        ruleWarns
       ];
     }
   });

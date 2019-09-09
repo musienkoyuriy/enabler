@@ -1,10 +1,8 @@
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { getAttrValue } from '../../utils';
 
-export default function mainHasRole($: any, content: string): DOMNodesValidator {
+export default function mainHasRole($: any): DOMNodesValidator {
   return new DOMNodesValidator({
-    $template: $,
-    content,
     selector: 'main',
     assocAttrs: ['role'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => {

@@ -1,10 +1,8 @@
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { hasNonEmptyAttribute } from '../../utils';
 
-export default function buttonHasType($: any, content: string): DOMNodesValidator {
+export default function buttonHasType($: any): DOMNodesValidator {
   return new DOMNodesValidator({
-    $template: $,
-    content,
     selector: 'button',
     assocAttrs: ['type'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => {

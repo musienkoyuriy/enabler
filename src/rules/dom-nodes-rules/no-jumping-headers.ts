@@ -6,10 +6,8 @@ function isDiffersByMoreThanLevel(headingLevel: number, nextHeader: any): boolea
   return Math.abs(headingLevel - nextHeadingLevel) > 1;
 }
 
-export default function noJumpingHeaders($: any, content: string): DOMNodesValidator {
+export default function noJumpingHeaders($: any): DOMNodesValidator {
   return new DOMNodesValidator({
-    $template: $,
-    content,
     selector: [':header'],
     isInvalid: (elem: CheerioElement) => {
       const headName = $(elem)[0].name;

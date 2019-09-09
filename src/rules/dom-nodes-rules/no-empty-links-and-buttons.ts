@@ -1,10 +1,8 @@
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { getAttrValue } from '../../utils';
 
-export default function emptyLinksAndButtons($: any, content: string): DOMNodesValidator {
+export default function emptyLinksAndButtons($: any): DOMNodesValidator {
   return new DOMNodesValidator({
-    $template: $,
-    content,
     selector: ['input[type="submit"]', 'button', 'a'],
     assocAttrs: ['value'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => {

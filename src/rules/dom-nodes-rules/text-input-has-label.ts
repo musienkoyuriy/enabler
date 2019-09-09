@@ -1,10 +1,8 @@
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { getAttrValue } from '../../utils';
 
-export default function textInputHasLabel($: any, content: string): DOMNodesValidator {
+export default function textInputHasLabel($: any): DOMNodesValidator {
   return new DOMNodesValidator({
-    $template: $,
-    content,
     selector: 'input[type="text"]',
     assocAttrs: ['id'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => {

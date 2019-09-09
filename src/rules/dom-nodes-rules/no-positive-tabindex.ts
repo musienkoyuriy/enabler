@@ -1,10 +1,8 @@
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { getAttrValue } from '../../utils';
 
-export default function noPositiveTabindex($: any, content: string): DOMNodesValidator {
+export default function noPositiveTabindex($: any): DOMNodesValidator {
   return new DOMNodesValidator({
-    $template: $,
-    content,
     selector: '*',
     assocAttrs: ['tabindex'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => {

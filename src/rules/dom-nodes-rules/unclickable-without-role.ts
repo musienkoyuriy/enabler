@@ -1,10 +1,8 @@
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { hasNonEmptyAttribute } from '../../utils';
 
-export default function unclickableWithoutRole($: any, content: string): DOMNodesValidator {
+export default function unclickableWithoutRole($: any): DOMNodesValidator {
   return new DOMNodesValidator({
-    $template: $,
-    content,
     selector: '*',
     assocEvents: ['click'],
     // @ts-ignore

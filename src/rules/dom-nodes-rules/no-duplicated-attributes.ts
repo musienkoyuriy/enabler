@@ -1,15 +1,17 @@
 import DOMNodesValidator from '../../dom-nodes-validator';
-import { getDuplicateAttributes } from '../../utils';
+// import { getDuplicateAttributes } from '../../utils';
 
-export default function noDuplicatedAttributes($: any,content: string): DOMNodesValidator {
+//@ts-ignore
+export default function noDuplicatedAttributes($: any): DOMNodesValidator {
   return new DOMNodesValidator({
-    $template: $,
-    content,
     selector: '*',
+    //@ts-ignore
     isInvalid: (elem: CheerioElement) => {
-      const duplicatedAttrs = getDuplicateAttributes($(elem), content);
+      // TODO: revert functionality below. Need refactoring
 
-      return Boolean(duplicatedAttrs.length);
+      // const duplicatedAttrs = getDuplicateAttributes($(elem), content);
+      return false;
+      // return Boolean(duplicatedAttrs.length);
     },
     warningMessage: 'Element should not have duplicated attributes.'
   });

@@ -1,10 +1,8 @@
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { getAttrValue } from '../../utils';
 
-export default function placeholderHasLabel($: any, content: string): DOMNodesValidator {
+export default function placeholderHasLabel($: any): DOMNodesValidator {
   return new DOMNodesValidator({
-    $template: $,
-    content,
     selector: ['input[type=text]', 'textarea'],
     assocAttrs: ['id', 'placeholder'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => {

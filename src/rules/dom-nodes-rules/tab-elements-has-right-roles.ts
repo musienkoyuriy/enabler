@@ -1,9 +1,7 @@
 import DOMNodesValidator from '../../dom-nodes-validator';
 
-export default function tabElementsHasRightRoles($: any, content: string): DOMNodesValidator {
+export default function tabElementsHasRightRoles($: any): DOMNodesValidator {
   return new DOMNodesValidator({
-    $template: $,
-    content,
     selector: [
       '[role="tabpanel"]',
       '[role="tablist"]',

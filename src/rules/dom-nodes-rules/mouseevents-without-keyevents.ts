@@ -1,10 +1,8 @@
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { EventPair } from '../../models/common';
 
-export default function mouseEventsWithoutKeyEvents($: any, content: string): DOMNodesValidator {
+export default function mouseEventsWithoutKeyEvents($: any): DOMNodesValidator {
   return new DOMNodesValidator({
-    $template: $,
-    content,
     selector: '*',
     assocEvents: ['mouseover', 'mouseout', 'focus', 'blur'],
     // @ts-ignore

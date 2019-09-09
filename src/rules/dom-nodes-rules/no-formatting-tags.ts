@@ -1,10 +1,8 @@
 import { formattingTags } from '../../constants';
 import DOMNodesValidator from '../../dom-nodes-validator';
 
-export default function noFormattingTags($: any, content: string): DOMNodesValidator {
+export default function noFormattingTags($: any): DOMNodesValidator {
   return new DOMNodesValidator({
-    $template: $,
-    content,
     selector: formattingTags,
     isInvalid: (elem: CheerioElement) => $(elem).length > 0,
     warningMessage: (el: any) => {

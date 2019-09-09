@@ -1,10 +1,8 @@
 import { ariaAttributes } from '../../constants';
 import DOMNodesValidator from '../../dom-nodes-validator';
 
-export default function ariaUnsupportedElements($: any, content: string): DOMNodesValidator {
+export default function ariaUnsupportedElements($: any): DOMNodesValidator {
   return new DOMNodesValidator({
-    $template: $,
-    content,
     selector: [
       'meta',
       'html',

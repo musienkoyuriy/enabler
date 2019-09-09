@@ -1,10 +1,8 @@
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { isAngular } from '../../utils';
 
-export default function clickWithKeyboardEvent($: any, content: string): DOMNodesValidator {
+export default function clickWithKeyboardEvent($: any): DOMNodesValidator {
   return new DOMNodesValidator({
-    $template: $,
-    content,
     selector: '*',
     isInvalid: (elem: CheerioElement) => {
       let eventsPairs = [

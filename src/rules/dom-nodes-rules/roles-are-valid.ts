@@ -2,10 +2,8 @@ const { roles } = require('aria-query');
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { getAttrValue, hasAttribute } from '../../utils';
 
-export default function rolesAreValid($: any, content: string): DOMNodesValidator {
+export default function rolesAreValid($: any): DOMNodesValidator {
   return new DOMNodesValidator({
-    $template: $,
-    content,
     selector: '*',
     assocAttrs: ['role'],
     isInvalid: (elem: CheerioElement, attrs?: string[]) => {

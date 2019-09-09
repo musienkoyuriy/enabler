@@ -1,9 +1,7 @@
 import DOMNodesValidator from '../../dom-nodes-validator';
 
-export default function controlsFormWrapped($: any, content: string): DOMNodesValidator {
+export default function controlsFormWrapped($: any): DOMNodesValidator {
   return new DOMNodesValidator({
-    $template: $,
-    content,
     selector: ['input', 'select', 'textarea'],
     isInvalid: (elem: CheerioElement) => {
       const parentForm = $(elem).closest('form, div[role=form]');
