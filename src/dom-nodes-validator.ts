@@ -65,7 +65,7 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
   assocAttrs: string[];
   assocEvents: string[];
 
-  content = ''
+  content = '';
 
   constructor(options: DOMNodesValidatorOptions) {
     this.warnings = [];
@@ -103,7 +103,7 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
       });
     }
 
-    return this.warnings
+    return this.warnings;
   }
 
   private _normalizeSelector(selector: string | string[]): string {
