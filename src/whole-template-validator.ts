@@ -11,9 +11,12 @@ export default class WholeTemplateValidator {
   _warnings: Warning[] = [];
   constructor(options: ValidatorOptions) {
     if (options.isInvalid()) {
-      this._warnings.push({
-        message: options.warningMessage
-      });
+      this._warnings = [
+        ...this._warnings,
+        {
+          message: options.warningMessage
+        }
+      ]
     }
   }
   get warnings(): Warning[] {

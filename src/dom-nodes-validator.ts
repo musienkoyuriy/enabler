@@ -117,9 +117,12 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
         ? this.warningMessage(el)
         : this.warningMessage;
 
-    this.warnings.push({
-      message,
-      line: getLineNumberByHTMLSegment(el, this.content)
-    });
+    this.warnings = [
+      ...this.warnings,
+      {
+        message,
+        line: getLineNumberByHTMLSegment(el, this.content)
+      }
+    ]
   }
 }
