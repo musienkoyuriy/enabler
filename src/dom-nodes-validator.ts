@@ -123,6 +123,6 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
         message,
         line: getLineNumberByHTMLSegment(el, this.content)
       }
-    ]
+    ];
   }
 }
