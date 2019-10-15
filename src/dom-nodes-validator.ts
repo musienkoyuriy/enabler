@@ -107,8 +107,7 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
   }
 
   private _normalizeSelector(selector: string | string[]): string {
-    // @ts-ignore
-    return Array.isArray(this.selector) ? selector.join(', ') : selector;
+    return Array.isArray(this.selector) ? (selector as string[]).join(', ') : selector as string;
   }
 
   private _addWarning(el: any): void {

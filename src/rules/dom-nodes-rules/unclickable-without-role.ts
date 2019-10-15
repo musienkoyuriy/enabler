@@ -7,6 +7,13 @@ export default function unclickableWithoutRole($: any): DOMNodesValidator {
     assocEvents: ['click'],
     // @ts-ignore
     isInvalid: (elem: CheerioElement, attrs?: string[], events?: string[]) => {
+      // TODO: need to wrap input parameters in object such as
+      // {
+      //   elem: Element,
+      //   attrs: ["id"],
+      //   events: ["mouseovet"]
+      // }
+      if (attrs !== undefined) console.log(attrs)
       const clickableElements = [
         'a[href]',
         'input[type="submit"]',

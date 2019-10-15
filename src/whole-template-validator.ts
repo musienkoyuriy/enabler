@@ -1,6 +1,6 @@
 import { Warning } from './models/warnings';
 
-interface ValidatorOptions {
+export interface ValidatorOptions {
   loadedTemplate: Cheerio;
   isInvalid: () => boolean;
   warningMessage: string;
@@ -9,7 +9,7 @@ export default class WholeTemplateValidator {
   // @ts-ignore
   //tslint:disable
   _warnings: Warning[] = [];
-  constructor(options: ValidatorOptions) {
+  constructor(public options: ValidatorOptions) {
     if (options.isInvalid()) {
       this._warnings = [
         ...this._warnings,

@@ -2,11 +2,12 @@ import DOMNodesValidator from '../../dom-nodes-validator';
 // import { getDuplicateAttributes } from '../../utils';
 
 // @ts-ignore
-export default function noDuplicatedAttributes($: any): DOMNodesValidator {
+export default function noDuplicatedAttributes(): DOMNodesValidator {
   return new DOMNodesValidator({
     selector: '*',
     // @ts-ignore
-    isInvalid: (elem: CheerioElement) => {
+    isInvalid: () => {
+    // isInvalid: (elem: CheerioElement) => {
       // TODO: revert functionality below. Need refactoring
 
       // const duplicatedAttrs = getDuplicateAttributes($(elem), content);
