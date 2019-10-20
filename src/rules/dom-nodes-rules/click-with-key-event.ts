@@ -1,10 +1,12 @@
+import { RuleData } from './../../models/rule';
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { isAngular } from '../../utils';
 
 export default function clickWithKeyboardEvent($: any): DOMNodesValidator {
   return new DOMNodesValidator({
     selector: '*',
-    isInvalid: (elem: CheerioElement) => {
+    isInvalid: (rule: RuleData) => {
+      const { elem } = rule;
       let eventsPairs = [
         {
           targetEvent: 'onclick',

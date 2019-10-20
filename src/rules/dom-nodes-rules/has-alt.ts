@@ -1,3 +1,4 @@
+import { RuleData } from './../../models/rule';
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { hasNonEmptyAttribute } from '../../utils';
 
@@ -5,7 +6,8 @@ export default function hasAlt($: any): DOMNodesValidator {
   return new DOMNodesValidator({
     selector: ['img', 'area'],
     assocAttrs: ['alt'],
-    isInvalid: (elem: CheerioElement, attrs?: string[]) => {
+    isInvalid: (rule: RuleData) => {
+      const { elem, attrs } = rule;
       return attrs ? !hasNonEmptyAttribute($(elem), attrs) : false;
     },
     warningMessage: (el: any) => {

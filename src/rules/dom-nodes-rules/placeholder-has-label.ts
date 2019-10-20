@@ -1,11 +1,13 @@
 import DOMNodesValidator from '../../dom-nodes-validator';
+import { RuleData } from './../../models/rule';
 import { getAttrValue } from '../../utils';
 
 export default function placeholderHasLabel($: any): DOMNodesValidator {
   return new DOMNodesValidator({
     selector: ['input[type=text]', 'textarea'],
     assocAttrs: ['id', 'placeholder'],
-    isInvalid: (elem: CheerioElement, attrs?: string[]) => {
+    isInvalid: (rule: RuleData) => {
+      const { elem, attrs} = rule;
       const placeholderAttrs = attrs ? attrs.filter(attr => /placeholder/gi.test(attr)) : [];
       const idAttrs = attrs ? attrs.filter(attr => /id/gi.test(attr)) : [];
 

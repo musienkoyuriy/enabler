@@ -1,3 +1,4 @@
+import { RuleData } from './../../models/rule';
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { hasNonEmptyAttribute } from '../../utils';
 
@@ -5,7 +6,7 @@ export default function labelHasFor($: any): DOMNodesValidator {
   return new DOMNodesValidator({
     selector: 'label',
     assocAttrs: ['for'],
-    isInvalid: (elem: CheerioElement, attrs?: string[]) => attrs ? !hasNonEmptyAttribute($(elem), attrs) : false,
+    isInvalid: (rule: RuleData) => rule.attrs ? !hasNonEmptyAttribute($(rule.elem), rule.attrs) : false,
     warningMessage: '"for" attribute is missing in "label".'
   });
 }

@@ -1,3 +1,4 @@
+import { RuleData } from './../../models/rule';
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { getAttrValue } from '../../utils';
 
@@ -5,7 +6,8 @@ export default function emptyLinksAndButtons($: any): DOMNodesValidator {
   return new DOMNodesValidator({
     selector: ['input[type="submit"]', 'button', 'a'],
     assocAttrs: ['value'],
-    isInvalid: (elem: CheerioElement, attrs?: string[]) => {
+    isInvalid: (rule: RuleData) => {
+      const { elem, attrs } = rule
       const tagName = $(elem)[0].name;
 
       return [

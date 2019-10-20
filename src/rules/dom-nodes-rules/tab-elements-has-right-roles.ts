@@ -1,4 +1,5 @@
 import DOMNodesValidator from '../../dom-nodes-validator';
+import { RuleData } from './../../models/rule';
 
 export default function tabElementsHasRightRoles($: any): DOMNodesValidator {
   return new DOMNodesValidator({
@@ -7,7 +8,8 @@ export default function tabElementsHasRightRoles($: any): DOMNodesValidator {
       '[role="tablist"]',
       '[role="tab"]'
     ],
-    isInvalid: (elem: CheerioElement) => {
+    isInvalid: (rule: RuleData) => {
+      const { elem } = rule;
       const role = $(elem).attr('role');
       const isChildrenTabElement = role === 'tab' || role === 'tabpanel';
       const hasParentTablist = $(elem).closest('[role=tablist]').length;

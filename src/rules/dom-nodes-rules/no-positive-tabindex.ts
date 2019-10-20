@@ -1,3 +1,4 @@
+import { RuleData } from './../../models/rule';
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { getAttrValue } from '../../utils';
 
@@ -5,7 +6,8 @@ export default function noPositiveTabindex($: any): DOMNodesValidator {
   return new DOMNodesValidator({
     selector: '*',
     assocAttrs: ['tabindex'],
-    isInvalid: (elem: CheerioElement, attrs?: string[]) => {
+    isInvalid: (rule: RuleData) => {
+      const { elem, attrs } = rule;
       const tabIndex = attrs ? getAttrValue($(elem), attrs) : '';
 
       return Number(tabIndex) > 0;

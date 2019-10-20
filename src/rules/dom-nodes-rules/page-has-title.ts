@@ -1,9 +1,11 @@
+import { RuleData } from './../../models/rule';
 import DOMNodesValidator from '../../dom-nodes-validator';
 
 export default function pageHasTitle($: any): DOMNodesValidator {
   return new DOMNodesValidator({
     selector: 'html head',
-    isInvalid: (elem: CheerioElement) => {
+    isInvalid: (rule: RuleData) => {
+      const { elem } = rule;
       const hasHead = $(elem).length > 0;
       const title = $(elem).children('title');
       const hasNoTitle = (hasHead && !title.length) || (hasHead && !title.text());

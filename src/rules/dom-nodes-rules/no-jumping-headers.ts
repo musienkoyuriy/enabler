@@ -1,3 +1,4 @@
+import { RuleData } from './../../models/rule';
 import DOMNodesValidator from '../../dom-nodes-validator';
 
 function isDiffersByMoreThanLevel(headingLevel: number, nextHeader: any): boolean {
@@ -9,7 +10,8 @@ function isDiffersByMoreThanLevel(headingLevel: number, nextHeader: any): boolea
 export default function noJumpingHeaders($: any): DOMNodesValidator {
   return new DOMNodesValidator({
     selector: [':header'],
-    isInvalid: (elem: CheerioElement) => {
+    isInvalid: (rule: RuleData) => {
+      const { elem } = rule;
       const headName = $(elem)[0].name;
       const headingLevel = Number(headName[1]);
       const nextHeader = $(elem).next(':header');

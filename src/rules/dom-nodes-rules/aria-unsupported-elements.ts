@@ -1,3 +1,4 @@
+import { RuleData } from './../../models/rule';
 import { ariaAttributes } from '../../constants';
 import DOMNodesValidator from '../../dom-nodes-validator';
 
@@ -10,8 +11,9 @@ export default function ariaUnsupportedElements($: any): DOMNodesValidator {
       'style'
     ],
     assocAttrs: ariaAttributes,
-    isInvalid: (elem: CheerioElement, attrs?: string[]) => {
-      const attributes = $(elem).attr();
+    isInvalid: (rule: RuleData) => {
+      const { attrs } = rule;
+      const attributes = $(rule.elem).attr();
 
       return attrs ? attrs.some(attr => attr in attributes) : false;
     },

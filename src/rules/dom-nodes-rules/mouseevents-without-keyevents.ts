@@ -1,3 +1,4 @@
+import { RuleData } from './../../models/rule';
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { EventPair } from '../../models/common';
 
@@ -6,14 +7,8 @@ export default function mouseEventsWithoutKeyEvents($: any): DOMNodesValidator {
     selector: '*',
     assocEvents: ['mouseover', 'mouseout', 'focus', 'blur'],
     // @ts-ignore
-    isInvalid: (elem: CheerioElement, attrs?: string[], events?: string[]) => {
-      // TODO: need to wrap input parameters in object such as
-      // {
-      //   elem: Element,
-      //   attrs: ["id"],
-      //   events: ["mouseovet"]
-      // }
-      if (attrs !== undefined) console.log(attrs)
+    isInvalid: (rule: RuleData) => {
+      const { elem, events } = rule
       const mouseEvents = events ? events.filter((attr: string) => /mouse/gi.test(attr)) : [];
       const blurAndFocusEvents = events ? events.filter((attr: string) => /blur|focus/gi.test(attr)) : [];
       const eventPairs: EventPair[] = mouseEvents.map((mouseEvent: string) => {

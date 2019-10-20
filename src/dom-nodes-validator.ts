@@ -1,5 +1,6 @@
 import { DOMNodesValidatorOptions } from './models/validator';
 import { Warning } from './models/warnings';
+import { RuleData } from './models/rule';
 import { getLineNumberByHTMLSegment, isAngular, isVue } from './utils';
 
 function completeAttrsWithFrameworkSpecific(attrs: string[]): string[] {
@@ -57,7 +58,7 @@ function completeEventsWithFrameworkSpecific(events: string[]): string[] {
 }
 
 export default class DOMNodesValidator implements DOMNodesValidatorOptions {
-  isInvalid: (template: any, attrs?: string[], events?: string[]) => boolean;
+  isInvalid: (rule: RuleData) => boolean;
   selector: string[] | string;
   $template: any;
   warnings: Warning[];
@@ -86,6 +87,7 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
 
     let attrs: string[];
     let events: string[];
+    let ruleData: RuleData
 
     if (elements.length) {
       elements.each((_: number, element: any) => {
@@ -97,7 +99,13 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
           events = completeEventsWithFrameworkSpecific(this.assocEvents);
         }
 
-        if (this.isInvalid(this.$template(element), attrs, events)) {
+        ruleData = {
+          elem: this.$template(element),
+          attrs,
+          events,
+        }
+
+        if (this.isInvalid(ruleData)) {
           this._addWarning(element);
         }
       });
