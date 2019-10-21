@@ -1,6 +1,6 @@
-import { RuleData } from './../../models/rule';
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { hasNonEmptyAttribute } from '../../utils';
+import { RuleData } from './../../models/rule';
 
 export default function iFrameHasTitle($: any): DOMNodesValidator {
   return new DOMNodesValidator({

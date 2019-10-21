@@ -1,6 +1,6 @@
 import DOMNodesValidator from '../../dom-nodes-validator';
-import { RuleData } from './../../models/rule';
 import { hasNonEmptyAttribute } from '../../utils';
+import { RuleData } from './../../models/rule';
 
 export default function scopeOnlyInCell($: any): DOMNodesValidator {
   return new DOMNodesValidator({

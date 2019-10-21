@@ -1,13 +1,13 @@
-import { RuleData } from './../../models/rule';
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { getAttrValue } from '../../utils';
+import { RuleData } from './../../models/rule';
 
 export default function mainHasRole($: any): DOMNodesValidator {
   return new DOMNodesValidator({
     selector: 'main',
     assocAttrs: ['role'],
     isInvalid: (rule: RuleData) => {
-      const { elem, attrs } = rule
+      const { elem, attrs } = rule;
       const roleValue = attrs ? getAttrValue($(elem), attrs) : '';
       return roleValue !== 'main';
     },

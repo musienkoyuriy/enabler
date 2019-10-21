@@ -1,13 +1,13 @@
-import { RuleData } from './../../models/rule';
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { getAttrValue } from '../../utils';
+import { RuleData } from './../../models/rule';
 
 export default function emptyLinksAndButtons($: any): DOMNodesValidator {
   return new DOMNodesValidator({
     selector: ['input[type="submit"]', 'button', 'a'],
     assocAttrs: ['value'],
     isInvalid: (rule: RuleData) => {
-      const { elem, attrs } = rule
+      const { elem, attrs } = rule;
       const tagName = $(elem)[0].name;
 
       return [

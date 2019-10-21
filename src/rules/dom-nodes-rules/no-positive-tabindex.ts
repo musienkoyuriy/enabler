@@ -1,6 +1,6 @@
-import { RuleData } from './../../models/rule';
 import DOMNodesValidator from '../../dom-nodes-validator';
 import { getAttrValue } from '../../utils';
+import { RuleData } from './../../models/rule';
 
 export default function noPositiveTabindex($: any): DOMNodesValidator {
   return new DOMNodesValidator({

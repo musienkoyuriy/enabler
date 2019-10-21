@@ -1,6 +1,6 @@
-import { RuleData } from './../../models/rule';
 import { formattingTags } from '../../constants';
 import DOMNodesValidator from '../../dom-nodes-validator';
+import { RuleData } from './../../models/rule';
 
 export default function noFormattingTags($: any): DOMNodesValidator {
   return new DOMNodesValidator({

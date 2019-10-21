@@ -1,6 +1,6 @@
+import { RuleData } from './models/rule';
 import { DOMNodesValidatorOptions } from './models/validator';
 import { Warning } from './models/warnings';
-import { RuleData } from './models/rule';
 import { getLineNumberByHTMLSegment, isAngular, isVue } from './utils';
 
 function completeAttrsWithFrameworkSpecific(attrs: string[]): string[] {
@@ -61,21 +61,15 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
   isInvalid: (rule: RuleData) => boolean;
   selector: string[] | string;
   $template: any;
-  warnings: Warning[];
+  warnings: Warning[] = [];
   warningMessage: string | ((el: any) => string);
-  assocAttrs: string[];
-  assocEvents: string[];
+  assocAttrs = [];
+  assocEvents = [];
 
   content = '';
 
   constructor(options: DOMNodesValidatorOptions) {
-    this.warnings = [];
-
-    this.selector = options.selector;
-    this.isInvalid = options.isInvalid;
-    this.warningMessage = options.warningMessage;
-    this.assocAttrs = options.assocAttrs || [];
-    this.assocEvents = options.assocEvents || [];
+    Object.assign(this, options)
   }
 
   validateAsHTML($: any, content = ''): Warning[] {
@@ -87,7 +81,7 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
 
     let attrs: string[];
     let events: string[];
-    let ruleData: RuleData
+    let ruleData: RuleData;
 
     if (elements.length) {
       elements.each((_: number, element: any) => {
@@ -103,7 +97,7 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
           elem: this.$template(element),
           attrs,
           events,
-        }
+        };
 
         if (this.isInvalid(ruleData)) {
           this._addWarning(element);

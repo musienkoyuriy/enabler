@@ -1,6 +1,6 @@
-import { RuleData } from './rule';
 import DOMNodesValidator from '../dom-nodes-validator';
 import WholeTemplateValidator from '../whole-template-validator';
+import { RuleData } from './rule';
 
 export interface DOMNodesValidatorOptions {
   isInvalid: (rule: RuleData) => boolean;

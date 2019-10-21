@@ -1,5 +1,5 @@
-import { RuleData } from './../../models/rule';
 import DOMNodesValidator from '../../dom-nodes-validator';
+import { RuleData } from './../../models/rule';
 
 export default function controlsFormWrapped($: any): DOMNodesValidator {
   return new DOMNodesValidator({

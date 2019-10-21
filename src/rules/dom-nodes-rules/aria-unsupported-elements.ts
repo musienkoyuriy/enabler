@@ -1,6 +1,6 @@
-import { RuleData } from './../../models/rule';
 import { ariaAttributes } from '../../constants';
 import DOMNodesValidator from '../../dom-nodes-validator';
+import { RuleData } from './../../models/rule';
 
 export default function ariaUnsupportedElements($: any): DOMNodesValidator {
   return new DOMNodesValidator({

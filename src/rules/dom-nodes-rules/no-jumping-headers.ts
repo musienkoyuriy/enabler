@@ -1,5 +1,5 @@
-import { RuleData } from './../../models/rule';
 import DOMNodesValidator from '../../dom-nodes-validator';
+import { RuleData } from './../../models/rule';
 
 function isDiffersByMoreThanLevel(headingLevel: number, nextHeader: any): boolean {
   const nextHeadingLevel = Number(nextHeader[0].name[1]);
