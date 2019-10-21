@@ -16,7 +16,7 @@ export default function emptyLinksAndButtons($: any): DOMNodesValidator {
         tagName === 'a' && !$(elem).html()
       ].some(Boolean);
     },
-    warningMessage: (el: any) => {
+    warningMessage: (el: CheerioElement) => {
       const tagName = el.name;
       const message = tagName === 'input' ?
         '"Value" attribute should not be empty in "input" tag' :

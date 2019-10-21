@@ -10,7 +10,7 @@ export default function controlsFormWrapped($: any): DOMNodesValidator {
 
       return !parentForm.length;
     },
-    warningMessage: (el: any) => {
+    warningMessage: (el: CheerioElement) => {
       const tagName = el.tagName;
 
       return `<${tagName}> element should be wrapped in <form> or <div role="form">.`;

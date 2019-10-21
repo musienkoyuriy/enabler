@@ -5,7 +5,7 @@ import { RuleData } from './rule';
 export interface DOMNodesValidatorOptions {
   isInvalid: (rule: RuleData) => boolean;
   selector: string[] | string;
-  warningMessage: string | ((el: Cheerio) => string);
+  warningMessage: string | ((el: CheerioElement) => string);
   assocAttrs?: string[];
   assocEvents?: string[];
 }

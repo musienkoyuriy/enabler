@@ -62,14 +62,14 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
   selector: string[] | string;
   $template: any;
   warnings: Warning[] = [];
-  warningMessage: string | ((el: any) => string);
+  warningMessage: string | ((el: CheerioElement) => string);
   assocAttrs = [];
   assocEvents = [];
 
   content = '';
 
   constructor(options: DOMNodesValidatorOptions) {
-    Object.assign(this, options)
+    Object.assign(this, options);
   }
 
   validateAsHTML($: any, content = ''): Warning[] {

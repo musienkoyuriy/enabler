@@ -18,7 +18,7 @@ export default function tabElementsHasRightRoles($: any): DOMNodesValidator {
       return (isChildrenTabElement && !hasParentTablist) ||
               (!isChildrenTabElement && !hasChildrenTabElements);
     },
-    warningMessage: (el: any) => {
+    warningMessage: (el: CheerioElement) => {
       const role = el.attribs.role;
 
       return role === 'tablist' ?
