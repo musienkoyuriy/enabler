@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import { bold } from 'chalk';
 import { readFileSync } from 'fs';
 
 const glob = require('glob');
@@ -17,7 +17,7 @@ import {
 } from './parser';
 import { getExtension, getFrameworkName } from './utils';
 
-const error = chalk.bold.red;
+const error = bold.red;
 
 const templatesWithWarnings = Object.create(null);
 

@@ -1,14 +1,12 @@
-import chalk from 'chalk';
+import { bold, keyword, underline } from 'chalk';
 import { TemplatesWithWarnings, Warning } from './models/warnings';
 import { maybePluralize } from './utils';
 
 const { log, warn } = console;
-const error = chalk.bold.red;
-const warning = chalk.keyword('orange');
-const success = chalk.keyword('green');
-const yellow = chalk.keyword('yellow');
-
-const { underline } = chalk;
+const error = bold.red;
+const warning = keyword('orange');
+const success = keyword('green');
+const yellow = keyword('yellow');
 
 const spacedLog = (text: string): void => {
   log();
