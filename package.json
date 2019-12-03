@@ -57,10 +57,10 @@
   },
   "homepage": "https://github.com/musienkoyuriy/enabler#readme",
   "dependencies": {
-    "@types/cheerio": "0.22.14",
+    "@types/cheerio": "0.22.15",
     "@types/esprima": "4.0.2",
     "@types/node": "12.12.14",
-    "aria-query": "3.0.0",
+    "aria-query": "4.0.1",
     "chalk": "3.0.0",
     "cheerio": "^1.0.0-rc.2",
     "commander": "4.0.1",
