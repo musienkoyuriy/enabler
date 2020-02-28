@@ -52,14 +52,14 @@ export function hasAttribute($elem: Cheerio, attrs: string[]): boolean {
 
 export function hasNonEmptyAttribute($elem: Cheerio, attrs: string[]): boolean {
   return attrs.some((attr: string) => {
-    const attrValue = $elem.attr(attr) || ""
-    return (attr in $elem.attr() && attrValue.trim() !== "")
+    const attrValue = $elem.attr(attr) || "";
+    return (attr in $elem.attr() && attrValue.trim() !== "");
   });
 }
 
 export function getAttrValue($elem: Cheerio, attrs: string[]): string {
   const filledAttrs = attrs.filter(attr => $elem.attr(attr));
-  const attrValue = $elem.attr(filledAttrs[0]) || ""
+  const attrValue = $elem.attr(filledAttrs[0]) || "";
 
   return filledAttrs.length ? attrValue : '';
 }
