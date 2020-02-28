@@ -4,7 +4,7 @@ import program = require('commander');
 import { run } from '.';
 
 program
-  .version('2.9.0', '-v, --version')
+  .version('2.10.0', '-v, --version')
   .option('-p, --path <s>', 'Path for your root components folder')
   .option('--react', 'Detect react components')
   .option('--ng, --angular', 'Detect angular abstractions')
