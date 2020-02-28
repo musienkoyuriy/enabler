@@ -1,7 +1,7 @@
-// @ts-ignore
-@Component({
+// ignore: undefined_annotation
+@Component(
   selector: 'example',
-  template: `
+  template: '''
     <h1>2</h1>
     <h3>2</h1>
     <h2>2</h2>
@@ -23,7 +23,6 @@
     <input type="submit" [value]="" id="asd">
     <div (mouseover)="f"></div>
     <basefont></basefont>
-  `
-})
-// @ts-ignore
-export class ExampleComponent {}
+  '''
+)
+class ExampleComponent {}

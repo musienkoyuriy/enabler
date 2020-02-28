@@ -3,10 +3,15 @@ const esprima = require('esprima');
 // const escodegen = require('escodegen-jsx');
 // const isReactComponent = require('is-react');
 
-import { DOMNodesValidatorFactory, WholeValidatorFactory } from './models/validator';
+import {
+  DOMNodesValidatorFactory,
+  WholeValidatorFactory
+} from './models/validator';
 import { Warning } from './models/warnings';
 import * as htmlDOMNodeRules from './rules/dom-nodes-rules';
 import * as htmlWholeTemplateRules from './rules/whole-template-rules';
+
+type lang = 'ts' | 'dart';
 
 function flatWarnings(warnings: Warning[][]): Warning[] {
   let messages: Warning[] = [];
@@ -14,10 +19,7 @@ function flatWarnings(warnings: Warning[][]): Warning[] {
   warnings.forEach((ruleWarnings: Warning[]) => {
     ruleWarnings.forEach((warn: Warning) => {
       if (warn.message) {
-        messages = [
-          ...messages,
-          warn
-        ];
+        messages = [...messages, warn];
       }
     });
   });
@@ -62,32 +64,47 @@ export function getContentFromVueXTemplate(fileContent: string): string {
 }
 
 export function getTemplateFromVueObject(fileContent: string): string {
-  return getTemplateFromFrameworkWrapper(
-    'Vue.component',
-    fileContent
-  );
+  return getTemplateFromFrameworkWrapper('Vue.component', fileContent);
 }
 
-export function getTemplateFromAngularDecorator(fileContent: string): string {
-  return getTemplateFromFrameworkWrapper(
-    '@Component',
-    fileContent
-  );
+export function getTemplateFromAngularDecorator(
+  fileContent: string,
+  // tslint:disable-next-line:no-shadowed-variable
+  lang: lang
+): string {
+  return getTemplateFromFrameworkWrapper('@Component', fileContent, lang);
 }
 
-export function getTemplateFromFrameworkWrapper(specificLine: string, fileContent: string): string {
+export function getTemplateFromFrameworkWrapper(
+  specificLine: string,
+  fileContent: string,
+  // tslint:disable-next-line:no-shadowed-variable
+  lang?: lang
+): string {
   const fileAsArray = fileContent.split('\n');
 
-  const frameworkSpecificLine = fileAsArray.find((line: string) => line.includes(specificLine));
+  const frameworkSpecificLine = fileAsArray.find((line: string) =>
+    line.includes(specificLine)
+  );
 
   if (!frameworkSpecificLine) {
     return '';
   }
 
   const decoratorLineNumber = fileAsArray.indexOf(frameworkSpecificLine) + 1;
-  const templatePropPattern = /template\s{0,}:\s{0,}`/;
+  let templatePropPattern: RegExp;
 
-  const stringExceptFrameworkSpecificLine = fileAsArray.slice(decoratorLineNumber);
+  if (lang === 'ts') {
+    templatePropPattern = /template\s{0,}:\s{0,}`/;
+  } else if (lang === 'dart') {
+    templatePropPattern = /template\s{0,}:\s{0,}'''/;
+  } else {
+    templatePropPattern = new RegExp("");
+  }
+
+  const stringExceptFrameworkSpecificLine = fileAsArray.slice(
+    decoratorLineNumber
+  );
   const templateStartLine = stringExceptFrameworkSpecificLine.find(line =>
     templatePropPattern.test(line)
   );
@@ -113,13 +130,17 @@ export function getTemplateFromFrameworkWrapper(specificLine: string, fileConten
 
   const template = stringExceptTemplateLiteral.slice(
     0,
-    stringExceptTemplateLiteral.indexOf('`')
+    lang === 'ts'
+      ? stringExceptTemplateLiteral.indexOf('`')
+      : stringExceptTemplateLiteral.indexOf("'''")
   );
 
   return template;
 }
 
-export function getASTTreeFromJSXFile(fileContent: string): {[key: string]: any} {
+export function getASTTreeFromJSXFile(
+  fileContent: string
+): { [key: string]: any } {
   return esprima.parseScript(fileContent, { jsx: true });
 }
 
@@ -130,11 +151,17 @@ export function getA11yWarningsFromStringTemplate(template: string): Warning[] {
     withEndIndices: true
   });
 
-  const domNodeRulesFunctions: DOMNodesValidatorFactory[] = Object.values(htmlDOMNodeRules);
+  const domNodeRulesFunctions: DOMNodesValidatorFactory[] = Object.values(
+    htmlDOMNodeRules
+  );
   const wholeTemplateRulesFunctions = Object.values(htmlWholeTemplateRules);
 
   return [
-    ...getWarnsFromTemplatesByNodeRules(domNodeRulesFunctions, template, parsed),
+    ...getWarnsFromTemplatesByNodeRules(
+      domNodeRulesFunctions,
+      template,
+      parsed
+    ),
     ...getWarnsFromWholeTemplates(wholeTemplateRulesFunctions, parsed)
   ];
 }
@@ -147,37 +174,37 @@ function getWarnsFromTemplatesByNodeRules(
   let warnings: Warning[][] = [];
   rules.forEach((r: DOMNodesValidatorFactory) => {
     const ruleWarns = r(loadedTemplate).validateAsHTML(
-      loadedTemplate, templateString
+      loadedTemplate,
+      templateString
     );
 
     if (ruleWarns.length) {
-      warnings = [
-        ...warnings,
-        ruleWarns
-      ];
+      warnings = [...warnings, ruleWarns];
     }
   });
 
   return flatWarnings(warnings);
 }
 
-function getWarnsFromWholeTemplates(rules: WholeValidatorFactory[], $: CheerioOptionsInterface): Warning[] {
+function getWarnsFromWholeTemplates(
+  rules: WholeValidatorFactory[],
+  $: CheerioOptionsInterface
+): Warning[] {
   let warnings: Warning[][] = [];
 
   rules.forEach((r: WholeValidatorFactory) => {
     const rule = r($);
 
     if (rule.warnings.length) {
-      warnings = [
-        ...warnings,
-        rule.warnings
-      ];
+      warnings = [...warnings, rule.warnings];
     }
   });
 
   return flatWarnings(warnings);
 }
 
-export function getA11yWarningsFromJSXTemplate(templateAsAST: {[key: string]: any}) {
+export function getA11yWarningsFromJSXTemplate(templateAsAST: {
+  [key: string]: any;
+}) {
   console.log(templateAsAST);
 }

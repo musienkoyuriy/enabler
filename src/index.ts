@@ -21,7 +21,10 @@ const error = bold.red;
 
 const templatesWithWarnings = Object.create(null);
 
-function linkWarningsWithTemplate(warnings: Warning[], templateUrl: string): void {
+function linkWarningsWithTemplate(
+  warnings: Warning[],
+  templateUrl: string
+): void {
   if (templateUrl in templatesWithWarnings) {
     templatesWithWarnings[templateUrl] = [
       ...templatesWithWarnings[templateUrl],
@@ -32,12 +35,20 @@ function linkWarningsWithTemplate(warnings: Warning[], templateUrl: string): voi
   }
 }
 
-function getStringTemplate({ fileContent, fileExtension }: FileMetadata): string {
+function getStringTemplate({
+  fileContent,
+  fileExtension
+}: FileMetadata): string {
+  console.log(getFrameworkName());
   switch (getFrameworkName()) {
     case 'angular':
-      return fileExtension === 'ts'
-        ? getTemplateFromAngularDecorator(fileContent)
-        : fileContent;
+      if (fileExtension === 'ts') {
+        return getTemplateFromAngularDecorator(fileContent, 'ts');
+      } else if (fileExtension === 'dart') {
+        return getTemplateFromAngularDecorator(fileContent, 'dart');
+      } else {
+        return fileContent;
+      }
     case 'vue':
       if (fileExtension === 'vue') {
         return getContentFromVueFile(fileContent);
@@ -89,7 +100,7 @@ function getExtensionPattern(): string {
   if (framework === 'vue') {
     return '+(vue|ts|js|html)';
   } else if (framework === 'angular') {
-    return '+(html|ts)';
+    return '+(html|ts|dart)';
   } else if (framework === 'react') {
     return '+(js|jsx)';
   }
@@ -109,15 +120,18 @@ export function run(program: any): void {
     process.exit(0);
   }
 
-  glob(`${path}/**/*.${getExtensionPattern()}`, (err: Error, fileNames: string[]) => {
-    if (err) {
-      throw new Error(`Files search error ${err}`);
-    }
+  glob(
+    `${path}/**/*.${getExtensionPattern()}`,
+    (err: Error, fileNames: string[]) => {
+      if (err) {
+        throw new Error(`Files search error ${err}`);
+      }
 
-    handleTemplates(fileNames);
+      handleTemplates(fileNames);
 
-    if (program.watch) {
-      process.stdin.resume();
+      if (program.watch) {
+        process.stdin.resume();
+      }
     }
-  });
+  );
 }

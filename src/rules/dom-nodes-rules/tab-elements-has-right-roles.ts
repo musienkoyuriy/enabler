@@ -15,14 +15,16 @@ export default function tabElementsHasRightRoles($: any): DOMNodesValidator {
       const hasParentTablist = $(elem).closest('[role=tablist]').length;
       const hasChildrenTabElements = $(elem).find('[role="tab"], [role="tabpanel"]').length;
 
-      return (isChildrenTabElement && !hasParentTablist) ||
-              (!isChildrenTabElement && !hasChildrenTabElements);
+      return (
+        (isChildrenTabElement && !hasParentTablist) ||
+        (!isChildrenTabElement && !hasChildrenTabElements)
+      );
     },
     warningMessage: (el: CheerioElement) => {
       const role = el.attribs.role;
 
       return role === 'tablist' ?
-        'Elements with role="tablist" should should have elements with role="tabpanel" and role="tab".' :
+        'Elements with role="tablist" should have elements with role="tabpanel" and role="tab".' :
         'Elements with role="tabpanel" or role="tab" should be wrapped in role="tablist".';
     }
   });

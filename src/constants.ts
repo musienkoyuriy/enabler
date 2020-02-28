@@ -34,11 +34,23 @@ export const ariaAttributes = [
 ];
 
 export const formattingTags = [
-  'align', 'alink', 'background',
-  'basefont', 'bgcolor', 'border',
-  'color', 'text', 'vlink',
-  'height', 'basefont',
-  'blink', 'center', 'font',
-  'marquee', 's', 'strike',
-  'tt', 'u'
+  'align',
+  'alink',
+  'background',
+  'basefont',
+  'bgcolor',
+  'border',
+  'color',
+  'text',
+  'vlink',
+  'height',
+  'basefont',
+  'blink',
+  'center',
+  'font',
+  'marquee',
+  's',
+  'strike',
+  'tt',
+  'u'
 ];
