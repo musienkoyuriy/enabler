@@ -7,7 +7,9 @@ export default function noDuplicatedIds($: any): WholeTemplateValidator {
     isInvalid: () => {
       const ids: string[] = [];
 
-      $('[id]').each((_: number, elem: CheerioElement) => ids.push($(elem).attr('id')));
+      $('[id]').each((_: number, elem: CheerioElement) =>
+        ids.push($(elem).attr('id'))
+      );
 
       return getDuplicates(ids).length > 0;
     },

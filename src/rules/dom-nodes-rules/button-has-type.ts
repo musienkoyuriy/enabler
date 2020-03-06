@@ -10,10 +10,14 @@ export default function buttonHasType($: any): DOMNodesValidator {
       const { elem, attrs } = rule;
       const buttonTypes = ['button', 'reset', 'submit'];
       if (attrs) {
-        return !hasNonEmptyAttribute($(elem), attrs) || !buttonTypes.includes($(elem).attr('type'));
+        return (
+          !hasNonEmptyAttribute($(elem), attrs) ||
+          !buttonTypes.includes($(elem).attr('type'))
+        );
       }
       return false;
     },
-    warningMessage: '<button> element should have "type" to prevent unexpected behavior. For example if you need button just as an interface element use <button type="button"> instead'
+    warningMessage:
+      '<button> element should have "type" to prevent unexpected behavior. For example if you need button just as an interface element use <button type="button"> instead'
   });
 }

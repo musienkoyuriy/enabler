@@ -99,7 +99,7 @@ export function getTemplateFromFrameworkWrapper(
   } else if (lang === 'dart') {
     templatePropPattern = /template\s{0,}:\s{0,}'''/;
   } else {
-    templatePropPattern = new RegExp("");
+    templatePropPattern = new RegExp('');
   }
 
   const stringExceptFrameworkSpecificLine = fileAsArray.slice(

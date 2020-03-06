@@ -16,7 +16,7 @@ export default class WholeTemplateValidator {
         {
           message: options.warningMessage
         }
-      ]
+      ];
     }
   }
   get warnings(): Warning[] {

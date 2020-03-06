@@ -10,5 +10,9 @@ export interface DOMNodesValidatorOptions {
   assocEvents?: string[];
 }
 
-export type DOMNodesValidatorFactory = ($: CheerioOptionsInterface) => DOMNodesValidator;
-export type WholeValidatorFactory = ($: CheerioOptionsInterface) => WholeTemplateValidator;
+export type DOMNodesValidatorFactory = (
+  $: CheerioOptionsInterface
+) => DOMNodesValidator;
+export type WholeValidatorFactory = (
+  $: CheerioOptionsInterface
+) => WholeTemplateValidator;

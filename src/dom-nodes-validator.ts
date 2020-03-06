@@ -8,22 +8,14 @@ function completeAttrsWithFrameworkSpecific(attrs: string[]): string[] {
     const additionalAttrs = attrs.map(attr => `[${attr}]`);
     const additionalAttrsFullSign = attrs.map(attr => `bind-${attr}`);
 
-    return [
-      ...attrs,
-      ...additionalAttrs,
-      ...additionalAttrsFullSign
-    ];
+    return [...attrs, ...additionalAttrs, ...additionalAttrsFullSign];
   }
 
   if (isVue()) {
     const additionalAttrs = attrs.map(attr => `:${attr}`);
     const additionalAttrsWithBind = attrs.map(attr => `v-bind:${attr}`);
 
-    return [
-      ...attrs,
-      ...additionalAttrs,
-      ...additionalAttrsWithBind
-    ];
+    return [...attrs, ...additionalAttrs, ...additionalAttrsWithBind];
   }
 
   return attrs;
@@ -96,7 +88,7 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
         ruleData = {
           elem: this.$template(element),
           attrs,
-          events,
+          events
         };
 
         if (this.isInvalid(ruleData)) {
@@ -109,7 +101,9 @@ export default class DOMNodesValidator implements DOMNodesValidatorOptions {
   }
 
   private _normalizeSelector(selector: string | string[]): string {
-    return Array.isArray(this.selector) ? (selector as string[]).join(', ') : selector as string;
+    return Array.isArray(this.selector)
+      ? (selector as string[]).join(', ')
+      : (selector as string);
   }
 
   private _addWarning(el: any): void {

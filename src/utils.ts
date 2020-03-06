@@ -1,9 +1,13 @@
-const ecranizeForRegexp = (strToEcranize: string): string => strToEcranize.replace(/-/g, '\\-');
+const ecranizeForRegexp = (strToEcranize: string): string =>
+  strToEcranize.replace(/-/g, '\\-');
 
 export const maybePluralize = (count: number, noun: string): string =>
   `${count} ${noun}${count !== 1 ? 's' : ''}`;
 
-export function getLineNumberByHTMLSegment($elem: any, template: string): number {
+export function getLineNumberByHTMLSegment(
+  $elem: any,
+  template: string
+): number {
   const start = $elem.startIndex;
   const lineNumber = template.substr(0, start).split('\n').length;
 
@@ -12,12 +16,17 @@ export function getLineNumberByHTMLSegment($elem: any, template: string): number
 
 export const getDuplicates = (list: any[]): string[] => {
   return list.reduce((acc, el, i, arr) => {
-    if (arr.indexOf(el) !== i && acc.indexOf(el) < 0) { acc.push(el); } return acc;
+    if (arr.indexOf(el) !== i && acc.indexOf(el) < 0) {
+      acc.push(el);
+    }
+    return acc;
   }, []);
 };
 
 export const getExtension = (fileName: string): string => {
-  return fileName.slice((Math.max(0, fileName.lastIndexOf(".")) || Infinity) + 1);
+  return fileName.slice(
+    (Math.max(0, fileName.lastIndexOf('.')) || Infinity) + 1
+  );
 };
 
 export function getDuplicateAttributes($elem: Cheerio, content: string) {
@@ -52,14 +61,14 @@ export function hasAttribute($elem: Cheerio, attrs: string[]): boolean {
 
 export function hasNonEmptyAttribute($elem: Cheerio, attrs: string[]): boolean {
   return attrs.some((attr: string) => {
-    const attrValue = $elem.attr(attr) || "";
-    return (attr in $elem.attr() && attrValue.trim() !== "");
+    const attrValue = $elem.attr(attr) || '';
+    return attr in $elem.attr() && attrValue.trim() !== '';
   });
 }
 
 export function getAttrValue($elem: Cheerio, attrs: string[]): string {
   const filledAttrs = attrs.filter(attr => $elem.attr(attr));
-  const attrValue = $elem.attr(filledAttrs[0]) || "";
+  const attrValue = $elem.attr(filledAttrs[0]) || '';
 
   return filledAttrs.length ? attrValue : '';
 }

@@ -13,6 +13,7 @@ export default function asideHasRole($: any): DOMNodesValidator {
 
       return !roleValues.includes(role);
     },
-    warningMessage: '<aside> element should have an "role" attribute (role="note" or role="complementary ")'
+    warningMessage:
+      '<aside> element should have an "role" attribute (role="note" or role="complementary ")'
   });
 }

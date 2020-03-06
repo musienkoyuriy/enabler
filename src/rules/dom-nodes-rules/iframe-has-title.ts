@@ -6,7 +6,9 @@ export default function iFrameHasTitle($: any): DOMNodesValidator {
   return new DOMNodesValidator({
     selector: 'iframe',
     assocAttrs: ['title'],
-    isInvalid: (rule: RuleData) => rule.attrs ? !hasNonEmptyAttribute($(rule.elem), rule.attrs) : false,
-    warningMessage: '<iframe> element should have a unique non-empty title attribute'
+    isInvalid: (rule: RuleData) =>
+      rule.attrs ? !hasNonEmptyAttribute($(rule.elem), rule.attrs) : false,
+    warningMessage:
+      '<iframe> element should have a unique non-empty title attribute'
   });
 }

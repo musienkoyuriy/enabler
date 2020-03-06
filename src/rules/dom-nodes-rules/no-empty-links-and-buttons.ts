@@ -18,9 +18,10 @@ export default function emptyLinksAndButtons($: any): DOMNodesValidator {
     },
     warningMessage: (el: CheerioElement) => {
       const tagName = el.name;
-      const message = tagName === 'input' ?
-        '"Value" attribute should not be empty in "input" tag' :
-        `Text should contains in "${tagName}" tag.`;
+      const message =
+        tagName === 'input'
+          ? '"Value" attribute should not be empty in "input" tag'
+          : `Text should contains in "${tagName}" tag.`;
 
       return message;
     }

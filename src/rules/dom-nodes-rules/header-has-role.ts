@@ -11,6 +11,7 @@ export default function headerHasRole($: any): DOMNodesValidator {
       const roleValue = attrs ? getAttrValue($(elem), attrs) : '';
       return roleValue !== 'banner';
     },
-    warningMessage: '<header> element should have an "role" attribute (role="banner")'
+    warningMessage:
+      '<header> element should have an "role" attribute (role="banner")'
   });
 }

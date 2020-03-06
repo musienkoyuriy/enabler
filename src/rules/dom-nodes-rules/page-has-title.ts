@@ -8,7 +8,8 @@ export default function pageHasTitle($: any): DOMNodesValidator {
       const { elem } = rule;
       const hasHead = $(elem).length > 0;
       const title = $(elem).children('title');
-      const hasNoTitle = (hasHead && !title.length) || (hasHead && !title.text());
+      const hasNoTitle =
+        (hasHead && !title.length) || (hasHead && !title.text());
 
       return hasNoTitle;
     },

@@ -7,8 +7,10 @@ export default function placeholderHasLabel($: any): DOMNodesValidator {
     selector: ['input[type=text]', 'textarea'],
     assocAttrs: ['id', 'placeholder'],
     isInvalid: (rule: RuleData) => {
-      const { elem, attrs} = rule;
-      const placeholderAttrs = attrs ? attrs.filter(attr => /placeholder/gi.test(attr)) : [];
+      const { elem, attrs } = rule;
+      const placeholderAttrs = attrs
+        ? attrs.filter(attr => /placeholder/gi.test(attr))
+        : [];
       const idAttrs = attrs ? attrs.filter(attr => /id/gi.test(attr)) : [];
 
       const inputsId = getAttrValue($(elem), idAttrs);
@@ -17,6 +19,7 @@ export default function placeholderHasLabel($: any): DOMNodesValidator {
 
       return !relatedLabel.length && Boolean(placeholder);
     },
-    warningMessage: 'Placeholders in inputs and textareas should be used in addition to a label, not as a replacement.'
+    warningMessage:
+      'Placeholders in inputs and textareas should be used in addition to a label, not as a replacement.'
   });
 }

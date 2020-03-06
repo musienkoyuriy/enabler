@@ -7,7 +7,7 @@ export default function noDuplicatedAttributes(): DOMNodesValidator {
     selector: '*',
     // @ts-ignore
     isInvalid: () => {
-    // isInvalid: (elem: CheerioElement) => {
+      // isInvalid: (elem: CheerioElement) => {
       // TODO: revert functionality below. Need refactoring
 
       // const duplicatedAttrs = getDuplicateAttributes($(elem), content);

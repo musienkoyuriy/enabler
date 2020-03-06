@@ -8,7 +8,7 @@ export default function rolesAreValid($: any): DOMNodesValidator {
     selector: '*',
     assocAttrs: ['role'],
     isInvalid: (rule: RuleData) => {
-      const { elem, attrs} = rule;
+      const { elem, attrs } = rule;
       if (attrs && hasAttribute($(elem), attrs)) {
         const roleValue = getAttrValue($(elem), attrs);
         const validRoles = Array.from(roles.keys());

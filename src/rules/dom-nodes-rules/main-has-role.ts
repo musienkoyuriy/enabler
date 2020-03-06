@@ -11,6 +11,7 @@ export default function mainHasRole($: any): DOMNodesValidator {
       const roleValue = attrs ? getAttrValue($(elem), attrs) : '';
       return roleValue !== 'main';
     },
-    warningMessage: '<main> element should have an appropriate "role" attribute (role="main")'
+    warningMessage:
+      '<main> element should have an appropriate "role" attribute (role="main")'
   });
 }

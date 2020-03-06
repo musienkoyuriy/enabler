@@ -14,7 +14,9 @@ const spacedLog = (text: string): void => {
   log();
 };
 
-function isWarningsEmpty(templatesWithWarnings: TemplatesWithWarnings): boolean {
+function isWarningsEmpty(
+  templatesWithWarnings: TemplatesWithWarnings
+): boolean {
   return Object.values(templatesWithWarnings).every(
     (warnings: Warning[]) => warnings.length === 0
   );
@@ -29,13 +31,17 @@ function printForTemplate(templateName: string, warnings: Warning[]): void {
   log();
 
   warnings.forEach((warnData: Warning) => {
-    const templateWarnInfo = `${warnData.line ? yellow('Line: %s') : ''} ${warnData.message}`;
+    const templateWarnInfo = `${warnData.line ? yellow('Line: %s') : ''} ${
+      warnData.message
+    }`;
     warn(error(templateWarnInfo), warnData.line || '');
     log();
   });
 }
 
-export function printWarnings(templatesWithWarnings: TemplatesWithWarnings): void {
+export function printWarnings(
+  templatesWithWarnings: TemplatesWithWarnings
+): void {
   let totalWarns = 0;
 
   if (isWarningsEmpty(templatesWithWarnings)) {
@@ -45,14 +51,15 @@ export function printWarnings(templatesWithWarnings: TemplatesWithWarnings): voi
 
   spacedLog(warning('Potential accessibility issues: '));
 
-  Object.entries(templatesWithWarnings)
-    .forEach((template: [string, Warning[]]) => {
+  Object.entries(templatesWithWarnings).forEach(
+    (template: [string, Warning[]]) => {
       const templateUrl = template[0];
       const warns = template[1];
       totalWarns += warns.length;
 
       printForTemplate(templateUrl, warns);
-    });
+    }
+  );
 
   log();
   warn(error(`   ✖ ${maybePluralize(totalWarns, 'problem')}.`));

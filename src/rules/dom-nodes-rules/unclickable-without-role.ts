@@ -23,6 +23,7 @@ export default function unclickableWithoutRole($: any): DOMNodesValidator {
 
       return !isClickable && hasClick && !hasRoleButton;
     },
-    warningMessage: 'Unclickable elements with click listener should have a role attribute.'
+    warningMessage:
+      'Unclickable elements with click listener should have a role attribute.'
   });
 }

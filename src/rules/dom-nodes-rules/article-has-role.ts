@@ -11,6 +11,7 @@ export default function articleHasRole($: any): DOMNodesValidator {
       const roleValue = attrs ? getAttrValue($(elem), attrs) : '';
       return roleValue !== 'article';
     },
-    warningMessage: '<article> element should have an appropriate "role" attribute (role="article")'
+    warningMessage:
+      '<article> element should have an appropriate "role" attribute (role="article")'
   });
 }
