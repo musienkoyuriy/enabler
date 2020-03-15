@@ -39,7 +39,6 @@ function getStringTemplate({
   fileContent,
   fileExtension
 }: FileMetadata): string {
-  console.log(getFrameworkName());
   switch (getFrameworkName()) {
     case 'angular':
       if (fileExtension === 'ts') {
