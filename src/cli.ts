@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
-import program = require('commander');
+import { Command } from 'commander'
 import { run } from '.';
+
+const program = new Command()
 
 program
   .version('2.10.0', '-v, --version')
@@ -11,11 +13,13 @@ program
   .option('--vue', 'Support .vue files')
   .parse(process.argv);
 
-if (program.angular) {
+const options = program.opts()
+
+if (options.angular) {
   (global as any).framework = 'angular';
-} else if (program.vue) {
+} else if (options.vue) {
   (global as any).framework = 'vue';
-} else if (program.react) {
+} else if (options.react) {
   (global as any).framework = 'react';
 }
 

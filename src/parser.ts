@@ -54,7 +54,7 @@ export function getContentFromVueXTemplate(fileContent: string): string {
 
   const resultTemplate = xTemplates
     .toArray()
-    .reduce((acc: string, xTemplate: Cheerio) => {
+    .reduce((acc: string, xTemplate: any) => {
       acc += $(xTemplate).html();
 
       return acc;
@@ -145,7 +145,7 @@ export function getASTTreeFromJSXFile(
 }
 
 export function getA11yWarningsFromStringTemplate(template: string): Warning[] {
-  const parsed: CheerioOptionsInterface = cheerio.load(template, {
+  const parsed = cheerio.load(template, {
     xmlMode: true,
     withStartIndices: true,
     withEndIndices: true
@@ -169,7 +169,7 @@ export function getA11yWarningsFromStringTemplate(template: string): Warning[] {
 function getWarnsFromTemplatesByNodeRules(
   rules: DOMNodesValidatorFactory[],
   templateString: string,
-  loadedTemplate: CheerioOptionsInterface
+  loadedTemplate: any
 ): Warning[] {
   let warnings: Warning[][] = [];
   rules.forEach((r: DOMNodesValidatorFactory) => {
@@ -188,7 +188,7 @@ function getWarnsFromTemplatesByNodeRules(
 
 function getWarnsFromWholeTemplates(
   rules: WholeValidatorFactory[],
-  $: CheerioOptionsInterface
+  $: any
 ): Warning[] {
   let warnings: Warning[][] = [];
 

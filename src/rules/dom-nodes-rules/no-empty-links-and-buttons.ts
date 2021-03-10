@@ -16,7 +16,7 @@ export default function emptyLinksAndButtons($: any): DOMNodesValidator {
         tagName === 'a' && !$(elem).html()
       ].some(Boolean);
     },
-    warningMessage: (el: CheerioElement) => {
+    warningMessage: (el: any) => {
       const tagName = el.name;
       const message =
         tagName === 'input'

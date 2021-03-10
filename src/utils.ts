@@ -29,7 +29,7 @@ export const getExtension = (fileName: string): string => {
   );
 };
 
-export function getDuplicateAttributes($elem: Cheerio, content: string) {
+export function getDuplicateAttributes($elem: any, content: string) {
   const dom = $elem.get(0);
   const start = dom.startIndex;
   const end = dom.children.length
@@ -55,18 +55,18 @@ export function getDuplicateAttributes($elem: Cheerio, content: string) {
     .filter(Boolean);
 }
 
-export function hasAttribute($elem: Cheerio, attrs: string[]): boolean {
+export function hasAttribute($elem: any, attrs: string[]): boolean {
   return attrs.some((attr: string) => attr in $elem.attr());
 }
 
-export function hasNonEmptyAttribute($elem: Cheerio, attrs: string[]): boolean {
+export function hasNonEmptyAttribute($elem: any, attrs: string[]): boolean {
   return attrs.some((attr: string) => {
     const attrValue = $elem.attr(attr) || '';
     return attr in $elem.attr() && attrValue.trim() !== '';
   });
 }
 
-export function getAttrValue($elem: Cheerio, attrs: string[]): string {
+export function getAttrValue($elem: any, attrs: string[]): string {
   const filledAttrs = attrs.filter(attr => $elem.attr(attr));
   const attrValue = $elem.attr(filledAttrs[0]) || '';
 

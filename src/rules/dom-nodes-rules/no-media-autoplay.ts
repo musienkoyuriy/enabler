@@ -10,7 +10,7 @@ export default function noMediaAutoplay($: any): DOMNodesValidator {
       const { elem, attrs } = rule;
       return attrs ? hasNonEmptyAttribute($(elem), attrs) : false;
     },
-    warningMessage: (elem: CheerioElement) => {
+    warningMessage: (elem: any) => {
       const tagName = elem.tagName;
 
       return `<${tagName}> should not play automatically. Some of your users will have problems focusing and unexpected sounds can distract them further.`;

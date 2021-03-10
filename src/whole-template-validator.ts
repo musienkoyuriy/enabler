@@ -1,7 +1,7 @@
 import { Warning } from './models/warnings';
 
 export interface ValidatorOptions {
-  loadedTemplate: Cheerio;
+  loadedTemplate: any;
   isInvalid: () => boolean;
   warningMessage: string;
 }

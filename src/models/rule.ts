@@ -1,5 +1,5 @@
 export interface RuleData {
-  elem: CheerioElement;
+  elem: any;
   attrs?: string[];
   events?: string[];
 }

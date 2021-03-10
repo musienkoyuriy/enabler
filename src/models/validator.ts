@@ -5,14 +5,14 @@ import { RuleData } from './rule';
 export interface DOMNodesValidatorOptions {
   isInvalid: (rule: RuleData) => boolean;
   selector: string[] | string;
-  warningMessage: string | ((el: CheerioElement) => string);
+  warningMessage: string | ((el: any) => string);
   assocAttrs?: string[];
   assocEvents?: string[];
 }
 
 export type DOMNodesValidatorFactory = (
-  $: CheerioOptionsInterface
+  $: any
 ) => DOMNodesValidator;
 export type WholeValidatorFactory = (
-  $: CheerioOptionsInterface
+  $: any
 ) => WholeTemplateValidator;
