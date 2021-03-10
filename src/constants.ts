@@ -1,3 +1,5 @@
+import { FrameworkName } from "./models/common";
+
 export const ariaAttributes = [
   'aria-autocomplete',
   'aria-checked',
@@ -54,3 +56,8 @@ export const formattingTags = [
   'tt',
   'u'
 ];
+
+export const ANGULAR: FrameworkName = 'angular';
+export const REACT: FrameworkName = 'react';
+export const VUE: FrameworkName = 'vue';
+export const NO_FRAMEWORK: FrameworkName = 'no framework';

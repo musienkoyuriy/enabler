@@ -72,15 +72,3 @@ export function getAttrValue($elem: any, attrs: string[]): string {
 
   return filledAttrs.length ? attrValue : '';
 }
-
-export function isAngular(): boolean {
-  return (global as any).framework === 'angular';
-}
-
-export function isVue(): boolean {
-  return (global as any).framework === 'vue';
-}
-
-export function getFrameworkName(): string {
-  return (global as any).framework;
-}

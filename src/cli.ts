@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander'
+import { UIFrameworkManager } from './ui-framework-manager'
 import { run } from '.';
+import { FrameworkName } from './models/common';
+import { ANGULAR, VUE, REACT, NO_FRAMEWORK } from './constants';
 
 const program = new Command()
 
@@ -15,12 +18,17 @@ program
 
 const options = program.opts()
 
+const frameworkManager = UIFrameworkManager.Instance;
+let frameworkName: FrameworkName = NO_FRAMEWORK;
+
 if (options.angular) {
-  (global as any).framework = 'angular';
+  frameworkName = ANGULAR;
 } else if (options.vue) {
-  (global as any).framework = 'vue';
+  frameworkName = VUE;
 } else if (options.react) {
-  (global as any).framework = 'react';
+  frameworkName = REACT;
 }
 
-export default run(program);
+frameworkManager.setFrameworkName(frameworkName);
+
+export default run(options);
