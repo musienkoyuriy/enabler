@@ -1,6 +1,8 @@
 import DOMNodesValidator from '../../dom-nodes-validator';
-import { isAngular } from '../../utils';
+import { UIFrameworkManager } from '../../ui-framework-manager';
 import { RuleData } from './../../models/rule';
+
+const frameworkManager = UIFrameworkManager.Instance;
 
 export default function clickWithKeyboardEvent($: any): DOMNodesValidator {
   return new DOMNodesValidator({
@@ -14,7 +16,7 @@ export default function clickWithKeyboardEvent($: any): DOMNodesValidator {
         }
       ];
 
-      if (isAngular()) {
+      if (frameworkManager.isAngular()) {
         eventsPairs = [
           ...eventsPairs,
           {
@@ -27,9 +29,7 @@ export default function clickWithKeyboardEvent($: any): DOMNodesValidator {
       return Boolean(
         eventsPairs.filter(eventPair => {
           const { targetEvent, assocEvents } = eventPair;
-          const hasAssociatedListener = assocEvents.some(eventName =>
-            Boolean($(elem).attr(eventName))
-          );
+          const hasAssociatedListener = assocEvents.some(eventName => Boolean($(elem).attr(eventName)));
 
           return $(elem).attr(targetEvent) && !hasAssociatedListener;
         }).length

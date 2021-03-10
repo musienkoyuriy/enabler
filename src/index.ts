@@ -1,5 +1,7 @@
 import { bold } from 'chalk';
+import { OptionValues } from 'commander';
 import { readFileSync } from 'fs';
+import { ANGULAR, REACT, VUE } from './constants';
 
 const glob = require('glob');
 
@@ -15,11 +17,13 @@ import {
   getTemplateFromAngularDecorator,
   getTemplateFromVueObject
 } from './parser';
-import { getExtension, getFrameworkName } from './utils';
+import { UIFrameworkManager } from './ui-framework-manager';
+import { getExtension } from './utils';
 
 const error = bold.red;
 
 const templatesWithWarnings = Object.create(null);
+const frameworkManager = UIFrameworkManager.Instance;
 
 function linkWarningsWithTemplate(
   warnings: Warning[],
@@ -39,8 +43,8 @@ function getStringTemplate({
   fileContent,
   fileExtension
 }: FileMetadata): string {
-  switch (getFrameworkName()) {
-    case 'angular':
+  switch (frameworkManager.getFrameworkName()) {
+    case ANGULAR:
       if (fileExtension === 'ts') {
         return getTemplateFromAngularDecorator(fileContent, 'ts');
       } else if (fileExtension === 'dart') {
@@ -48,7 +52,7 @@ function getStringTemplate({
       } else {
         return fileContent;
       }
-    case 'vue':
+    case VUE:
       if (fileExtension === 'vue') {
         return getContentFromVueFile(fileContent);
       } else if (fileExtension === 'js' || fileExtension === 'ts') {
@@ -72,7 +76,7 @@ function parseTemplate(templateUrl: string): void {
     throw new Error(err);
   }
 
-  if (getFrameworkName() !== 'react') {
+  if (frameworkManager.getFrameworkName() !== REACT) {
     const template = getStringTemplate({
       fileExtension,
       fileContent
@@ -94,7 +98,7 @@ function handleTemplates(fileNames: string[]): void {
 }
 
 function getExtensionPattern(): string {
-  const framework = getFrameworkName();
+  const framework = frameworkManager.getFrameworkName();
 
   if (framework === 'vue') {
     return '+(vue|ts|js|html)';
@@ -107,8 +111,8 @@ function getExtensionPattern(): string {
   return '+(html|htm)';
 }
 
-export function run(program: any): void {
-  const { path } = program;
+export function run(programOptions: OptionValues): void {
+  const { path, watch } = programOptions;
 
   if (!path) {
     console.error(
@@ -128,7 +132,7 @@ export function run(program: any): void {
 
       handleTemplates(fileNames);
 
-      if (program.watch) {
+      if (watch) {
         process.stdin.resume();
       }
     }

@@ -1,17 +1,20 @@
 import { RuleData } from './models/rule';
 import { DOMNodesValidatorOptions } from './models/validator';
 import { Warning } from './models/warnings';
-import { getLineNumberByHTMLSegment, isAngular, isVue } from './utils';
+import { getLineNumberByHTMLSegment } from './utils';
+import { UIFrameworkManager } from './ui-framework-manager';
+
+const frameworkManager = UIFrameworkManager.Instance;
 
 function completeAttrsWithFrameworkSpecific(attrs: string[]): string[] {
-  if (isAngular()) {
+  if (frameworkManager.isAngular()) {
     const additionalAttrs = attrs.map(attr => `[${attr}]`);
     const additionalAttrsFullSign = attrs.map(attr => `bind-${attr}`);
 
     return [...attrs, ...additionalAttrs, ...additionalAttrsFullSign];
   }
 
-  if (isVue()) {
+  if (frameworkManager.isVue()) {
     const additionalAttrs = attrs.map(attr => `:${attr}`);
     const additionalAttrsWithBind = attrs.map(attr => `v-bind:${attr}`);
 
@@ -24,7 +27,7 @@ function completeAttrsWithFrameworkSpecific(attrs: string[]): string[] {
 function completeEventsWithFrameworkSpecific(events: string[]): string[] {
   const nativeEventBindings = events.map(event => `on${event}`);
 
-  if (isAngular()) {
+  if (frameworkManager.isAngular()) {
     const additionalEvents = events.map(event => `(${event})`);
     const additionalEventsFullSign = events.map(event => `on-${event}`);
 
@@ -35,7 +38,7 @@ function completeEventsWithFrameworkSpecific(events: string[]): string[] {
     ];
   }
 
-  if (isVue()) {
+  if (frameworkManager.isVue()) {
     const additionalEventsViaAt = events.map(event => `@${event}`);
     const additionalEventsViaBind = events.map(event => `v-on:${event}`);
 

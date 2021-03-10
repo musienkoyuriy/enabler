@@ -7,3 +7,5 @@ export interface FileMetadata {
   fileContent: string;
   fileExtension: string;
 }
+
+export type FrameworkName = 'react' | 'angular' | 'vue' | 'no framework'
