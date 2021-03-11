@@ -8,4 +8,4 @@ export interface FileMetadata {
   fileExtension: string;
 }
 
-export type FrameworkName = 'react' | 'angular' | 'vue' | 'no framework'
+export type FrameworkName = 'react' | 'angular' | 'vue' | 'no framework';

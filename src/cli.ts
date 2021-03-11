@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-import { Command } from 'commander'
-import { UIFrameworkManager } from './ui-framework-manager'
+import { Command } from 'commander';
+import { UIFrameworkManager } from './ui-framework-manager';
 import { run } from '.';
 import { FrameworkName } from './models/common';
 import { ANGULAR, VUE, REACT, NO_FRAMEWORK } from './constants';
 
-const program = new Command()
+const program = new Command();
 
 program
   .version('2.10.0', '-v, --version')
@@ -16,7 +16,7 @@ program
   .option('--vue', 'Support .vue files')
   .parse(process.argv);
 
-const options = program.opts()
+const options = program.opts();
 
 const frameworkManager = UIFrameworkManager.Instance;
 let frameworkName: FrameworkName = NO_FRAMEWORK;

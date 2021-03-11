@@ -27,6 +27,7 @@ import tabElementsHasRightRoles from './tab-elements-has-right-roles';
 import textInputHasLabel from './text-input-has-label';
 import unclickableWithoutRole from './unclickable-without-role';
 import videoHasSubtitles from './video-has-subtitles';
+import downloadLinks from './download-links';
 
 export {
   videoHasSubtitles,
@@ -57,5 +58,6 @@ export {
   mainHasRole,
   articleHasRole,
   headerHasRole,
-  asideHasRole
+  asideHasRole,
+  downloadLinks
 };

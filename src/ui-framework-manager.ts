@@ -1,5 +1,5 @@
 import { ANGULAR, VUE } from './constants';
-import { FrameworkName } from './models/common'
+import { FrameworkName } from './models/common';
 
 export class UIFrameworkManager {
     private static _instance: UIFrameworkManager;
@@ -7,7 +7,7 @@ export class UIFrameworkManager {
 
     private constructor() { }
 
-    public static get Instance() {
+    static get Instance() {
         if (!this._instance) {
             return new this();
         }
@@ -15,19 +15,19 @@ export class UIFrameworkManager {
         return this._instance;
     }
 
-    public getFrameworkName() {
+    getFrameworkName() {
         return this.framework;
     }
 
-    public setFrameworkName(frameworkName: FrameworkName) {
+    setFrameworkName(frameworkName: FrameworkName) {
         this.framework = frameworkName;
     }
 
-    public isAngular(): boolean {
+    isAngular(): boolean {
         return this.framework === ANGULAR;
     }
 
-    public isVue(): boolean {
+    isVue(): boolean {
         return this.framework === VUE;
     }
 }
