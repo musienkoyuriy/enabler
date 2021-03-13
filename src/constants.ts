@@ -252,4 +252,4 @@ export const FILE_EXTENSIONS_LIST = {
   "wasm": "web",
   "el": "code",
   "eps": "image"
-}
+};

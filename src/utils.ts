@@ -1,4 +1,4 @@
-import { FILE_EXTENSIONS_LIST } from './constants'
+import { FILE_EXTENSIONS_LIST } from './constants';
 
 const ecranizeForRegexp = (strToEcranize: string): string =>
   strToEcranize.replace(/-/g, '\\-');
@@ -32,8 +32,8 @@ export const getExtension = (fileName: string): string => {
 };
 
 export const isPathAFile = (path: string): boolean => {
-  return Object.keys(FILE_EXTENSIONS_LIST).includes(getExtension(path.toLowerCase()))
-}
+  return Object.keys(FILE_EXTENSIONS_LIST).includes(getExtension(path.toLowerCase()));
+};
 
 export function getDuplicateAttributes($elem: any, content: string) {
   const dom = $elem.get(0);
@@ -62,7 +62,7 @@ export function getDuplicateAttributes($elem: any, content: string) {
 }
 
 export function hasAttribute($elem: any, attrs: string[]): boolean {
-  console.log($elem.attr())
+  console.log($elem.attr());
   return attrs.some((attr: string) => attr in $elem.attr());
 }
 
