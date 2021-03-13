@@ -5,9 +5,9 @@ export class UIFrameworkManager {
     private static _instance: UIFrameworkManager;
     private framework: FrameworkName;
 
-    private constructor() { }
+    private constructor() { } // eslint-disable-line
 
-    static get Instance() {
+    static get Instance() { // eslint-disable-line
         if (!this._instance) {
             return new this();
         }

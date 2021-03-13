@@ -8,9 +8,8 @@
     "clean": "rimraf lib",
     "tsc": "tsc -p src",
     "build": "npm run clean && npm run tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "tslint \"src/**/*.ts\" --project src/tsconfig.json --fix",
-    "lint:nofix": "tslint \"src/**/*.ts\" --project src/tsconfig.json",
+    "test": "echo \"Error: no test specified\"",
+    "lint": "eslint -c .eslintrc.js --ext .ts src",
     "cleaninstall": "rimraf ./node_modules && npm cache verify && npm i",
     "demo:html": "node lib/cli.js -p fixtures",
     "demo:ng": "node lib/cli.js -p fixtures --ng",
@@ -74,11 +73,15 @@
     "typescript": "4.2.3"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.17.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^4.17.0",
+    "@typescript-eslint/parser": "^4.17.0",
+    "eslint": "^7.22.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsdoc": "^32.2.0",
     "husky": "^4.3.8",
     "prettier": "2.2.1",
-    "rimraf": "3.0.2",
-    "tslint": "6.1.3",
-    "tslint-config-prettier": "1.18.0"
+    "rimraf": "3.0.2"
   },
   "eslintIgnore": [
     "fixtures/**"

@@ -11,7 +11,7 @@ import { Warning } from './models/warnings';
 import * as htmlDOMNodeRules from './rules/dom-nodes-rules';
 import * as htmlWholeTemplateRules from './rules/whole-template-rules';
 
-type lang = 'ts' | 'dart';
+type Lang = 'ts' | 'dart';
 
 function flatWarnings(warnings: Warning[][]): Warning[] {
   let messages: Warning[] = [];
@@ -70,7 +70,7 @@ export function getTemplateFromVueObject(fileContent: string): string {
 export function getTemplateFromAngularDecorator(
   fileContent: string,
   // tslint:disable-next-line:no-shadowed-variable
-  lang: lang
+  lang: Lang
 ): string {
   return getTemplateFromFrameworkWrapper('@Component', fileContent, lang);
 }
@@ -79,7 +79,7 @@ export function getTemplateFromFrameworkWrapper(
   specificLine: string,
   fileContent: string,
   // tslint:disable-next-line:no-shadowed-variable
-  lang?: lang
+  lang?: Lang
 ): string {
   const fileAsArray = fileContent.split('\n');
 
