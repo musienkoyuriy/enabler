@@ -6,9 +6,7 @@ export interface ValidatorOptions {
   warningMessage: string;
 }
 export default class WholeTemplateValidator {
-  // @ts-ignore
-  //tslint:disable
-  _warnings: Warning[] = [];
+  private _warnings: Warning[] = [];
   constructor(public options: ValidatorOptions) {
     if (options.isInvalid()) {
       this._warnings = [
